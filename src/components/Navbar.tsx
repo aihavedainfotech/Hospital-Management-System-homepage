@@ -333,9 +333,7 @@ export default function Navbar({ onAppointmentClick, onPortalClick, onCancelClic
             <button className="btn-outline" onClick={onPortalClick}>
               <i className="fas fa-user-circle" /> Portal
             </button>
-            <a href="/login" className="btn-outline">
-              <i className="fas fa-sign-in-alt" /> Staff
-            </a>
+
             <button className="btn-solid" onClick={onAppointmentClick}>
               Book Now
             </button>
@@ -384,9 +382,7 @@ export default function Navbar({ onAppointmentClick, onPortalClick, onCancelClic
           <button className="btn-outline" onClick={() => { setMenuOpen(false); onPortalClick(); }} style={{ width: '100%', justifyContent: 'center' }}>
             <i className="fas fa-user-circle" /> Patient Portal
           </button>
-          <a href="/login" className="btn-outline" onClick={() => setMenuOpen(false)} style={{ width: '100%', justifyContent: 'center' }}>
-            <i className="fas fa-sign-in-alt" /> Staff Login
-          </a>
+
           <button className="btn-solid" onClick={() => { setMenuOpen(false); onAppointmentClick(); }} style={{ width: '100%', justifyContent: 'center' }}>
             Book Appointment
           </button>
