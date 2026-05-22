@@ -4,6 +4,7 @@ import path from 'path'
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: '/Hospital-Management-System-homepage/',
   plugins: [react()],
   resolve: {
     // Force all React imports to use the homepage's own React 19 install

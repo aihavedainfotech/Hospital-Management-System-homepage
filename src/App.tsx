@@ -139,9 +139,7 @@ function AppContent() {
 
         {/* Testimonials */}
         <div style={{ marginTop: '1.5rem' }}>
-          {console.log('About to render TestimonialsSection')}
           <TestimonialsSection />
-          {console.log('TestimonialsSection rendered')}
         </div>
 
         {/* Complaint & Suggestion Box */}

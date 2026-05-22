@@ -49,7 +49,7 @@ export default function AppointmentSection({ preSelectedDoctor, initialCancelMod
   const [lockToken] = useState(() => Math.random().toString(36).substring(2, 11));
   const [timeLeft, setTimeLeft] = useState<number | null>(null);
   const [confirmedPatientId, setConfirmedPatientId] = useState('');
-  const timerRef = useRef<NodeJS.Timeout | null>(null);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const [manualPatientEntry, setManualPatientEntry] = useState(false);
   const [isNewPatient, setIsNewPatient] = useState(false);

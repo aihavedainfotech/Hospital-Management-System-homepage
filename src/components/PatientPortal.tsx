@@ -50,7 +50,7 @@ function PortalBookingModal({ patientId, patientName, patientPhone, patientAge, 
   const [refNumber, setRefNumber] = useState('');
   const [timeLeft, setTimeLeft] = useState<number | null>(null);
   const [lockToken] = useState(() => Math.random().toString(36).substring(2, 11));
-  const timerRef = useRef<NodeJS.Timeout | null>(null);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const today = new Date(); today.setHours(0, 0, 0, 0);
   const year = currentMonth.getFullYear();
@@ -323,7 +323,7 @@ export default function PatientPortal({ onClose }: { onClose: () => void }) {
   const [lockToken] = useState(() => Math.random().toString(36).substring(2, 11));
   const [timeLeft, setTimeLeft] = useState<number | null>(null);
   const [loadingRecords, setLoadingRecords] = useState(false);
-  const timerRef = useRef<NodeJS.Timeout | null>(null);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const tabs = [
     { id: 'overview', label: 'Overview', icon: 'fas fa-tachometer-alt' },
