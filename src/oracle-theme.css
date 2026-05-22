@@ -1,0 +1,157 @@
+/* ORACLE ENTERPRISE THEME - UNIFIED SOURCE OF TRUTH */
+:root {
+  /* Core Palette */
+  --oc-primary: #1F4E79;
+  --oc-primary-hover: #163a5c;
+  --oc-secondary: #4A90E2;
+  --oc-accent: #00AEEF;
+  --oc-bg: #F5F7FA;
+  --oc-card: #FFFFFF;
+  --oc-text: #333333;
+  --oc-text-muted: #6B7280;
+  --oc-text-secondary: #4B5563;
+  --oc-border: #E2E8F0;
+  --oc-border-light: #F1F5F9;
+
+  /* Aliases for Tailwind Config (var(--color-...) mismatch fix) */
+  --color-primary: var(--oc-primary);
+  --color-primary-hover: var(--oc-primary-hover);
+  --color-primary-light: var(--oc-border-light);
+  --color-primary-dark: var(--oc-primary-hover);
+  --color-secondary: var(--oc-secondary);
+  --color-accent: var(--oc-accent);
+  --color-background: var(--oc-bg);
+  --color-surface: var(--oc-card);
+  --color-border: var(--oc-border);
+  
+  /* HSL Semantic Aliases (Global Fallback) */
+  --primary:            210 65% 30%;   /* #1F4E79 */
+  --primary-deep:       210 65% 24%;   /* #163a5c */
+  --accent:             195 100% 47%;  /* #00AEEF */
+  --success:            160 60% 45%;
+  --warning:             38 92% 50%;
+  --danger:             347 77% 50%;
+  --background:         210 20% 97%;
+  --card:                 0  0% 100%;
+  --muted:              210 15% 95%;
+  --border:             214 20% 90%;
+  --foreground:           220 20% 20%;
+  --foreground-secondary: 220 10% 40%;
+  --foreground-muted:     220 10% 60%;
+
+  /* Sidebar Standard */
+  --oc-sidebar-bg: #1F4E79;
+  --oc-sidebar-text: #CBD5E1;
+  --oc-sidebar-active: #FFFFFF;
+  --oc-sidebar-hover: rgba(255,255,255,0.1);
+  --oc-sidebar-active-bg: rgba(255,255,255,0.15);
+  
+  /* Layout & Components */
+  --oc-header-bg: #FFFFFF;
+  --oc-subtle: #F8FAFC;
+  --oc-table-header: #EFF6FF;
+  --oc-table-even: #F8FAFC;
+  --oc-table-hover: #EFF6FF;
+  --oc-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
+  --oc-shadow-md: 0 4px 12px rgba(0,0,0,0.10), 0 2px 4px rgba(0,0,0,0.06);
+  --oc-shadow-lg: 0 10px 30px rgba(0,0,0,0.12), 0 4px 8px rgba(0,0,0,0.06);
+  --oc-radius: 0.75rem;
+  --oc-radius-sm: 0.5rem;
+  --oc-transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Base Overrides */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  background-color: var(--oc-bg);
+  color: var(--oc-text);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+}
+
+h1, h2, h3, h4, h5, h6 { 
+  font-family: "Inter", sans-serif; 
+  color: var(--oc-primary);
+  font-weight: 700;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   STRICT SIDEBAR UNIFICATION
+   ═══════════════════════════════════════════════════════════════════ */
+.sidebar, .oracle-sidebar, .sidebar-glass {
+  background: var(--oc-sidebar-bg) !important;
+  border-right: 1px solid rgba(255,255,255,0.1) !important;
+  color: var(--oc-sidebar-text) !important;
+}
+
+.sidebar-nav-item, .oracle-nav-item, .nav-item {
+  color: var(--oc-sidebar-text) !important;
+  transition: var(--oc-transition) !important;
+}
+
+.sidebar-nav-item:hover, .oracle-nav-item:hover, .nav-item:hover {
+  background: var(--oc-sidebar-hover) !important;
+  color: var(--oc-sidebar-active) !important;
+}
+
+.sidebar-nav-item.active, .oracle-nav-item.active, .nav-active {
+  background: var(--oc-sidebar-active-bg) !important;
+  color: var(--oc-sidebar-active) !important;
+  font-weight: 600 !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   STRICT BUTTON & COMPONENT UNIFICATION
+   ═══════════════════════════════════════════════════════════════════ */
+.btn-primary, .oracle-btn-primary, .btn-solid {
+  background: var(--oc-primary) !important;
+  color: white !important;
+  border: none !important;
+  box-shadow: 0 2px 6px rgba(31, 78, 121, 0.2) !important;
+}
+
+.btn-primary:hover, .oracle-btn-primary:hover, .btn-solid:hover {
+  background: var(--oc-primary-hover) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(31, 78, 121, 0.3) !important;
+}
+
+.card, .oracle-card, .glass-card {
+  background: var(--oc-card) !important;
+  border: 1px solid var(--oc-border) !important;
+  border-radius: var(--oc-radius) !important;
+  box-shadow: var(--oc-shadow) !important;
+}
+
+.oracle-stat-card, .stat-card {
+  background: var(--oc-card) !important;
+  border: 1px solid var(--oc-border) !important;
+  border-radius: var(--oc-radius) !important;
+}
+
+/* Header */
+.app-header, .oracle-header, .header-glass {
+  background: var(--oc-header-bg) !important;
+  border-bottom: 1px solid var(--oc-border) !important;
+  box-shadow: var(--oc-shadow) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   TAILWIND CLASS OVERRIDES (SYSTEM-WIDE)
+   ═══════════════════════════════════════════════════════════════════ */
+.bg-primary { background-color: var(--oc-primary) !important; }
+.text-primary { color: var(--oc-primary) !important; }
+.border-primary { border-color: var(--oc-primary) !important; }
+
+/* Override common shades found in modules */
+.bg-teal-500, .bg-teal-600, .bg-purple-600, .bg-blue-600 {
+  background-color: var(--oc-primary) !important;
+}
+
+.text-teal-600, .text-purple-600, .text-blue-600 {
+  color: var(--oc-primary) !important;
+}
+
