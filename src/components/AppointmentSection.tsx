@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { toast } from 'react-toastify';
+import apiClient from '../services/apiClient';
 import { Doctor, fetchDoctors, fetchSlots, bookAppointment, searchAppointments, cancelAppointmentRequest, rescheduleAppointment, searchPatient, lockSlot, unlockSlot, requestPatientOTP, verifyPatientOTP, getPatientsByPhone } from '../api';
 
 interface AppointmentSectionProps {
@@ -49,7 +50,7 @@ export default function AppointmentSection({ preSelectedDoctor, initialCancelMod
   const [lockToken] = useState(() => Math.random().toString(36).substring(2, 11));
   const [timeLeft, setTimeLeft] = useState<number | null>(null);
   const [confirmedPatientId, setConfirmedPatientId] = useState('');
-  const timerRef = useRef<NodeJS.Timeout | null>(null);
+  const timerRef = useRef<any | null>(null);
 
   const [manualPatientEntry, setManualPatientEntry] = useState(false);
   const [isNewPatient, setIsNewPatient] = useState(false);
@@ -236,9 +237,9 @@ export default function AppointmentSection({ preSelectedDoctor, initialCancelMod
     const check = async () => {
       setCheckingFollowup(true);
       try {
-        const res = await fetch(`/api/homepage/followup-check?patient_id=${selectedPatientId}&doctor_id=${selectedDoctor.id}`);
-        if (!res.ok || cancelled) return;
-        const json = await res.json();
+        const res = await apiClient.get(`/homepage/followup-check?patient_id=${selectedPatientId}&doctor_id=${selectedDoctor.id}`);
+        if (cancelled) return;
+        const json = res.data;
         if (json.success && !cancelled) {
           const info = json.data;
           setFollowupInfo(info);

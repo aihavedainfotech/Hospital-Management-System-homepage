@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+import apiClient from '../services/apiClient';
 
 function useAnim(direction: 'up' | 'left' | 'right' = 'up', delay = 0) {
   const ref = useRef<HTMLDivElement>(null);
@@ -104,9 +105,11 @@ export default function HealthyHabitsPortal() {
   const [tipLoading, setTipLoading] = useState(true);
 
   useEffect(() => {
-    fetch('/api/homepage/chatbot/health-tip')
-      .then(r => r.json())
-      .then(d => { if (d.success && d.tip) setHealthTip(d.tip); })
+    apiClient.get('/homepage/chatbot/health-tip')
+      .then(r => {
+        const d = r.data;
+        if (d.success && d.tip) setHealthTip(d.tip);
+      })
       .catch(() => {/* keep fallback */})
       .finally(() => setTipLoading(false));
   }, []);

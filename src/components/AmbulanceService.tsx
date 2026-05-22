@@ -103,7 +103,7 @@ export default function AmbulanceService() {
               <div style={{
                 width: '60px', height: '60px', borderRadius: '12px',
                 background: 'rgba(239,68,68,0.1)', border: '1px solid rgba(239,68,68,0.15)',
-                display: 'flex', alignItems: 'center', justifyCenter: 'center', margin: '0 auto 1rem',
+                display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1rem',
               }}>
                 <i className="fas fa-ambulance" style={{ color: '#EF4444', fontSize: '1.5rem', margin: 'auto' }} />
               </div>
