@@ -67,7 +67,7 @@ def book_appointment():
         
         # Clear the lock since booking is successful
         if lock_token:
-            from ...config.database import db
+            from hp_src.config.database import db
             db.execute_query("DELETE FROM temp_slot_locks WHERE lock_token = %s", (lock_token,))
         
         return jsonify({

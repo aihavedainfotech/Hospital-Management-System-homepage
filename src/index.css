@@ -1405,6 +1405,12 @@ section {
   font-family: 'Playfair Display', serif;
   font-size: 2rem;
   font-weight: 700;
+}
+
+.ref-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
   background: rgba(255, 255, 255, 0.15);
   border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 14px;
@@ -1415,4 +1421,118 @@ section {
   backdrop-filter: blur(4px);
 }
 
+/* =========================================================
+   COMPREHENSIVE RESPONSIVE DESIGN FIXES
+   ========================================================= */
 
+/* Make containers fluid on mobile */
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  overflow-x: hidden;
+}
+
+@media (min-width: 576px) { .container { max-width: 540px; } }
+@media (min-width: 768px) { .container { max-width: 720px; } }
+@media (min-width: 992px) { .container { max-width: 960px; } }
+@media (min-width: 1200px) { .container { max-width: 1140px; } }
+@media (min-width: 1400px) { .container { max-width: 1320px; } }
+
+/* Fix overflow issues globally */
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+/* Tablet & Mobile Layout Fixes */
+@media (max-width: 992px) {
+  /* Automatically convert any 2-column or 3-column inline grids to 1 column */
+  [style*="grid-template-columns: 1fr 1fr"],
+  [style*="grid-template-columns: 1fr 2fr"],
+  [style*="grid-template-columns: 2fr 1fr"],
+  [style*="grid-template-columns: repeat(3, 1fr)"] {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* Make 3D carousel arrows disappear on mobile */
+  .wds-arrow {
+    display: none !important;
+  }
+  
+  /* Reduce section padding */
+  .section-pad, section {
+    padding-top: 50px !important;
+    padding-bottom: 50px !important;
+  }
+  
+  /* Scale down massive font sizes */
+  .section-title {
+    font-size: clamp(1.5rem, 4vw, 2rem) !important;
+  }
+  
+  .section-subtitle {
+    font-size: 0.95rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  /* Make sure flex layouts that don't wrap, start wrapping */
+  .hero-btn-group, .hero-layout {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  /* Fix the flip cards layout for doctors to make sure they fit */
+  .wds-card {
+    width: 260px !important;
+  }
+  
+  /* Force large minmax grids to drop to 1 column on very small screens */
+  [style*="minmax(280px"],
+  [style*="minmax(300px"],
+  [style*="minmax(320px"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Mobile specific fixes */
+@media (max-width: 576px) {
+  /* Smaller padding on cards */
+  .dept-card, .news-card, .testimonial-card, .achievement-badge {
+    padding: 1.25rem !important;
+  }
+  
+  /* Form groups should have less margin */
+  .form-group {
+    margin-bottom: 0.75rem !important;
+  }
+  
+  /* Buttons full width on mobile */
+  .btn-primary, .btn-secondary, .btn-gold {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Adjust hero stat bar */
+  .hero-stat-bar {
+    padding: 1rem !important;
+    gap: 1rem !important;
+    margin-top: 1.5rem !important;
+  }
+
+  .hero-image {
+    margin-top: 2rem;
+  }
+
+  /* Testimonials width */
+  .testimonial-card {
+    width: 280px !important;
+  }
+  
+  /* Reduce navbar height padding for logo if necessary */
+  .hn-logo-name {
+    font-size: 1.1rem !important;
+  }
+}

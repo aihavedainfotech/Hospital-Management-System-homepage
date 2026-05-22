@@ -107,8 +107,10 @@ export default function EventsSection() {
 
   const sorted = [...events].sort((a, b) => new Date(b.datetime).getTime() - new Date(a.datetime).getTime());
   const byCategory = sorted.reduce((acc, ev) => {
-    acc[ev.category] = acc[ev.category] || [];
-    acc[ev.category].push(ev);
+    // Normalize category to Title Case (e.g. 'news' -> 'News')
+    const cat = ev.category.charAt(0).toUpperCase() + ev.category.slice(1).toLowerCase();
+    acc[cat] = acc[cat] || [];
+    acc[cat].push({...ev, category: cat as EventItem['category']});
     return acc;
   }, {} as Record<string, EventItem[]>);
 
