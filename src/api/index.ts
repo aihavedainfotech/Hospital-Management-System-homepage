@@ -155,31 +155,21 @@ export const submitSuggestion = (data: any) =>
 export const submitCompliment = (data: any) =>
   apiClient.post(`${HP}/compliments`, data).then(r => r.data);
 
-export const fetchCompliments = () => {
-  console.log('fetchCompliments called, making request to:', `${HP}/complaints?type=compliment`);
-  return apiClient.get(`${HP}/complaints`, { params: { type: 'compliment' } })
+export const fetchCompliments = () =>
+  apiClient.get(`${HP}/complaints`, { params: { type: 'compliment' } })
     .then(r => {
-      console.log('fetchCompliments response:', r);
       const data = r.data.data || r.data;
       if (!Array.isArray(data)) return [];
-      
       // Map backend fields to frontend expectations (e.g. message -> feedback)
-      const mappedData = data.map((item: any) => ({
+      return data.map((item: any) => ({
         id: item.id,
         name: item.name || 'Anonymous Patient',
         feedback: item.message || item.feedback || '',
         created_at: item.created_at,
-        rating: 5 // Default rating for compliments
+        rating: 5
       }));
-      
-      console.log('fetchCompliments processed data:', mappedData);
-      return mappedData;
     })
-    .catch(error => {
-      console.error('fetchCompliments error:', error);
-      return [];
-    });
-}
+    .catch(() => []);
 
 export const searchAppointments = (phone: string, date: string) =>
   apiClient.get(`${HP}/appointments/search`, { params: { phone, date } }).then(r => r.data);
