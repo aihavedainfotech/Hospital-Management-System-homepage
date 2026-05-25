@@ -529,12 +529,12 @@ class Appointment:
             else:
                 # Fallback to daily sequence if doctor not found
                 token_query = "SELECT MAX(token_number) as max_token FROM appointments WHERE doctor_id = %s AND appointment_date = %s"
-                token_res = db.execute_query(token_query, (data['doctor_id'], data['date']), fetch_all=False)
+                token_res = db.execute_query(token_query, (str(data['doctor_id']), data['date']), fetch_all=False)
                 token_number = int(token_res.get('max_token') or 0) + 1
         except Exception as e:
             print(f"DEBUG: Token generation failed, falling back: {e}")
             token_query = "SELECT MAX(token_number) as max_token FROM appointments WHERE doctor_id = %s AND appointment_date = %s"
-            token_res = db.execute_query(token_query, (data['doctor_id'], data['date']), fetch_all=False)
+            token_res = db.execute_query(token_query, (str(data['doctor_id']), data['date']), fetch_all=False)
             token_number = int(token_res.get('max_token') or 0) + 1
 
         params = (

@@ -232,7 +232,7 @@ def get_doctor_slots(doctor_id):
         FROM temp_slot_locks 
         WHERE doctor_id = %s AND slot_date = %s AND expires_at > %s
         """
-        active_locks = db.execute_query(lock_query, (doctor_id, date_str, current_ts))
+        active_locks = db.execute_query(lock_query, (str(doctor_id), date_str, current_ts))
         # Map booked times using normalize_time
         # Use lowercase check for status to be robust
         booked_map = {}
@@ -321,7 +321,7 @@ def lock_slot():
         SELECT lock_token FROM temp_slot_locks 
         WHERE doctor_id = %s AND slot_date = %s AND slot_time = %s AND expires_at > %s
         """
-        existing_lock = db.execute_query(check_locked, (doctor_id, date, slot_time, now_str), fetch_all=False)
+        existing_lock = db.execute_query(check_locked, (str(doctor_id), date, slot_time, now_str), fetch_all=False)
         
         if existing_lock and existing_lock['lock_token'] != token:
             return jsonify({'success': False, 'error': 'Slot is locked by another user'}), 409
@@ -333,7 +333,7 @@ def lock_slot():
         ON CONFLICT (doctor_id, slot_date, slot_time) 
         DO UPDATE SET lock_token = EXCLUDED.lock_token, expires_at = EXCLUDED.expires_at
         """
-        db.execute_query(lock_query, (doctor_id, date, slot_time, token, expires_str))
+        db.execute_query(lock_query, (str(doctor_id), date, slot_time, token, expires_str))
         
         return jsonify({
             'success': True,

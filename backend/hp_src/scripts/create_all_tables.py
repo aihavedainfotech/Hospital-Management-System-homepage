@@ -2,7 +2,7 @@ import os
 import sys
 
 # Hardcode the Supabase URL to set up the remote database for Render
-supabase_url = "postgresql://postgres.fkonwkiddbtbcexikpse:Sravan.9010@aws-1-ap-northeast-1.pooler.supabase.com:6543/postgres"
+supabase_url = "postgresql://postgres:Tharun%4079933@db.sgghsxjodhailolrbyar.supabase.co:5432/postgres"
 
 def create_homepage_tables():
     import psycopg2
