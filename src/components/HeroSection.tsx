@@ -51,7 +51,7 @@ export default function HeroSection({ onBook, onDoctors }: HeroProps) {
       paddingTop: '80px',
       position: 'relative',
       overflow: 'hidden',
-      minHeight: '85vh',
+      minHeight: '72vh',
       display: 'flex',
       flexDirection: 'column',
       background: 'linear-gradient(135deg, #DFF7F4 0%, #F8FFFE 100%)',
@@ -127,7 +127,8 @@ export default function HeroSection({ onBook, onDoctors }: HeroProps) {
           padding: 1.5rem 2rem;
           border: 1px solid rgba(226,232,240,0.8);
           box-shadow: 0 12px 32px rgba(15,45,82,0.06);
-          margin-top: 3rem;
+          margin-top: 0.5rem;
+          transform: translateY(-20px);
         }
         .hero-stat-item {
           display: flex; align-items: center; gap: 1rem;
@@ -152,7 +153,7 @@ export default function HeroSection({ onBook, onDoctors }: HeroProps) {
           align-items: center;
           justify-content: space-between;
           gap: 4rem;
-          padding: 4rem 0;
+          padding: 3.5rem 0 1rem;
         }
 
         .hero-content {
