@@ -44,12 +44,13 @@
   --soft-white: #FFFFFF;
 
   /* Legacy mappings for safety */
-  --teal: var(--accent);
-  --teal-dark: var(--accent-hover);
-  --teal-light: var(--accent-light);
-  --navy: var(--primary);
-  --navy-light: var(--primary-light);
-  --gold: var(--primary);
+  --primary: var(--teal);
+  --primary-hover: var(--teal-dark);
+  --primary-light: var(--teal-light);
+  --accent: var(--navy);
+  --accent-hover: var(--navy-dark);
+  --accent-light: rgba(22, 59, 101, 0.1);
+  --gold: #F59E0B;
 }
 
 
@@ -266,7 +267,7 @@ h4 {
 
 /* NEWS TICKER (Hero Scroller) */
 .news-ticker-container {
-  background: var(--primary);
+  background: var(--blue-primary);
   color: #FFFFFF;
   display: flex;
   align-items: center;
@@ -276,11 +277,11 @@ h4 {
   z-index: 10;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  box-shadow: 0 2px 10px rgba(46,163,242,0.15);
+  box-shadow: 0 2px 10px rgba(20, 184, 166, 0.15);
 }
 
 .news-ticker-label {
-  background: var(--accent);
+  background: var(--blue-dark);
   color: #FFFFFF;
   padding: 0 1.5rem;
   height: 100%;
@@ -322,7 +323,7 @@ h4 {
 }
 
 .news-ticker-item i {
-  color: var(--color-accent);
+  color: #FFFFFF;
   font-size: 0.8rem;
 }
 

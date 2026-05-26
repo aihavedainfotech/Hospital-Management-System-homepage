@@ -1,113 +1,92 @@
+import { useEffect, useState } from 'react';
 import facilityImg from '../assets/hospital_facility.png';
+import { fetchServices, Service } from '../api';
 
 export default function AboutSection() {
+  const [services, setServices] = useState<Service[]>([]);
+
+  useEffect(() => {
+    fetchServices().then(setServices);
+  }, []);
+
   return (
     <section id="about" style={{ padding: '6rem 0', background: 'var(--bg-secondary)' }}>
       <div className="container">
         <div style={{
           display: 'flex',
+          flexDirection: 'column',
           alignItems: 'center',
-          gap: '4rem',
-          flexWrap: 'wrap'
+          textAlign: 'center'
         }}>
           
-          {/* Image Side */}
-          <div style={{ flex: '1 1 400px', position: 'relative' }}>
-            <div style={{
-              position: 'absolute',
-              top: '-20px', left: '-20px',
-              width: '100%', height: '100%',
-              border: '2px solid var(--border-color)',
-              borderRadius: '24px',
-              zIndex: 0
-            }}></div>
-            <img 
-              src={facilityImg} 
-              alt="Hospital Facility" 
-              style={{
-                width: '100%',
-                borderRadius: '24px',
-                position: 'relative',
-                zIndex: 1,
-                boxShadow: 'var(--shadow-lg)'
-              }} 
-            />
-            
-            <div style={{
-              position: 'absolute',
-              bottom: '-30px', right: '-30px',
-              background: 'white',
-              padding: '1.5rem',
-              borderRadius: '16px',
-              boxShadow: 'var(--shadow-md)',
-              zIndex: 2,
-              display: 'flex',
-              alignItems: 'center',
-              gap: '1rem'
-            }}>
-              <div style={{
-                width: '50px', height: '50px',
-                borderRadius: '50%', background: 'var(--primary-light)',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                color: 'var(--primary)', fontSize: '1.5rem'
-              }}>
-                <i className="fas fa-award"></i>
-              </div>
-              <div>
-                <h4 style={{ margin: 0, color: 'var(--text-primary)', fontSize: '1.2rem', fontWeight: 700 }}>25+ Years</h4>
-                <p style={{ margin: 0, color: 'var(--text-secondary)', fontSize: '0.85rem' }}>Of Medical Excellence</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Text Side */}
-          <div style={{ flex: '1 1 500px' }}>
+          <div style={{ width: '100%', overflow: 'hidden' }}>
             <span style={{
-              color: 'var(--primary)',
+              color: 'var(--blue-primary)',
               fontWeight: 600,
               textTransform: 'uppercase',
               letterSpacing: '1px',
               fontSize: '0.85rem',
               display: 'block',
               marginBottom: '1rem'
-            }}>About Us</span>
+            }}>Our Services</span>
             
             <h2 style={{
               fontFamily: 'Poppins, sans-serif',
               fontSize: '2.5rem',
               color: 'var(--text-primary)',
               lineHeight: 1.2,
-              marginBottom: '1.5rem'
+              marginBottom: '2rem'
             }}>
-              A Legacy of <br/><span style={{ color: 'var(--accent)' }}>Compassionate Care</span>
+              Comprehensive <br/><span style={{ color: 'var(--blue-primary)' }}>Medical Care</span>
             </h2>
             
-            <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: 1.7, marginBottom: '1.5rem' }}>
-              We are a modern, patient-centered healthcare facility dedicated to providing the highest quality medical services. Our team of world-renowned specialists and dedicated nursing staff work together to ensure you receive the best possible care.
-            </p>
-            
-            <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: 1.7, marginBottom: '2rem' }}>
-              From routine check-ups to complex surgical procedures, we combine cutting-edge technology with a warm, healing environment to support your journey to complete wellness.
-            </p>
-            
-            <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                <i className="fas fa-check-circle" style={{ color: 'var(--accent)', fontSize: '1.25rem' }}></i>
-                <span style={{ color: 'var(--text-primary)', fontWeight: 500 }}>Advanced Technology</span>
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                <i className="fas fa-check-circle" style={{ color: 'var(--accent)', fontSize: '1.25rem' }}></i>
-                <span style={{ color: 'var(--text-primary)', fontWeight: 500 }}>24/7 Emergency Care</span>
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                <i className="fas fa-check-circle" style={{ color: 'var(--accent)', fontSize: '1.25rem' }}></i>
-                <span style={{ color: 'var(--text-primary)', fontWeight: 500 }}>Expert Specialists</span>
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                <i className="fas fa-check-circle" style={{ color: 'var(--accent)', fontSize: '1.25rem' }}></i>
-                <span style={{ color: 'var(--text-primary)', fontWeight: 500 }}>Affordable Pricing</span>
+            <div className="services-marquee-container" style={{ overflow: 'hidden', position: 'relative', width: '100%', padding: '1rem 0' }}>
+              <div className="services-marquee-inner" style={{ display: 'inline-flex', gap: '1.5rem', animation: 'servicesScroll 25s linear infinite' }}>
+                {/* Duplicate list for seamless scrolling */}
+                {[...services, ...services].map((s, idx) => (
+                  <div key={`${s.id}-${idx}`} style={{
+                    width: '140px',
+                    height: '140px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    padding: '1rem',
+                    background: 'white',
+                    borderRadius: '16px',
+                    border: '1px solid #E2E8F0',
+                    boxShadow: '0 4px 15px rgba(0,0,0,0.05)',
+                    textAlign: 'center',
+                    transition: 'transform 0.2s, box-shadow 0.2s',
+                    cursor: 'pointer'
+                  }}
+                  onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-5px)'; e.currentTarget.style.boxShadow = '0 8px 25px rgba(20,184,166,0.15)'; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 4px 15px rgba(0,0,0,0.05)'; }}
+                  >
+                    <div style={{
+                      width: '50px', height: '50px', borderRadius: '50%',
+                      background: '#F8FFFE', color: 'var(--blue-primary)',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      fontSize: '1.5rem', marginBottom: '12px'
+                    }}>
+                      <i className={s.icon || 'fas fa-stethoscope'}></i>
+                    </div>
+                    <h4 style={{ margin: 0, fontSize: '0.9rem', color: 'var(--text-dark)', fontWeight: 600 }}>{s.title}</h4>
+                  </div>
+                ))}
               </div>
             </div>
+            
+            <style>{`
+              @keyframes servicesScroll {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(calc(-50% - 0.75rem)); }
+              }
+              .services-marquee-inner:hover {
+                animation-play-state: paused;
+              }
+            `}</style>
+
           </div>
         </div>
       </div>

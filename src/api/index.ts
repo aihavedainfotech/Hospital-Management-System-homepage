@@ -21,6 +21,13 @@ export interface Department {
   icon?: string;
 }
 
+export interface Service {
+  id: number;
+  title: string;
+  description: string;
+  icon: string;
+}
+
 export interface Slot {
   time: string;
   available: boolean;
@@ -101,6 +108,15 @@ export const fetchDoctors = (params?: Record<string, string>) =>
     const rawData = r.data.data || r.data;
     return { data: Array.isArray(rawData) ? rawData : [], success: true };
   }).catch(() => ({ data: [], success: false }));
+
+export const fetchServices = () =>
+  apiClient.get(`${HP}/services`).then(r => {
+    console.log('fetchServices response:', r.data);
+    return Array.isArray(r.data) ? r.data : [];
+  }).catch((err) => {
+    console.error('fetchServices error:', err);
+    return [];
+  });
 
 export const fetchDepartments = () =>
   apiClient.get(`${HP}/departments`).then(r => r.data.data || r.data);

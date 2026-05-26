@@ -47,6 +47,7 @@ from hp_src.modules.appointments.routes     import appointments_bp
 from hp_src.modules.appointments.cancellation_routes import cancellation_bp
 from hp_src.modules.patients.routes         import patient_bp
 from hp_src.modules.chatbot.routes          import chatbot_bp
+from hp_src.modules.services.routes         import services_bp
 
 app.register_blueprint(doctors_bp, url_prefix='/api/homepage/doctors')
 app.register_blueprint(departments_bp, url_prefix='/api/homepage/departments')
@@ -59,6 +60,7 @@ app.register_blueprint(appointments_bp, url_prefix='/api/homepage/appointments')
 app.register_blueprint(cancellation_bp, url_prefix='/api/homepage/cancellations')
 app.register_blueprint(patient_bp, url_prefix='/api/homepage/patients')
 app.register_blueprint(chatbot_bp, url_prefix='/api/homepage/chatbot')
+app.register_blueprint(services_bp, url_prefix='/api/homepage/services')
 
 # ── Health check ─────────────────────────────────────────────────
 @app.route("/api/health", methods=["GET"])

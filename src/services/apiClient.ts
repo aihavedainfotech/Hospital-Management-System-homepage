@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://hospital-management-system-homepage.onrender.com/api';
+const isDev = import.meta.env.DEV;
+const API_BASE_URL = isDev ? 'http://localhost:5001/api' : (import.meta.env.VITE_API_BASE_URL || 'https://hospital-management-system-homepage.onrender.com/api');
 
 // Render free-tier spins down after 15 min of inactivity and needs up to 60s to wake.
 // So we use a 70s timeout with retry logic to handle cold starts gracefully.

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import heroDoctorImg from '../assets/hero_doctor.png';
+import heroImg from '../assets/new_hero.png';
 
 const stats = [
   { value: 355000, label: 'Patients Served', suffix: '+', icon: 'fas fa-users' },
@@ -110,10 +110,9 @@ export default function HeroSection({ onBook, onDoctors }: HeroProps) {
           position: absolute;
           top: 50%; left: 50%;
           transform: translate(-50%, -50%);
-          width: 500px; height: 500px;
+          width: 120%; height: 120%;
           border-radius: 50%;
-          background: radial-gradient(circle, #06B6D4 0%, #14B8A6 100%);
-          opacity: 0.15;
+          background: radial-gradient(circle, rgba(6,182,212,0.15) 0%, rgba(20,184,166,0.05) 100%);
           filter: blur(60px);
           z-index: 0;
         }
@@ -158,12 +157,12 @@ export default function HeroSection({ onBook, onDoctors }: HeroProps) {
 
         .hero-content {
           flex: 1;
-          max-width: 600px;
+          max-width: 550px;
           z-index: 2;
         }
 
         .hero-image-wrapper {
-          flex: 1;
+          flex: 1.4;
           position: relative;
           display: flex;
           justify-content: center;
@@ -172,12 +171,14 @@ export default function HeroSection({ onBook, onDoctors }: HeroProps) {
         }
 
         .hero-image {
-          max-width: 100%;
+          width: 100%;
           height: auto;
-          border-radius: 24px;
+          border-radius: 30px;
           z-index: 2;
           position: relative;
-          box-shadow: 0 20px 50px rgba(15,45,82,0.15);
+          box-shadow: 0 30px 60px rgba(15,45,82,0.2);
+          border: 8px solid white;
+          object-fit: cover;
         }
 
         /* Responsive */
@@ -232,18 +233,7 @@ export default function HeroSection({ onBook, onDoctors }: HeroProps) {
 
           <div className="hero-image-wrapper">
             <div className="hero-circular-glow"></div>
-            
-            <div className="hero-floating-icon icon-1">
-              <i className="fas fa-heartbeat"></i>
-            </div>
-            <div className="hero-floating-icon icon-2">
-              <i className="fas fa-stethoscope"></i>
-            </div>
-            <div className="hero-floating-icon icon-3">
-              <i className="fas fa-plus"></i>
-            </div>
-
-            <img src={heroDoctorImg} alt="Friendly Doctor" className="hero-image" />
+            <img src={heroImg} alt="Hospital Facility" className="hero-image" />
           </div>
         </div>
 

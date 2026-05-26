@@ -14,12 +14,13 @@ const navLinks = [
 ];
 
 interface NavbarProps {
-  onAppointmentClick: () => void;
-  onPortalClick: () => void;
-  onCancelClick: () => void;
+  onAppointmentClick?: () => void;
+  onPortalClick?: () => void;
+  onCancelClick?: () => void;
+  onFeedbackClick?: () => void;
 }
 
-export default function Navbar({ onAppointmentClick, onPortalClick, onCancelClick }: NavbarProps) {
+export default function Navbar({ onAppointmentClick, onPortalClick, onCancelClick, onFeedbackClick }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeLink, setActiveLink] = useState('#home');
@@ -317,7 +318,9 @@ export default function Navbar({ onAppointmentClick, onPortalClick, onCancelClic
                 onClick={e => { 
                   e.preventDefault(); 
                   if (link.label === 'Cancel/Reschedule') {
-                    onCancelClick();
+                    onCancelClick?.();
+                  } else if (link.label === 'Feedback') {
+                    onFeedbackClick?.();
                   } else {
                     scrollTo(link.href);
                   }

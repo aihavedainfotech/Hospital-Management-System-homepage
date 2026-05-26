@@ -20,6 +20,7 @@ import Footer, {
 import ChatBot from './components/ChatBot';
 import AboutSection from './components/AboutSection';
 import WorkingProcess from './components/WorkingProcess';
+import FloatingBanner from './components/FloatingBanner';
 import { Doctor, fetchTicker } from './api';
 import { useEffect } from 'react';
 
@@ -65,6 +66,7 @@ function NewsTicker() {
 function AppContent() {
   const [showPortal, setShowPortal] = useState(false);
   const [showAppointment, setShowAppointment] = useState(false);
+  const [showFeedback, setShowFeedback] = useState(false);
   const [preSelectedDoctor, setPreSelectedDoctor] = useState<Doctor | undefined>();
   const [initialCancelMode, setInitialCancelMode] = useState(false);
 
@@ -89,6 +91,13 @@ function AppContent() {
         onAppointmentClick={() => handleBookAppointment(undefined, false)}
         onCancelClick={() => handleBookAppointment(undefined, true)}
         onPortalClick={() => setShowPortal(true)}
+        onFeedbackClick={() => setShowFeedback(!showFeedback)}
+      />
+      <FloatingBanner 
+        onBook={() => handleBookAppointment(undefined, false)}
+        onFindDoctor={handleFindDoctor}
+        onCancel={() => handleBookAppointment(undefined, true)}
+        onFeedback={() => setShowFeedback(true)}
       />
       <main>
         {/* Hero */}
@@ -142,10 +151,22 @@ function AppContent() {
           <TestimonialsSection />
         </div>
 
-        {/* Complaint & Suggestion Box */}
-        <div style={{ marginTop: '1.5rem' }}>
-          <ComplaintSuggestion />
-        </div>
+        {/* Complaint & Suggestion Box Modal */}
+        {showFeedback && (
+          <div style={{ position: 'fixed', inset: 0, zIndex: 10000, background: 'rgba(15, 45, 82, 0.7)', overflowY: 'auto', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem' }}>
+            <button 
+              onClick={() => setShowFeedback(false)} 
+              style={{ position: 'fixed', top: '30px', right: '40px', background: 'white', color: '#EF4444', border: 'none', width: '50px', height: '50px', borderRadius: '50%', cursor: 'pointer', zIndex: 10001, display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 15px rgba(0,0,0,0.2)', transition: 'transform 0.2s' }}
+              onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(1.1)'; e.currentTarget.style.background = '#EF4444'; e.currentTarget.style.color = 'white'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.background = 'white'; e.currentTarget.style.color = '#EF4444'; }}
+            >
+              <i className="fas fa-times" style={{ fontSize: '1.5rem' }}></i>
+            </button>
+            <div style={{ background: 'white', borderRadius: '20px', width: '100%', maxWidth: '1000px', position: 'relative', boxShadow: '0 25px 50px -12px rgba(0,0,0,0.25)', overflow: 'hidden' }}>
+              <ComplaintSuggestion />
+            </div>
+          </div>
+        )}
       </main >
 
       <Footer onBook={() => handleBookAppointment()} onPortal={() => setShowPortal(true)} />
