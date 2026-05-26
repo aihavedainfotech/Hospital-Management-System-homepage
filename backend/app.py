@@ -24,18 +24,32 @@ load_dotenv(os.path.join(_BASE, ".env"))
 # ── App ──────────────────────────────────────────────────────────
 app = Flask(__name__)
 
+# Parse CORS origins from environment or fallback
+env_origins = os.environ.get("CORS_ORIGINS", "")
+if env_origins:
+    origins = [o.strip() for o in env_origins.split(",") if o.strip()]
+else:
+    origins = [
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+        "http://localhost:3001",
+        "http://127.0.0.1:3001",
+        "http://localhost:3002",
+        "http://127.0.0.1:3002",
+        "http://localhost:3003",
+        "http://127.0.0.1:3003",
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+        "https://aihavedainfotech.github.io",
+    ]
+
 CORS(app,
-     origins=[
-         "http://localhost:3000",
-         "http://127.0.0.1:3000",
-         "http://localhost:5173",
-         "http://127.0.0.1:5173",
-         "https://aihavedainfotech.github.io",  # GitHub Pages production
-     ],
+     origins=origins,
      methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
      allow_headers=["Content-Type", "Authorization"],
      supports_credentials=True,
      )
+
 
 # ── Register all homepage blueprints ────────────────────────────
 from hp_src.modules.doctors.routes          import doctors_bp
@@ -101,3 +115,17 @@ def not_found(e):
 @app.errorhandler(500)
 def internal_error(e):
     return jsonify({"error": "Internal server error", "status": 500}), 500
+
+# ── Entry point ───────────────────────────────────────────────────
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5001))
+    print(f"\n[+] Homepage Backend starting on http://localhost:{port}")
+    print(f"[i] API docs:    http://localhost:{port}/api")
+    print(f"[-] Health:      http://localhost:{port}/api/health\n")
+    app.run(
+        host="0.0.0.0",
+        port=port,
+        debug=True,
+        use_reloader=False,
+    )
+

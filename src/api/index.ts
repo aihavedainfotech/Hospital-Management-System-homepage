@@ -12,6 +12,7 @@ export interface Doctor {
   rating: number;
   qualification?: string;
   is_active?: boolean;
+  description?: string;
 }
 
 export interface Department {
