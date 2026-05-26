@@ -30,15 +30,15 @@ def run_migration():
     if count == 0:
         print("Inserting initial services data...")
         services_data = [
-            ("Cardiology", "Expert heart care", "fas fa-heartbeat"),
-            ("Neurology", "Advanced brain care", "fas fa-brain"),
-            ("Orthopedics", "Bone & joint specialists", "fas fa-bone"),
-            ("Pediatrics", "Care for children", "fas fa-baby"),
-            ("Emergency", "24/7 emergency services", "fas fa-ambulance"),
-            ("Dental", "Complete dental care", "fas fa-tooth"),
-            ("Eye Care", "Vision & eye specialists", "fas fa-eye"),
-            ("Laboratory", "Diagnostic testing", "fas fa-vial"),
-            ("Surgery", "Advanced surgical care", "fas fa-procedures")
+            ("Cardiology", "Comprehensive cardiovascular care including diagnostics, advanced heart failure management, and state-of-the-art interventional cardiology procedures.", "fas fa-heartbeat"),
+            ("Neurology", "Advanced diagnosis and therapeutic management for brain, spine, and complex neuromuscular disorders by leading neurological experts.", "fas fa-brain"),
+            ("Orthopedics", "Expert treatments for bones, joints, ligaments, and tendons, featuring minimally invasive joint replacement surgeries and sports medicine.", "fas fa-bone"),
+            ("Pediatrics", "Compassionate, child-centered medical care ranging from routine wellness checkups and immunizations to advanced pediatric specialty treatments.", "fas fa-baby"),
+            ("Emergency", "Rapid-response 24/7 emergency and trauma care fully equipped with cutting-edge life support technologies and specialized medical personnel.", "fas fa-ambulance"),
+            ("Dental", "Complete oral healthcare including advanced preventive treatment, cosmetic dentistry, orthodontics, and complex oral surgery procedures.", "fas fa-tooth"),
+            ("Eye Care", "Comprehensive vision care, routine eye examinations, and advanced surgical treatments for cataracts, glaucoma, and corneal diseases.", "fas fa-eye"),
+            ("Laboratory", "High-precision diagnostic testing, pathology, and molecular diagnostics delivering fast and accurate results to guide treatment.", "fas fa-vial"),
+            ("Surgery", "Advanced surgical treatments utilizing state-of-the-art minimally invasive and laparoscopic techniques for optimal patient recovery.", "fas fa-procedures")
         ]
         
         insert_sql = "INSERT INTO services (title, description, icon) VALUES (%s, %s, %s)"

@@ -45,8 +45,8 @@ export default function AboutSection() {
                 {/* Duplicate list for seamless scrolling */}
                 {[...services, ...services].map((s, idx) => (
                   <div key={`${s.id}-${idx}`} style={{
-                    width: '260px',
-                    height: '180px',
+                    width: '280px',
+                    height: '230px',
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
