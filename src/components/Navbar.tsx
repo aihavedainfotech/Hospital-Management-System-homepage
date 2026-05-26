@@ -2,11 +2,13 @@ import { useEffect, useRef, useState } from 'react';
 import HospitalLogo from './HospitalLogo';
 
 const navLinks = [
-  { label: 'Home', href: '#home', icon: 'fas fa-home' },
+  { label: 'Services', href: '#services', icon: 'fas fa-concierge-bell' },
+  { label: 'Departments', href: '#departments', icon: 'fas fa-hospital' },
   { label: 'Doctors', href: '#doctors', icon: 'fas fa-user-md' },
   { label: 'News', href: '#events', icon: 'fas fa-newspaper' },
   { label: 'Contact', href: '#contact', icon: 'fas fa-phone-alt' },
 ];
+
 
 
 interface NavbarProps {
