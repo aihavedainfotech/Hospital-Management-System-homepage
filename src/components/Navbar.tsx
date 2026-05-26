@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import HospitalLogo from './HospitalLogo';
+import havedaLogo from '../assets/haveda_logo.png';
 
 const navLinks = [
   { label: 'Services', href: '#about', icon: 'fas fa-concierge-bell' },
@@ -307,13 +307,7 @@ export default function Navbar({ onAppointmentClick, onPortalClick, onCancelClic
           
           {/* Logo */}
           <a href="#home" className="hn-logo" onClick={e => { e.preventDefault(); scrollTo('#home'); }}>
-            <div className="hn-logo-icon">
-              <HospitalLogo size={36} animated={false} variant="light" />
-            </div>
-            <div className="hn-logo-text">
-              <span className="hn-logo-name">HAVEDA</span>
-              <span className="hn-logo-sub">Healthcare</span>
-            </div>
+            <img src={havedaLogo} alt="Haveda Hospital Logo" style={{ height: '42px', display: 'block' }} />
           </a>
 
           {/* Links */}
@@ -360,9 +354,7 @@ export default function Navbar({ onAppointmentClick, onPortalClick, onCancelClic
       <div ref={sidebarRef} className={`hn-sidebar${menuOpen ? ' open' : ''}`}>
         
         <div className="hn-sb-header">
-          <div className="hn-logo-text">
-            <span className="hn-logo-name">HAVEDA</span>
-          </div>
+          <img src={havedaLogo} alt="Haveda Hospital Logo" style={{ height: '36px', display: 'block' }} />
           <button className="hn-sb-close" onClick={() => setMenuOpen(false)}>
             <i className="fas fa-times" />
           </button>

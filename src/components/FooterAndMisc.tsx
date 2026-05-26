@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { fetchTicker } from '../api';
-import logo from '../assets/logo_transparent.png';
+import havedaLogo from '../assets/haveda_logo.png';
 
 export function MarqueeTicker() {
   const [tickerItems, setTickerItems] = useState<{icon: string, text: string}[]>([]);
@@ -133,9 +133,8 @@ export default function Footer({ onBook, onPortal }: { onBook: () => void; onPor
       <div className="container">
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '3rem', paddingBottom: '3rem', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '1.25rem' }}>
-              <img src={logo} alt="Logo" style={{ height: '32px' }} />
-              <span style={{ fontSize: '1.25rem', fontWeight: 700 }}>Haveda Hospital</span>
+            <div style={{ display: 'inline-flex', alignItems: 'center', background: 'white', padding: '6px 12px', borderRadius: '10px', marginBottom: '1.25rem' }}>
+              <img src={havedaLogo} alt="Haveda Hospital Logo" style={{ height: '40px', display: 'block' }} />
             </div>
             <p style={{ fontSize: '0.9rem', lineHeight: 1.6, color: 'rgba(255,255,255,0.6)', marginBottom: '1.5rem' }}>
               Providing world-class healthcare with excellence and compassion. Your health is our priority.
