@@ -136,10 +136,7 @@ function AppContent() {
           </div>
         )}
 
-        {/* Ambulance Service */}
-        <div style={{ marginTop: '1.5rem' }}>
-          <AmbulanceService />
-        </div>
+
 
         {/* Events, News & Achievements */}
         <div style={{ marginTop: '1.5rem' }}>
