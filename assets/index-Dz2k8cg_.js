@@ -636,19 +636,90 @@ Error generating stack: `+e.message+`
         .hero-badge-num  { font-size: 1rem; font-weight: 700; color: #0F2D52; line-height: 1; }
         .hero-badge-lbl  { font-size: 0.65rem; color: #64748B; font-weight: 500; }
 
-        /* Responsive */
+        /* ── Tablet ── */
         @media (max-width: 992px) {
           .hero-layout {
             flex-direction: column;
             text-align: center;
+            padding: 2rem 0 0.5rem;
+            gap: 2rem;
           }
           .hero-content {
             margin: 0 auto;
             align-items: center;
+            max-width: 100%;
           }
           .hero-btn-group {
             justify-content: center;
           }
+          .hero-image-wrapper {
+            width: 100%;
+            max-width: 520px;
+            margin: 0 auto;
+          }
+        }
+
+        /* ── Mobile ── */
+        @media (max-width: 576px) {
+          .hero-layout {
+            padding: 1.5rem 0 0.5rem;
+            gap: 1.2rem;
+          }
+          .hero-content {
+            text-align: center;
+          }
+          /* Hero heading responsive */
+          .hero-content h1 {
+            font-size: clamp(1.8rem, 7vw, 2.4rem) !important;
+            margin-bottom: 0.8rem !important;
+          }
+          /* Hero paragraph shorter on mobile */
+          .hero-content p {
+            font-size: 0.88rem !important;
+            line-height: 1.6 !important;
+            margin-bottom: 1.4rem !important;
+          }
+          /* Buttons full-width stacked */
+          .hero-btn-group {
+            flex-direction: column;
+            gap: 0.6rem !important;
+            align-items: stretch;
+          }
+          .hero-btn-group button {
+            justify-content: center;
+            padding: 0.75rem 1rem !important;
+            font-size: 0.9rem !important;
+          }
+          /* Image smaller & no clipping border on mobile */
+          .hero-image {
+            border-radius: 20px !important;
+            border-width: 5px !important;
+          }
+          .hero-image-wrapper {
+            max-width: 340px;
+          }
+          /* Hover badges hidden on mobile (touch) */
+          .hero-img-badge-tl,
+          .hero-img-badge-br { display: none; }
+          /* Stat bar compact */
+          .hero-stat-bar {
+            grid-template-columns: repeat(3, 1fr) !important;
+            gap: 0.6rem !important;
+            padding: 0.9rem 0.75rem !important;
+            border-radius: 14px !important;
+            transform: none !important;
+            margin-top: 0 !important;
+          }
+          .hero-stat-item { gap: 0.5rem !important; }
+          .hero-stat-icon {
+            width: 36px !important; height: 36px !important;
+            border-radius: 9px !important;
+          }
+          .hero-stat-icon i { font-size: 0.9rem !important; }
+          .hero-stat-num { font-size: 1.1rem !important; }
+          .hero-stat-label { font-size: 0.65rem !important; }
+          /* Page bottom padding so content isn't behind mobile bar */
+          body { padding-bottom: 72px; }
         }
       `}),(0,I.jsxs)(`div`,{className:`container`,style:{position:`relative`,zIndex:5,flex:1,display:`flex`,flexDirection:`column`},children:[(0,I.jsxs)(`div`,{className:`hero-layout`,children:[(0,I.jsxs)(`div`,{className:`hero-content`,children:[(0,I.jsxs)(`h1`,{style:{fontFamily:`Poppins, sans-serif`,fontSize:`clamp(2.5rem, 4vw, 3.5rem)`,color:`#0F2D52`,fontWeight:700,lineHeight:1.2,marginBottom:`1.25rem`},children:[`Our Health, `,(0,I.jsx)(`br`,{}),(0,I.jsx)(`span`,{style:{color:`#14B8A6`},children:`Our Priority.`})]}),(0,I.jsx)(`p`,{style:{color:`#64748B`,fontSize:`1.05rem`,lineHeight:1.7,marginBottom:`2.5rem`,fontWeight:400},children:`At Haveda Hospital, we combine advanced technology with compassionate care to help you and your family live healthier, happier lives. Our experienced healthcare professionals are dedicated to delivering safe, trusted, and patient-centered medical services with excellence, innovation, and 24/7 support.`}),(0,I.jsxs)(`div`,{className:`hero-btn-group`,style:{display:`flex`,gap:`1rem`,flexWrap:`wrap`},children:[(0,I.jsx)(`button`,{className:`btn-primary`,onClick:e,style:{padding:`0.875rem 2rem`,fontSize:`1rem`,display:`flex`,alignItems:`center`,gap:`8px`},children:`🗓️ Book Appointment`}),(0,I.jsx)(`button`,{className:`btn-secondary`,onClick:t,style:{padding:`0.875rem 2rem`,fontSize:`1rem`,display:`flex`,alignItems:`center`,gap:`8px`},children:`🩺 Find a Doctor`})]})]}),(0,I.jsxs)(`div`,{className:`hero-image-wrapper`,children:[(0,I.jsx)(`div`,{className:`hero-circular-glow`}),(0,I.jsx)(`img`,{src:Ae,alt:`Hospital Facility`,className:`hero-image`}),(0,I.jsxs)(`div`,{className:`hero-img-badge-tl`,children:[(0,I.jsx)(`div`,{className:`hero-badge-icon`,children:(0,I.jsx)(`i`,{className:`fas fa-user-md`})}),(0,I.jsxs)(`div`,{children:[(0,I.jsx)(`div`,{className:`hero-badge-num`,children:`120+`}),(0,I.jsx)(`div`,{className:`hero-badge-lbl`,children:`Expert Doctors`})]})]}),(0,I.jsxs)(`div`,{className:`hero-img-badge-br`,children:[(0,I.jsx)(`div`,{className:`hero-badge-icon`,style:{background:`linear-gradient(135deg,#06B6D4,#0284C7)`},children:(0,I.jsx)(`i`,{className:`fas fa-award`})}),(0,I.jsxs)(`div`,{children:[(0,I.jsx)(`div`,{className:`hero-badge-num`,children:`15+ Yrs`}),(0,I.jsx)(`div`,{className:`hero-badge-lbl`,children:`of Excellence`})]})]})]})]}),(0,I.jsx)(`div`,{className:`hero-stat-bar`,children:je.map(e=>(0,I.jsxs)(`div`,{className:`hero-stat-item`,children:[(0,I.jsx)(`div`,{className:`hero-stat-icon`,children:(0,I.jsx)(`i`,{className:e.icon,style:{fontSize:`1.2rem`,color:`#14B8A6`}})}),(0,I.jsxs)(`div`,{children:[(0,I.jsx)(`div`,{className:`hero-stat-num`,children:(0,I.jsx)(Me,{target:e.value,suffix:e.suffix})}),(0,I.jsx)(`div`,{className:`hero-stat-label`,children:e.label})]})]},e.label))})]})]})}function Pe(e,t){return function(){return e.apply(t,arguments)}}var{toString:Fe}=Object.prototype,{getPrototypeOf:Ie}=Object,{iterator:Le,toStringTag:Re}=Symbol,ze=(e=>t=>{let n=Fe.call(t);return e[n]||(e[n]=n.slice(8,-1).toLowerCase())})(Object.create(null)),Be=e=>(e=e.toLowerCase(),t=>ze(t)===e),Ve=e=>t=>typeof t===e,{isArray:He}=Array,Ue=Ve(`undefined`);function We(e){return e!==null&&!Ue(e)&&e.constructor!==null&&!Ue(e.constructor)&&Je(e.constructor.isBuffer)&&e.constructor.isBuffer(e)}var Ge=Be(`ArrayBuffer`);function Ke(e){let t;return t=typeof ArrayBuffer<`u`&&ArrayBuffer.isView?ArrayBuffer.isView(e):e&&e.buffer&&Ge(e.buffer),t}var qe=Ve(`string`),Je=Ve(`function`),Ye=Ve(`number`),Xe=e=>typeof e==`object`&&!!e,Ze=e=>e===!0||e===!1,Qe=e=>{if(ze(e)!==`object`)return!1;let t=Ie(e);return(t===null||t===Object.prototype||Object.getPrototypeOf(t)===null)&&!(Re in e)&&!(Le in e)},$e=e=>{if(!Xe(e)||We(e))return!1;try{return Object.keys(e).length===0&&Object.getPrototypeOf(e)===Object.prototype}catch{return!1}},et=Be(`Date`),tt=Be(`File`),nt=e=>!!(e&&e.uri!==void 0),rt=e=>e&&e.getParts!==void 0,it=Be(`Blob`),at=Be(`FileList`),ot=e=>Xe(e)&&Je(e.pipe);function st(){return typeof globalThis<`u`?globalThis:typeof self<`u`?self:typeof window<`u`?window:typeof global<`u`?global:{}}var ct=st(),lt=ct.FormData===void 0?void 0:ct.FormData,ut=e=>{if(!e)return!1;if(lt&&e instanceof lt)return!0;let t=Ie(e);if(!t||t===Object.prototype||!Je(e.append))return!1;let n=ze(e);return n===`formdata`||n===`object`&&Je(e.toString)&&e.toString()===`[object FormData]`},dt=Be(`URLSearchParams`),[ft,pt,mt,ht]=[`ReadableStream`,`Request`,`Response`,`Headers`].map(Be),gt=e=>e.trim?e.trim():e.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g,``);function _t(e,t,{allOwnKeys:n=!1}={}){if(e==null)return;let r,i;if(typeof e!=`object`&&(e=[e]),He(e))for(r=0,i=e.length;r<i;r++)t.call(null,e[r],r,e);else{if(We(e))return;let i=n?Object.getOwnPropertyNames(e):Object.keys(e),a=i.length,o;for(r=0;r<a;r++)o=i[r],t.call(null,e[o],o,e)}}function vt(e,t){if(We(e))return null;t=t.toLowerCase();let n=Object.keys(e),r=n.length,i;for(;r-- >0;)if(i=n[r],t===i.toLowerCase())return i;return null}var yt=typeof globalThis<`u`?globalThis:typeof self<`u`?self:typeof window<`u`?window:global,bt=e=>!Ue(e)&&e!==yt;function xt(...e){let{caseless:t,skipUndefined:n}=bt(this)&&this||{},r={},i=(e,i)=>{if(i===`__proto__`||i===`constructor`||i===`prototype`)return;let a=t&&vt(r,i)||i,o=Nt(r,a)?r[a]:void 0;Qe(o)&&Qe(e)?r[a]=xt(o,e):Qe(e)?r[a]=xt({},e):He(e)?r[a]=e.slice():(!n||!Ue(e))&&(r[a]=e)};for(let t=0,n=e.length;t<n;t++)e[t]&&_t(e[t],i);return r}var St=(e,t,n,{allOwnKeys:r}={})=>(_t(t,(t,r)=>{n&&Je(t)?Object.defineProperty(e,r,{__proto__:null,value:Pe(t,n),writable:!0,enumerable:!0,configurable:!0}):Object.defineProperty(e,r,{__proto__:null,value:t,writable:!0,enumerable:!0,configurable:!0})},{allOwnKeys:r}),e),Ct=e=>(e.charCodeAt(0)===65279&&(e=e.slice(1)),e),wt=(e,t,n,r)=>{e.prototype=Object.create(t.prototype,r),Object.defineProperty(e.prototype,"constructor",{__proto__:null,value:e,writable:!0,enumerable:!1,configurable:!0}),Object.defineProperty(e,"super",{__proto__:null,value:t.prototype}),n&&Object.assign(e.prototype,n)},Tt=(e,t,n,r)=>{let i,a,o,s={};if(t||={},e==null)return t;do{for(i=Object.getOwnPropertyNames(e),a=i.length;a-- >0;)o=i[a],(!r||r(o,e,t))&&!s[o]&&(t[o]=e[o],s[o]=!0);e=n!==!1&&Ie(e)}while(e&&(!n||n(e,t))&&e!==Object.prototype);return t},Et=(e,t,n)=>{e=String(e),(n===void 0||n>e.length)&&(n=e.length),n-=t.length;let r=e.indexOf(t,n);return r!==-1&&r===n},Dt=e=>{if(!e)return null;if(He(e))return e;let t=e.length;if(!Ye(t))return null;let n=Array(t);for(;t-- >0;)n[t]=e[t];return n},Ot=(e=>t=>e&&t instanceof e)(typeof Uint8Array<`u`&&Ie(Uint8Array)),kt=(e,t)=>{let n=(e&&e[Le]).call(e),r;for(;(r=n.next())&&!r.done;){let n=r.value;t.call(e,n[0],n[1])}},At=(e,t)=>{let n,r=[];for(;(n=e.exec(t))!==null;)r.push(n);return r},jt=Be(`HTMLFormElement`),Mt=e=>e.toLowerCase().replace(/[-_\s]([a-z\d])(\w*)/g,function(e,t,n){return t.toUpperCase()+n}),Nt=(({hasOwnProperty:e})=>(t,n)=>e.call(t,n))(Object.prototype),Pt=Be(`RegExp`),Ft=(e,t)=>{let n=Object.getOwnPropertyDescriptors(e),r={};_t(n,(n,i)=>{let a;(a=t(n,i,e))!==!1&&(r[i]=a||n)}),Object.defineProperties(e,r)},It=e=>{Ft(e,(t,n)=>{if(Je(e)&&[`arguments`,`caller`,`callee`].includes(n))return!1;let r=e[n];if(Je(r)){if(t.enumerable=!1,`writable`in t){t.writable=!1;return}t.set||=()=>{throw Error(`Can not rewrite read-only method '`+n+`'`)}}})},Lt=(e,t)=>{let n={},r=e=>{e.forEach(e=>{n[e]=!0})};return He(e)?r(e):r(String(e).split(t)),n},Rt=()=>{},zt=(e,t)=>e!=null&&Number.isFinite(e=+e)?e:t;function Bt(e){return!!(e&&Je(e.append)&&e[Re]===`FormData`&&e[Le])}var Vt=e=>{let t=new WeakSet,n=e=>{if(Xe(e)){if(t.has(e))return;if(We(e))return e;if(!(`toJSON`in e)){t.add(e);let r=He(e)?[]:{};return _t(e,(e,t)=>{let i=n(e);!Ue(i)&&(r[t]=i)}),t.delete(e),r}}return e};return n(e)},Ht=Be(`AsyncFunction`),Ut=e=>e&&(Xe(e)||Je(e))&&Je(e.then)&&Je(e.catch),Wt=((e,t)=>e?setImmediate:t?((e,t)=>(yt.addEventListener(`message`,({source:n,data:r})=>{n===yt&&r===e&&t.length&&t.shift()()},!1),n=>{t.push(n),yt.postMessage(e,`*`)}))(`axios@${Math.random()}`,[]):e=>setTimeout(e))(typeof setImmediate==`function`,Je(yt.postMessage)),L={isArray:He,isArrayBuffer:Ge,isBuffer:We,isFormData:ut,isArrayBufferView:Ke,isString:qe,isNumber:Ye,isBoolean:Ze,isObject:Xe,isPlainObject:Qe,isEmptyObject:$e,isReadableStream:ft,isRequest:pt,isResponse:mt,isHeaders:ht,isUndefined:Ue,isDate:et,isFile:tt,isReactNativeBlob:nt,isReactNative:rt,isBlob:it,isRegExp:Pt,isFunction:Je,isStream:ot,isURLSearchParams:dt,isTypedArray:Ot,isFileList:at,forEach:_t,merge:xt,extend:St,trim:gt,stripBOM:Ct,inherits:wt,toFlatObject:Tt,kindOf:ze,kindOfTest:Be,endsWith:Et,toArray:Dt,forEachEntry:kt,matchAll:At,isHTMLForm:jt,hasOwnProperty:Nt,hasOwnProp:Nt,reduceDescriptors:Ft,freezeMethods:It,toObjectSet:Lt,toCamelCase:Mt,noop:Rt,toFiniteNumber:zt,findKey:vt,global:yt,isContextDefined:bt,isSpecCompliantForm:Bt,toJSONObject:Vt,isAsyncFn:Ht,isThenable:Ut,setImmediate:Wt,asap:typeof queueMicrotask<`u`?queueMicrotask.bind(yt):typeof process<`u`&&process.nextTick||Wt,isIterable:e=>e!=null&&Je(e[Le])},Gt=L.toObjectSet([`age`,`authorization`,`content-length`,`content-type`,`etag`,`expires`,`from`,`host`,`if-modified-since`,`if-unmodified-since`,`last-modified`,`location`,`max-forwards`,`proxy-authorization`,`referer`,`retry-after`,`user-agent`]),Kt=e=>{let t={},n,r,i;return e&&e.split(`
 `).forEach(function(e){i=e.indexOf(`:`),n=e.substring(0,i).trim().toLowerCase(),r=e.substring(i+1).trim(),!(!n||t[n]&&Gt[n])&&(n===`set-cookie`?t[n]?t[n].push(r):t[n]=[r]:t[n]=t[n]?t[n]+`, `+r:r)}),t};function qt(e){let t=0,n=e.length;for(;t<n;){let n=e.charCodeAt(t);if(n!==9&&n!==32)break;t+=1}for(;n>t;){let t=e.charCodeAt(n-1);if(t!==9&&t!==32)break;--n}return t===0&&n===e.length?e:e.slice(t,n)}var Jt=RegExp(`[\\u0000-\\u0008\\u000a-\\u001f\\u007f]+`,`g`),Yt=RegExp(`[^\\u0009\\u0020-\\u007e\\u0080-\\u00ff]+`,`g`);function Xt(e,t){return L.isArray(e)?e.map(e=>Xt(e,t)):qt(String(e).replace(t,``))}var Zt=e=>Xt(e,Jt),Qt=e=>Xt(e,Yt);function $t(e){let t=Object.create(null);return L.forEach(e.toJSON(),(e,n)=>{t[n]=Qt(e)}),t}var en=Symbol(`internals`);function tn(e){return e&&String(e).trim().toLowerCase()}function nn(e){return e===!1||e==null?e:L.isArray(e)?e.map(nn):Zt(String(e))}function rn(e){let t=Object.create(null),n=/([^\s,;=]+)\s*(?:=\s*([^,;]+))?/g,r;for(;r=n.exec(e);)t[r[1]]=r[2];return t}var an=e=>/^[-_a-zA-Z0-9^`|~,!#$%&'*+.]+$/.test(e.trim());function on(e,t,n,r,i){if(L.isFunction(r))return r.call(this,t,n);if(i&&(t=n),L.isString(t)){if(L.isString(r))return t.indexOf(r)!==-1;if(L.isRegExp(r))return r.test(t)}}function sn(e){return e.trim().toLowerCase().replace(/([a-z\d])(\w*)/g,(e,t,n)=>t.toUpperCase()+n)}function cn(e,t){let n=L.toCamelCase(` `+t);[`get`,`set`,`has`].forEach(r=>{Object.defineProperty(e,r+n,{__proto__:null,value:function(e,n,i){return this[r].call(this,t,e,n,i)},configurable:!0})})}var ln=class{constructor(e){e&&this.set(e)}set(e,t,n){let r=this;function i(e,t,n){let i=tn(t);if(!i)throw Error(`header name must be a non-empty string`);let a=L.findKey(r,i);(!a||r[a]===void 0||n===!0||n===void 0&&r[a]!==!1)&&(r[a||t]=nn(e))}let a=(e,t)=>L.forEach(e,(e,n)=>i(e,n,t));if(L.isPlainObject(e)||e instanceof this.constructor)a(e,t);else if(L.isString(e)&&(e=e.trim())&&!an(e))a(Kt(e),t);else if(L.isObject(e)&&L.isIterable(e)){let n={},r,i;for(let t of e){if(!L.isArray(t))throw TypeError(`Object iterator must return a key-value pair`);n[i=t[0]]=(r=n[i])?L.isArray(r)?[...r,t[1]]:[r,t[1]]:t[1]}a(n,t)}else e!=null&&i(t,e,n);return this}get(e,t){if(e=tn(e),e){let n=L.findKey(this,e);if(n){let e=this[n];if(!t)return e;if(t===!0)return rn(e);if(L.isFunction(t))return t.call(this,e,n);if(L.isRegExp(t))return t.exec(e);throw TypeError(`parser must be boolean|regexp|function`)}}}has(e,t){if(e=tn(e),e){let n=L.findKey(this,e);return!!(n&&this[n]!==void 0&&(!t||on(this,this[n],n,t)))}return!1}delete(e,t){let n=this,r=!1;function i(e){if(e=tn(e),e){let i=L.findKey(n,e);i&&(!t||on(n,n[i],i,t))&&(delete n[i],r=!0)}}return L.isArray(e)?e.forEach(i):i(e),r}clear(e){let t=Object.keys(this),n=t.length,r=!1;for(;n--;){let i=t[n];(!e||on(this,this[i],i,e,!0))&&(delete this[i],r=!0)}return r}normalize(e){let t=this,n={};return L.forEach(this,(r,i)=>{let a=L.findKey(n,i);if(a){t[a]=nn(r),delete t[i];return}let o=e?sn(i):String(i).trim();o!==i&&delete t[i],t[o]=nn(r),n[o]=!0}),this}concat(...e){return this.constructor.concat(this,...e)}toJSON(e){let t=Object.create(null);return L.forEach(this,(n,r)=>{n!=null&&n!==!1&&(t[r]=e&&L.isArray(n)?n.join(`, `):n)}),t}[Symbol.iterator](){return Object.entries(this.toJSON())[Symbol.iterator]()}toString(){return Object.entries(this.toJSON()).map(([e,t])=>e+`: `+t).join(`
@@ -1265,9 +1336,101 @@ Error generating stack: `+e.message+`
             @media (max-width: 768px) {
               .process-line { display: none; }
             }
-          `}),Yh.map((e,t)=>(0,I.jsxs)(`div`,{style:{position:`relative`,zIndex:1,textAlign:`center`,padding:`0 1rem`},children:[(0,I.jsxs)(`div`,{style:{width:`90px`,height:`90px`,borderRadius:`50%`,background:`var(--card-bg)`,border:`4px solid var(--bg-secondary)`,boxShadow:`var(--shadow-md)`,margin:`0 auto 1.5rem`,display:`flex`,alignItems:`center`,justifyContent:`center`,position:`relative`,transition:`all 0.3s ease`},onMouseEnter:e=>{e.currentTarget.style.transform=`scale(1.1)`,e.currentTarget.style.borderColor=`var(--primary-light)`},onMouseLeave:e=>{e.currentTarget.style.transform=`scale(1)`,e.currentTarget.style.borderColor=`var(--bg-secondary)`},children:[(0,I.jsx)(`div`,{style:{position:`absolute`,top:`0`,right:`0`,width:`28px`,height:`28px`,borderRadius:`50%`,background:`var(--accent)`,color:`white`,display:`flex`,alignItems:`center`,justifyContent:`center`,fontSize:`0.85rem`,fontWeight:700,boxShadow:`var(--shadow-sm)`},children:t+1}),(0,I.jsx)(`i`,{className:e.icon,style:{fontSize:`2rem`,color:`var(--primary)`}})]}),(0,I.jsx)(`h4`,{style:{fontFamily:`Poppins, sans-serif`,fontSize:`1.2rem`,fontWeight:600,color:`var(--text-primary)`,marginBottom:`0.75rem`},children:e.title}),(0,I.jsx)(`p`,{style:{color:`var(--text-secondary)`,fontSize:`0.95rem`,lineHeight:1.6,marginBottom:0},children:e.desc})]},t))]})]})})}function Zh({onBook:e,onFindDoctor:t,onCancel:n,onFeedback:r}){let i={background:`white`,padding:`14px 24px`,borderRadius:`16px`,boxShadow:`0 6px 20px rgba(0,0,0,0.06)`,display:`flex`,alignItems:`center`,gap:`12px`,cursor:`pointer`,fontWeight:600,fontSize:`0.95rem`,border:`1px solid #E2E8F0`,transition:`all 0.2s`,width:`100%`};return(0,I.jsxs)(`div`,{style:{position:`fixed`,right:`20px`,top:`50%`,transform:`translateY(-50%)`,zIndex:9998,display:`flex`,flexDirection:`column`,gap:`15px`},children:[(0,I.jsx)(`style`,{children:`
-        .floating-btn:hover {
-          transform: translateY(-2px) scale(1.02);
-          box-shadow: 0 8px 25px rgba(0,0,0,0.1) !important;
+          `}),Yh.map((e,t)=>(0,I.jsxs)(`div`,{style:{position:`relative`,zIndex:1,textAlign:`center`,padding:`0 1rem`},children:[(0,I.jsxs)(`div`,{style:{width:`90px`,height:`90px`,borderRadius:`50%`,background:`var(--card-bg)`,border:`4px solid var(--bg-secondary)`,boxShadow:`var(--shadow-md)`,margin:`0 auto 1.5rem`,display:`flex`,alignItems:`center`,justifyContent:`center`,position:`relative`,transition:`all 0.3s ease`},onMouseEnter:e=>{e.currentTarget.style.transform=`scale(1.1)`,e.currentTarget.style.borderColor=`var(--primary-light)`},onMouseLeave:e=>{e.currentTarget.style.transform=`scale(1)`,e.currentTarget.style.borderColor=`var(--bg-secondary)`},children:[(0,I.jsx)(`div`,{style:{position:`absolute`,top:`0`,right:`0`,width:`28px`,height:`28px`,borderRadius:`50%`,background:`var(--accent)`,color:`white`,display:`flex`,alignItems:`center`,justifyContent:`center`,fontSize:`0.85rem`,fontWeight:700,boxShadow:`var(--shadow-sm)`},children:t+1}),(0,I.jsx)(`i`,{className:e.icon,style:{fontSize:`2rem`,color:`var(--primary)`}})]}),(0,I.jsx)(`h4`,{style:{fontFamily:`Poppins, sans-serif`,fontSize:`1.2rem`,fontWeight:600,color:`var(--text-primary)`,marginBottom:`0.75rem`},children:e.title}),(0,I.jsx)(`p`,{style:{color:`var(--text-secondary)`,fontSize:`0.95rem`,lineHeight:1.6,marginBottom:0},children:e.desc})]},t))]})]})})}function Zh({onBook:e,onFindDoctor:t,onCancel:n,onFeedback:r}){let[i,a]=(0,b.useState)(!1),o=[{label:`Book Appointment`,icon:`fas fa-calendar-plus`,color:`#0F766E`,bg:`linear-gradient(135deg,#14B8A6,#0F766E)`,onClick:e},{label:`Find Doctor`,icon:`far fa-user`,color:`#2563EB`,bg:`linear-gradient(135deg,#3B82F6,#2563EB)`,onClick:t},{label:`Cancel/Reschedule`,icon:`far fa-file-alt`,color:`#B45309`,bg:`linear-gradient(135deg,#F59E0B,#B45309)`,onClick:n},{label:`Feedback`,icon:`far fa-star`,color:`#BE185D`,bg:`linear-gradient(135deg,#EC4899,#BE185D)`,onClick:r}];return(0,I.jsxs)(I.Fragment,{children:[(0,I.jsx)(`style`,{children:`
+        /* ── Desktop sidebar ── */
+        .fb-desktop {
+          position: fixed;
+          right: 20px;
+          top: 50%;
+          transform: translateY(-50%);
+          z-index: 9998;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
         }
-      `}),(0,I.jsxs)(`div`,{className:`floating-btn`,onClick:e,style:{...i,color:`#0F766E`},children:[(0,I.jsx)(`i`,{className:`fas fa-calendar-plus`,style:{fontSize:`1.4rem`}}),` Book Appointment`]}),(0,I.jsxs)(`div`,{className:`floating-btn`,onClick:t,style:{...i,color:`#2563EB`},children:[(0,I.jsx)(`i`,{className:`far fa-user`,style:{fontSize:`1.4rem`}}),` Find Doctor`]}),(0,I.jsxs)(`div`,{className:`floating-btn`,onClick:n,style:{...i,color:`#B45309`},children:[(0,I.jsx)(`i`,{className:`far fa-file-alt`,style:{fontSize:`1.4rem`}}),` Cancel/Reschedule`]}),(0,I.jsxs)(`div`,{className:`floating-btn`,onClick:r,style:{...i,color:`#BE185D`},children:[(0,I.jsx)(`i`,{className:`far fa-star`,style:{fontSize:`1.4rem`}}),` Feedback`]})]})}function Qh(){let[e,t]=(0,b.useState)([]);return(0,b.useEffect)(()=>{$r().then(e=>{Array.isArray(e)&&t(e)})},[]),e.length===0?(0,I.jsxs)(`div`,{className:`news-ticker-container`,children:[(0,I.jsx)(`div`,{className:`news-ticker-label`,children:`LATEST NEWS`}),(0,I.jsx)(`div`,{className:`news-ticker-wrapper`,children:(0,I.jsx)(`div`,{style:{padding:`10px 20px`,fontSize:`0.8rem`,opacity:.7},children:`Stay tuned for latest hospital updates and health news...`})})]}):(0,I.jsxs)(`div`,{className:`news-ticker-container`,children:[(0,I.jsx)(`div`,{className:`news-ticker-label`,children:`LATEST NEWS`}),(0,I.jsx)(`div`,{className:`news-ticker-wrapper`,children:(0,I.jsx)(`div`,{className:`news-ticker-inner`,children:[...e,...e,...e].map((e,t)=>(0,I.jsxs)(`span`,{className:`news-ticker-item`,children:[(0,I.jsx)(`i`,{className:e.icon}),e.text]},t))})})]})}function $h(){let[e,t]=(0,b.useState)(!1),[n,r]=(0,b.useState)(!1),[i,a]=(0,b.useState)(!1),[o,s]=(0,b.useState)(),[c,l]=(0,b.useState)(!1),u=(e,t=!1)=>{s(e),l(t),r(!0),setTimeout(()=>{document.querySelector(`#appointments`)?.scrollIntoView({behavior:`smooth`})},100)},d=()=>{document.querySelector(`#doctors`)?.scrollIntoView({behavior:`smooth`})};return(0,I.jsxs)(I.Fragment,{children:[(0,I.jsx)(Ni,{}),(0,I.jsx)(Ee,{}),(0,I.jsx)(ke,{onAppointmentClick:()=>u(void 0,!1),onCancelClick:()=>u(void 0,!0),onPortalClick:()=>t(!0),onFeedbackClick:()=>a(!i)}),(0,I.jsx)(Zh,{onBook:()=>u(void 0,!1),onFindDoctor:d,onCancel:()=>u(void 0,!0),onFeedback:()=>a(!0)}),(0,I.jsxs)(`main`,{children:[(0,I.jsx)(Ne,{onBook:()=>u(),onDoctors:d}),(0,I.jsx)(Qh,{}),(0,I.jsx)(mi,{onBook:u}),n&&(0,I.jsx)(gi,{preSelectedDoctor:o,initialCancelMode:c}),(0,I.jsx)(`div`,{style:{paddingTop:`2rem`},children:(0,I.jsx)(Jh,{})}),!n&&(0,I.jsxs)(`div`,{style:{background:`var(--bg-secondary)`,paddingBottom:`2rem`,marginTop:`1rem`},children:[(0,I.jsx)(Xh,{}),(0,I.jsx)(`div`,{style:{textAlign:`center`,marginTop:`-1rem`},children:(0,I.jsxs)(`button`,{className:`btn-primary`,onClick:()=>u(),style:{fontSize:`1.05rem`,padding:`0.875rem 2.5rem`},children:[(0,I.jsx)(`i`,{className:`fas fa-calendar-check`}),`Book an Appointment Now`]})})]}),(0,I.jsx)(`div`,{style:{marginTop:`1.5rem`},children:(0,I.jsx)(xi,{})}),(0,I.jsx)(`div`,{style:{marginTop:`1.5rem`},children:(0,I.jsx)(Si,{})}),i&&(0,I.jsx)(`div`,{style:{position:`fixed`,inset:0,zIndex:1e4,background:`rgba(15, 45, 82, 0.7)`,display:`flex`,alignItems:`center`,justifyContent:`center`,padding:`1rem`},children:(0,I.jsx)(`div`,{style:{background:`white`,borderRadius:`20px`,width:`100%`,maxWidth:`860px`,maxHeight:`94vh`,position:`relative`,boxShadow:`0 25px 50px -12px rgba(0,0,0,0.25)`,overflow:`hidden`,display:`flex`,flexDirection:`column`},children:(0,I.jsx)(ji,{onClose:()=>a(!1)})})})]}),(0,I.jsx)(B,{onBook:()=>u(),onPortal:()=>t(!0)}),(0,I.jsx)(Mi,{}),(0,I.jsx)(qh,{}),e&&(0,I.jsx)(ki,{onClose:()=>t(!1)}),(0,I.jsx)(xe,{position:`top-right`,autoClose:4e3,hideProgressBar:!1,newestOnTop:!0,closeOnClick:!0,rtl:!1,pauseOnFocusLoss:!0,draggable:!0,pauseOnHover:!0,theme:`colored`,style:{zIndex:99999}})]})}function eg(){return(0,I.jsx)(we,{children:(0,I.jsx)($h,{})})}(0,x.createRoot)(document.getElementById(`root`)).render((0,I.jsx)(b.StrictMode,{children:(0,I.jsx)(eg,{})}));
+        .fb-desktop-btn {
+          background: white;
+          padding: 11px 18px;
+          border-radius: 14px;
+          box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          cursor: pointer;
+          font-weight: 600;
+          font-size: 0.85rem;
+          border: 1px solid #E2E8F0;
+          transition: all 0.22s;
+          white-space: nowrap;
+          min-width: 180px;
+          font-family: 'Poppins', sans-serif;
+        }
+        .fb-desktop-btn:hover {
+          transform: translateX(-4px) scale(1.02);
+          box-shadow: 0 10px 28px rgba(0,0,0,0.12);
+          border-color: transparent;
+        }
+        .fb-desktop-icon {
+          width: 32px; height: 32px; border-radius: 9px; flex-shrink: 0;
+          display: flex; align-items: center; justify-content: center;
+          color: white; font-size: 0.9rem;
+        }
+
+        /* ── Mobile bottom bar ── */
+        .fb-mobile { display: none; }
+        .fb-mobile-bar {
+          position: fixed;
+          bottom: 0; left: 0; right: 0;
+          z-index: 9998;
+          background: rgba(255,255,255,0.97);
+          backdrop-filter: blur(16px);
+          border-top: 1px solid #E2E8F0;
+          box-shadow: 0 -4px 24px rgba(15,45,82,0.1);
+          padding: 8px 12px 10px;
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          gap: 4px;
+        }
+        .fb-mobile-item {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 4px;
+          padding: 6px 2px;
+          border-radius: 12px;
+          cursor: pointer;
+          border: none;
+          background: transparent;
+          transition: background 0.18s;
+          font-family: 'Poppins', sans-serif;
+        }
+        .fb-mobile-item:active { background: #F1F5F9; }
+        .fb-mobile-icon {
+          width: 40px; height: 40px; border-radius: 12px;
+          display: flex; align-items: center; justify-content: center;
+          font-size: 1rem; color: white;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+          transition: transform 0.18s;
+        }
+        .fb-mobile-item:active .fb-mobile-icon { transform: scale(0.92); }
+        .fb-mobile-label {
+          font-size: 0.58rem;
+          font-weight: 600;
+          color: #475569;
+          text-align: center;
+          line-height: 1.2;
+          max-width: 60px;
+        }
+
+        /* Show/hide based on screen */
+        @media (max-width: 768px) {
+          .fb-desktop { display: none !important; }
+          .fb-mobile  { display: block !important; }
+        }
+        @media (min-width: 769px) {
+          .fb-mobile { display: none !important; }
+        }
+      `}),(0,I.jsx)(`div`,{className:`fb-desktop`,children:o.map((e,t)=>(0,I.jsxs)(`div`,{className:`fb-desktop-btn`,onClick:e.onClick,style:{color:e.color},onMouseEnter:t=>(t.currentTarget.style.background=e.bg,t.currentTarget.style.color=`white`),onMouseLeave:t=>(t.currentTarget.style.background=`white`,t.currentTarget.style.color=e.color),children:[(0,I.jsx)(`div`,{className:`fb-desktop-icon`,style:{background:e.bg},children:(0,I.jsx)(`i`,{className:e.icon})}),e.label]},t))}),(0,I.jsxs)(`div`,{className:`fb-mobile`,children:[(0,I.jsx)(`div`,{className:`fb-mobile-bar`,children:o.map((e,t)=>(0,I.jsxs)(`button`,{className:`fb-mobile-item`,onClick:e.onClick,children:[(0,I.jsx)(`div`,{className:`fb-mobile-icon`,style:{background:e.bg},children:(0,I.jsx)(`i`,{className:e.icon})}),(0,I.jsx)(`span`,{className:`fb-mobile-label`,children:e.label===`Book Appointment`?`Book`:e.label===`Find Doctor`?`Doctors`:e.label===`Cancel/Reschedule`?`Cancel`:`Feedback`})]},t))}),(0,I.jsx)(`div`,{style:{height:`72px`}})]})]})}function Qh(){let[e,t]=(0,b.useState)([]);return(0,b.useEffect)(()=>{$r().then(e=>{Array.isArray(e)&&t(e)})},[]),e.length===0?(0,I.jsxs)(`div`,{className:`news-ticker-container`,children:[(0,I.jsx)(`div`,{className:`news-ticker-label`,children:`LATEST NEWS`}),(0,I.jsx)(`div`,{className:`news-ticker-wrapper`,children:(0,I.jsx)(`div`,{style:{padding:`10px 20px`,fontSize:`0.8rem`,opacity:.7},children:`Stay tuned for latest hospital updates and health news...`})})]}):(0,I.jsxs)(`div`,{className:`news-ticker-container`,children:[(0,I.jsx)(`div`,{className:`news-ticker-label`,children:`LATEST NEWS`}),(0,I.jsx)(`div`,{className:`news-ticker-wrapper`,children:(0,I.jsx)(`div`,{className:`news-ticker-inner`,children:[...e,...e,...e].map((e,t)=>(0,I.jsxs)(`span`,{className:`news-ticker-item`,children:[(0,I.jsx)(`i`,{className:e.icon}),e.text]},t))})})]})}function $h(){let[e,t]=(0,b.useState)(!1),[n,r]=(0,b.useState)(!1),[i,a]=(0,b.useState)(!1),[o,s]=(0,b.useState)(),[c,l]=(0,b.useState)(!1),u=(e,t=!1)=>{s(e),l(t),r(!0),setTimeout(()=>{document.querySelector(`#appointments`)?.scrollIntoView({behavior:`smooth`})},100)},d=()=>{document.querySelector(`#doctors`)?.scrollIntoView({behavior:`smooth`})};return(0,I.jsxs)(I.Fragment,{children:[(0,I.jsx)(Ni,{}),(0,I.jsx)(Ee,{}),(0,I.jsx)(ke,{onAppointmentClick:()=>u(void 0,!1),onCancelClick:()=>u(void 0,!0),onPortalClick:()=>t(!0),onFeedbackClick:()=>a(!i)}),(0,I.jsx)(Zh,{onBook:()=>u(void 0,!1),onFindDoctor:d,onCancel:()=>u(void 0,!0),onFeedback:()=>a(!0)}),(0,I.jsxs)(`main`,{children:[(0,I.jsx)(Ne,{onBook:()=>u(),onDoctors:d}),(0,I.jsx)(Qh,{}),(0,I.jsx)(mi,{onBook:u}),n&&(0,I.jsx)(gi,{preSelectedDoctor:o,initialCancelMode:c}),(0,I.jsx)(`div`,{style:{paddingTop:`2rem`},children:(0,I.jsx)(Jh,{})}),!n&&(0,I.jsxs)(`div`,{style:{background:`var(--bg-secondary)`,paddingBottom:`2rem`,marginTop:`1rem`},children:[(0,I.jsx)(Xh,{}),(0,I.jsx)(`div`,{style:{textAlign:`center`,marginTop:`-1rem`},children:(0,I.jsxs)(`button`,{className:`btn-primary`,onClick:()=>u(),style:{fontSize:`1.05rem`,padding:`0.875rem 2.5rem`},children:[(0,I.jsx)(`i`,{className:`fas fa-calendar-check`}),`Book an Appointment Now`]})})]}),(0,I.jsx)(`div`,{style:{marginTop:`1.5rem`},children:(0,I.jsx)(xi,{})}),(0,I.jsx)(`div`,{style:{marginTop:`1.5rem`},children:(0,I.jsx)(Si,{})}),i&&(0,I.jsx)(`div`,{style:{position:`fixed`,inset:0,zIndex:1e4,background:`rgba(15, 45, 82, 0.7)`,display:`flex`,alignItems:`center`,justifyContent:`center`,padding:`1rem`},children:(0,I.jsx)(`div`,{style:{background:`white`,borderRadius:`20px`,width:`100%`,maxWidth:`860px`,maxHeight:`94vh`,position:`relative`,boxShadow:`0 25px 50px -12px rgba(0,0,0,0.25)`,overflow:`hidden`,display:`flex`,flexDirection:`column`},children:(0,I.jsx)(ji,{onClose:()=>a(!1)})})})]}),(0,I.jsx)(B,{onBook:()=>u(),onPortal:()=>t(!0)}),(0,I.jsx)(Mi,{}),(0,I.jsx)(qh,{}),e&&(0,I.jsx)(ki,{onClose:()=>t(!1)}),(0,I.jsx)(xe,{position:`top-right`,autoClose:4e3,hideProgressBar:!1,newestOnTop:!0,closeOnClick:!0,rtl:!1,pauseOnFocusLoss:!0,draggable:!0,pauseOnHover:!0,theme:`colored`,style:{zIndex:99999}})]})}function eg(){return(0,I.jsx)(we,{children:(0,I.jsx)($h,{})})}(0,x.createRoot)(document.getElementById(`root`)).render((0,I.jsx)(b.StrictMode,{children:(0,I.jsx)(eg,{})}));
