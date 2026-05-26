@@ -5,7 +5,10 @@ const stats = [
   { value: 355000, label: 'Patients Served', suffix: '+', icon: 'fas fa-users' },
   { value: 98, label: 'Satisfaction Rate', suffix: '%', icon: 'fas fa-heart' },
   { value: 120, label: 'Expert Doctors', suffix: '+', icon: 'fas fa-user-md' },
+  { value: 24, label: 'Emergency Support', suffix: '/7', icon: 'fas fa-clock' },
+  { value: 15, label: 'Years of Excellence', suffix: '+', icon: 'fas fa-award' },
 ];
+
 
 function Counter({ target, suffix, duration = 2000 }: { target: number; suffix: string; duration?: number }) {
   const [count, setCount] = useState(0);
