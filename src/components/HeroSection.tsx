@@ -274,19 +274,90 @@ export default function HeroSection({ onBook, onDoctors }: HeroProps) {
         .hero-badge-num  { font-size: 1rem; font-weight: 700; color: #0F2D52; line-height: 1; }
         .hero-badge-lbl  { font-size: 0.65rem; color: #64748B; font-weight: 500; }
 
-        /* Responsive */
+        /* ── Tablet ── */
         @media (max-width: 992px) {
           .hero-layout {
             flex-direction: column;
             text-align: center;
+            padding: 2rem 0 0.5rem;
+            gap: 2rem;
           }
           .hero-content {
             margin: 0 auto;
             align-items: center;
+            max-width: 100%;
           }
           .hero-btn-group {
             justify-content: center;
           }
+          .hero-image-wrapper {
+            width: 100%;
+            max-width: 520px;
+            margin: 0 auto;
+          }
+        }
+
+        /* ── Mobile ── */
+        @media (max-width: 576px) {
+          .hero-layout {
+            padding: 1.5rem 0 0.5rem;
+            gap: 1.2rem;
+          }
+          .hero-content {
+            text-align: center;
+          }
+          /* Hero heading responsive */
+          .hero-content h1 {
+            font-size: clamp(1.8rem, 7vw, 2.4rem) !important;
+            margin-bottom: 0.8rem !important;
+          }
+          /* Hero paragraph shorter on mobile */
+          .hero-content p {
+            font-size: 0.88rem !important;
+            line-height: 1.6 !important;
+            margin-bottom: 1.4rem !important;
+          }
+          /* Buttons full-width stacked */
+          .hero-btn-group {
+            flex-direction: column;
+            gap: 0.6rem !important;
+            align-items: stretch;
+          }
+          .hero-btn-group button {
+            justify-content: center;
+            padding: 0.75rem 1rem !important;
+            font-size: 0.9rem !important;
+          }
+          /* Image smaller & no clipping border on mobile */
+          .hero-image {
+            border-radius: 20px !important;
+            border-width: 5px !important;
+          }
+          .hero-image-wrapper {
+            max-width: 340px;
+          }
+          /* Hover badges hidden on mobile (touch) */
+          .hero-img-badge-tl,
+          .hero-img-badge-br { display: none; }
+          /* Stat bar compact */
+          .hero-stat-bar {
+            grid-template-columns: repeat(3, 1fr) !important;
+            gap: 0.6rem !important;
+            padding: 0.9rem 0.75rem !important;
+            border-radius: 14px !important;
+            transform: none !important;
+            margin-top: 0 !important;
+          }
+          .hero-stat-item { gap: 0.5rem !important; }
+          .hero-stat-icon {
+            width: 36px !important; height: 36px !important;
+            border-radius: 9px !important;
+          }
+          .hero-stat-icon i { font-size: 0.9rem !important; }
+          .hero-stat-num { font-size: 1.1rem !important; }
+          .hero-stat-label { font-size: 0.65rem !important; }
+          /* Page bottom padding so content isn't behind mobile bar */
+          body { padding-bottom: 72px; }
         }
       `}</style>
 

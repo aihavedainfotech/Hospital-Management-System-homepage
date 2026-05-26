@@ -1541,4 +1541,42 @@ html, body {
   .hn-logo-name {
     font-size: 1.1rem !important;
   }
+
+  /* News ticker compact */
+  .news-ticker-label {
+    padding: 0 0.75rem !important;
+    font-size: 0.65rem !important;
+  }
+  .news-ticker-item {
+    font-size: 0.75rem !important;
+  }
+  .news-ticker-inner {
+    gap: 2rem !important;
+    padding-left: 1rem !important;
+  }
+
+  /* Section headings */
+  .section-title {
+    font-size: 1.6rem !important;
+  }
+  .section-subtitle {
+    font-size: 0.85rem !important;
+  }
+
+  /* Container horizontal padding */
+  .container {
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+  }
+
+  /* Section padding */
+  section, .section-pad {
+    padding-top: 40px !important;
+    padding-bottom: 40px !important;
+  }
+
+  /* Card padding */
+  .dept-card, .cs-info-card {
+    padding: 1rem !important;
+  }
 }
