@@ -369,7 +369,9 @@ export default function Navbar({ onAppointmentClick, onPortalClick, onCancelClic
               onClick={() => {
                 setMenuOpen(false);
                 if (link.label === 'Cancel/Reschedule') {
-                  onCancelClick();
+                  onCancelClick?.();
+                } else if (link.label === 'Feedback') {
+                  onFeedbackClick?.();
                 } else {
                   scrollTo(link.href);
                 }
@@ -382,11 +384,11 @@ export default function Navbar({ onAppointmentClick, onPortalClick, onCancelClic
         </div>
 
         <div className="hn-sb-actions">
-          <button className="btn-outline" onClick={() => { setMenuOpen(false); onPortalClick(); }} style={{ width: '100%', justifyContent: 'center' }}>
+          <button className="btn-outline" onClick={() => { setMenuOpen(false); onPortalClick?.(); }} style={{ width: '100%', justifyContent: 'center' }}>
             <i className="fas fa-user-circle" /> Patient Portal
           </button>
 
-          <button className="btn-solid" onClick={() => { setMenuOpen(false); onAppointmentClick(); }} style={{ width: '100%', justifyContent: 'center' }}>
+          <button className="btn-solid" onClick={() => { setMenuOpen(false); onAppointmentClick?.(); }} style={{ width: '100%', justifyContent: 'center' }}>
             Book Appointment
           </button>
         </div>
