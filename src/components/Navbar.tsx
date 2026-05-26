@@ -3,15 +3,11 @@ import HospitalLogo from './HospitalLogo';
 
 const navLinks = [
   { label: 'Home', href: '#home', icon: 'fas fa-home' },
-  { label: 'Departments', href: '#services', icon: 'fas fa-hospital' },
   { label: 'Doctors', href: '#doctors', icon: 'fas fa-user-md' },
-  { label: 'Ambulance', href: '#ambulance', icon: 'fas fa-ambulance' },
   { label: 'News', href: '#events', icon: 'fas fa-newspaper' },
-  { label: 'Habits', href: '#healthy-habits', icon: 'fas fa-heartbeat' },
-  { label: 'Feedback', href: '#feedback', icon: 'fas fa-comment-dots' },
   { label: 'Contact', href: '#contact', icon: 'fas fa-phone-alt' },
-  { label: 'Cancel/Reschedule', href: '#appointments', icon: 'fas fa-calendar-times' },
 ];
+
 
 interface NavbarProps {
   onAppointmentClick?: () => void;
