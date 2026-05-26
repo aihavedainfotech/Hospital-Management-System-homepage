@@ -122,13 +122,15 @@ export default function Navbar({ onAppointmentClick, onPortalClick, onCancelClic
 
         .hn-link {
           text-decoration: none;
-          font-size: 0.9rem;
-          font-weight: 500;
+          font-size: 0.85rem;
+          font-weight: 600;
           color: #64748B;
           cursor: pointer;
           transition: color 0.2s ease;
           position: relative;
           padding: 8px 0;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
         }
 
         .hn-link::after {
@@ -168,14 +170,16 @@ export default function Navbar({ onAppointmentClick, onPortalClick, onCancelClic
           color: #0F2D52;
           padding: 10px 16px;
           border-radius: 8px;
-          font-size: 0.9rem;
-          font-weight: 500;
+          font-size: 0.85rem;
+          font-weight: 600;
           cursor: pointer;
           transition: all 0.2s ease;
           display: flex;
           align-items: center;
           gap: 8px;
           text-decoration: none;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
         }
 
         .btn-outline:hover {
@@ -190,14 +194,16 @@ export default function Navbar({ onAppointmentClick, onPortalClick, onCancelClic
           color: #FFFFFF;
           padding: 10px 20px;
           border-radius: 8px;
-          font-size: 0.9rem;
-          font-weight: 500;
+          font-size: 0.85rem;
+          font-weight: 600;
           cursor: pointer;
           transition: all 0.2s ease;
           display: flex;
           align-items: center;
           gap: 8px;
           box-shadow: 0 2px 8px rgba(20, 184, 166, 0.2);
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
         }
 
         .btn-solid:hover {
@@ -269,14 +275,16 @@ export default function Navbar({ onAppointmentClick, onPortalClick, onCancelClic
           border-radius: 8px;
           color: #64748B;
           text-decoration: none;
-          font-weight: 500;
+          font-weight: 600;
           transition: all 0.2s ease;
           background: transparent;
           border: none;
           text-align: left;
           width: 100%;
           cursor: pointer;
-          font-size: 0.95rem;
+          font-size: 0.85rem;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
         }
 
         .hn-sb-link:hover, .hn-sb-link.active {
@@ -338,7 +346,7 @@ export default function Navbar({ onAppointmentClick, onPortalClick, onCancelClic
             </button>
 
             <button className="btn-solid" onClick={onAppointmentClick}>
-              Book Now
+              Appointment Booking
             </button>
           </div>
 
@@ -389,7 +397,7 @@ export default function Navbar({ onAppointmentClick, onPortalClick, onCancelClic
           </button>
 
           <button className="btn-solid" onClick={() => { setMenuOpen(false); onAppointmentClick?.(); }} style={{ width: '100%', justifyContent: 'center' }}>
-            Book Appointment
+            Appointment Booking
           </button>
         </div>
 
