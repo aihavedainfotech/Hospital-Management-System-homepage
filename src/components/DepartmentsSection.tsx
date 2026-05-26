@@ -56,7 +56,7 @@ export default function DepartmentsSection() {
         // Map backend data to UI format
         const departmentsWithColors = finalDepts.map((dept: any, index: number) => ({
           icon: iconMap[dept.name] || 'fas fa-hospital',
-          color: ['#e74c3c', '#9b59b6', '#3498db', '#2ecc71', '#e67e22', '#e91e63', '#00bcd4', '#ff9800', '#4caf50', '#f44336'][index % 10],
+          color: ['#14B8A6', '#06B6D4', '#0F766E', '#163B65', '#0F2D52'][index % 5],
           name: dept.name,
           desc: dept.description || `${dept.name} department with expert doctors and advanced facilities`
         }));

@@ -24,9 +24,9 @@ export function MarqueeTicker() {
 
   const doubled = [...tickerItems, ...tickerItems];
   return (
-    <div className="marquee-wrapper" style={{ background: '#2EA3F2', height: '40px' }}>
+    <div className="marquee-wrapper" style={{ background: '#14B8A6', height: '40px' }}>
       <div style={{ display: 'flex', alignItems: 'center', height: '100%', overflow: 'hidden' }}>
-        <div style={{ background: '#2BBF9C', color: 'white', padding: '0 1.5rem', height: '100%', display: 'flex', alignItems: 'center', fontWeight: 700, fontSize: '0.8rem', zIndex: 2, flexShrink: 0 }}>
+        <div style={{ background: '#0F766E', color: 'white', padding: '0 1.5rem', height: '100%', display: 'flex', alignItems: 'center', fontWeight: 700, fontSize: '0.8rem', zIndex: 2, flexShrink: 0 }}>
           LATEST NEWS
         </div>
         <div className="marquee-inner" style={{ display: 'flex', gap: '3rem' }}>
@@ -45,31 +45,31 @@ export function MarqueeTicker() {
 export function HealthTipsSection() {
   const tips = [
     { icon: 'fas fa-heart-pulse', title: 'Heart Health Tips', excerpt: 'Learn the essential habits to keep your heart strong and healthy every day.', category: 'Cardiology', color: '#EF4444' },
-    { icon: 'fas fa-stethoscope', title: 'Regular Checkups', excerpt: 'Why preventive screenings are the key to long-term wellness and early detection.', category: 'Checkup', color: '#2EA3F2' },
-    { icon: 'fas fa-apple-alt', title: 'Nutrition Guide', excerpt: 'Expert advice on building a balanced diet for sustained energy and vitality.', category: 'Nutrition', color: '#2BBF9C' },
+    { icon: 'fas fa-stethoscope', title: 'Regular Checkups', excerpt: 'Why preventive screenings are the key to long-term wellness and early detection.', category: 'Checkup', color: '#14B8A6' },
+    { icon: 'fas fa-apple-alt', title: 'Nutrition Guide', excerpt: 'Expert advice on building a balanced diet for sustained energy and vitality.', category: 'Nutrition', color: '#06B6D4' },
   ];
 
   return (
-    <section className="section-pad" style={{ background: '#F7FBFF', borderTop: '1px solid #E6EEF5' }}>
+    <section className="section-pad" style={{ background: '#F8FFFE', borderTop: '1px solid #E2E8F0' }}>
       <div className="container">
         <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-          <h2 className="section-title" style={{ color: '#1F2D3D' }}>Health Tips</h2>
-          <div className="section-divider" style={{ margin: '12px auto 16px', background: '#2EA3F2', width: '60px', height: '4px', borderRadius: '2px' }} />
+          <h2 className="section-title" style={{ color: '#0F2D52' }}>Health Tips</h2>
+          <div className="section-divider" style={{ margin: '12px auto 16px', background: '#14B8A6', width: '60px', height: '4px', borderRadius: '2px' }} />
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
           {tips.map((tip, i) => (
             <div key={i} style={{
-              background: '#FFFFFF', border: '1px solid #E6EEF5', borderRadius: '16px', padding: '2rem',
-              boxShadow: '0 4px 12px rgba(31, 45, 61, 0.05)', transition: 'all 0.2s ease'
+              background: '#FFFFFF', border: '1px solid #E2E8F0', borderRadius: '16px', padding: '2rem',
+              boxShadow: '0 4px 12px rgba(15, 45, 82, 0.05)', transition: 'all 0.2s ease'
             }}
-            onMouseEnter={e => { (e.currentTarget as HTMLDivElement).style.transform = 'translateY(-4px)'; (e.currentTarget as HTMLDivElement).style.borderColor = '#2EA3F2'; }}
-            onMouseLeave={e => { (e.currentTarget as HTMLDivElement).style.transform = 'none'; (e.currentTarget as HTMLDivElement).style.borderColor = '#E6EEF5'; }}>
+            onMouseEnter={e => { (e.currentTarget as HTMLDivElement).style.transform = 'translateY(-4px)'; (e.currentTarget as HTMLDivElement).style.borderColor = '#14B8A6'; }}
+            onMouseLeave={e => { (e.currentTarget as HTMLDivElement).style.transform = 'none'; (e.currentTarget as HTMLDivElement).style.borderColor = '#E2E8F0'; }}>
               <div style={{ width: '48px', height: '48px', borderRadius: '10px', background: `${tip.color}15`, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.25rem' }}>
                 <i className={tip.icon} style={{ fontSize: '1.2rem', color: tip.color }}></i>
               </div>
-              <h3 style={{ fontSize: '1.1rem', fontWeight: 600, color: '#1F2D3D', marginBottom: '8px' }}>{tip.title}</h3>
-              <p style={{ fontSize: '0.9rem', color: '#6B7C93', lineHeight: 1.6, marginBottom: '1rem' }}>{tip.excerpt}</p>
-              <span style={{ color: '#2EA3F2', fontWeight: 600, fontSize: '0.85rem', cursor: 'pointer' }}>Learn More →</span>
+              <h3 style={{ fontSize: '1.1rem', fontWeight: 600, color: '#0F2D52', marginBottom: '8px' }}>{tip.title}</h3>
+              <p style={{ fontSize: '0.9rem', color: '#64748B', lineHeight: 1.6, marginBottom: '1rem' }}>{tip.excerpt}</p>
+              <span style={{ color: '#14B8A6', fontWeight: 600, fontSize: '0.85rem', cursor: 'pointer' }}>Learn More →</span>
             </div>
           ))}
         </div>
@@ -86,7 +86,7 @@ export function BackToTop() {
     return () => window.removeEventListener('scroll', handler);
   }, []);
   return visible ? (
-    <button className="back-to-top" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} style={{ background: '#2EA3F2', color: 'white', border: 'none', width: '40px', height: '40px', borderRadius: '8px', cursor: 'pointer', position: 'fixed', bottom: '2rem', right: '2rem', zIndex: 100, boxShadow: '0 4px 12px rgba(46,163,242,0.3)' }}>
+    <button className="back-to-top" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} style={{ background: '#14B8A6', color: 'white', border: 'none', width: '40px', height: '40px', borderRadius: '8px', cursor: 'pointer', position: 'fixed', bottom: '2rem', right: '2rem', zIndex: 100, boxShadow: '0 4px 12px rgba(20,184,166,0.3)' }}>
       <i className="fas fa-chevron-up"></i>
     </button>
   ) : null;
@@ -103,7 +103,7 @@ export function ProgressBar() {
     window.addEventListener('scroll', handler, { passive: true });
     return () => window.removeEventListener('scroll', handler);
   }, []);
-  return <div style={{ position: 'fixed', top: 0, left: 0, height: '3px', background: '#2EA3F2', width: `${progress}%`, zIndex: 9999, transition: 'width 0.1s ease' }}></div>;
+  return <div style={{ position: 'fixed', top: 0, left: 0, height: '3px', background: '#14B8A6', width: `${progress}%`, zIndex: 9999, transition: 'width 0.1s ease' }}></div>;
 }
 
 export default function Footer({ onBook, onPortal }: { onBook: () => void; onPortal: () => void }) {
@@ -129,7 +129,7 @@ export default function Footer({ onBook, onPortal }: { onBook: () => void; onPor
   };
 
   return (
-    <footer id="contact" style={{ paddingTop: '4rem', background: '#1F2D3D', color: 'white' }}>
+    <footer id="contact" style={{ paddingTop: '4rem', background: '#0F766E', color: 'white' }}>
       <div className="container">
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '3rem', paddingBottom: '3rem', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
           <div>
@@ -162,7 +162,7 @@ export default function Footer({ onBook, onPortal }: { onBook: () => void; onPor
                       cursor: 'pointer',
                       transition: 'color 0.2s'
                     }}
-                    onMouseEnter={e => (e.currentTarget.style.color = '#2EA3F2')}
+                    onMouseEnter={e => (e.currentTarget.style.color = '#06B6D4')}
                     onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.6)')}
                   >
                     {link.name}
@@ -176,15 +176,15 @@ export default function Footer({ onBook, onPortal }: { onBook: () => void; onPor
             <h4 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '1.5rem' }}>Contact Info</h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               <div style={{ display: 'flex', gap: '10px' }}>
-                <i className="fas fa-map-marker-alt" style={{ color: '#2EA3F2', marginTop: '4px' }}></i>
+                <i className="fas fa-map-marker-alt" style={{ color: '#06B6D4', marginTop: '4px' }}></i>
                 <span style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.6)' }}>123 Health Ave, Hyderabad</span>
               </div>
               <div style={{ display: 'flex', gap: '10px' }}>
-                <i className="fas fa-phone" style={{ color: '#2EA3F2' }}></i>
+                <i className="fas fa-phone" style={{ color: '#06B6D4' }}></i>
                 <span style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.6)' }}>+91 99999 99999</span>
               </div>
               <div style={{ display: 'flex', gap: '10px' }}>
-                <i className="fas fa-envelope" style={{ color: '#2EA3F2' }}></i>
+                <i className="fas fa-envelope" style={{ color: '#06B6D4' }}></i>
                 <span style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.6)' }}>care@haveda.com</span>
               </div>
             </div>

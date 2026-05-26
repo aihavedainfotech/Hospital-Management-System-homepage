@@ -54,7 +54,7 @@ export default function HeroSection({ onBook, onDoctors }: HeroProps) {
       minHeight: '85vh',
       display: 'flex',
       flexDirection: 'column',
-      background: 'linear-gradient(135deg, #DFF5F2 0%, #EAF4FF 100%)',
+      background: 'linear-gradient(135deg, #DFF7F4 0%, #F8FFFE 100%)',
     }}>
       <style>{`
         /* Floating animations for icons */
@@ -80,28 +80,28 @@ export default function HeroSection({ onBook, onDoctors }: HeroProps) {
           backdrop-filter: blur(8px);
           border-radius: 50%;
           display: flex; align-items: center; justify-content: center;
-          box-shadow: 0 8px 24px rgba(31,45,61,0.08);
+          box-shadow: 0 8px 24px rgba(15,45,82,0.08);
           z-index: 10;
         }
 
         .hero-floating-icon.icon-1 {
           width: 56px; height: 56px;
           top: 15%; left: 0%;
-          color: #2EA3F2; font-size: 1.5rem;
+          color: #14B8A6; font-size: 1.5rem;
           animation: float1 6s ease-in-out infinite;
         }
 
         .hero-floating-icon.icon-2 {
           width: 48px; height: 48px;
           bottom: 25%; left: -5%;
-          color: #2BBF9C; font-size: 1.25rem;
+          color: #06B6D4; font-size: 1.25rem;
           animation: float2 5s ease-in-out infinite;
         }
 
         .hero-floating-icon.icon-3 {
           width: 64px; height: 64px;
           top: 30%; right: -5%;
-          color: #F5A623; font-size: 1.75rem;
+          color: #0F766E; font-size: 1.75rem;
           animation: float3 7s ease-in-out infinite;
         }
 
@@ -112,13 +112,12 @@ export default function HeroSection({ onBook, onDoctors }: HeroProps) {
           transform: translate(-50%, -50%);
           width: 500px; height: 500px;
           border-radius: 50%;
-          background: radial-gradient(circle, #2BBF9C 0%, #2EA3F2 100%);
+          background: radial-gradient(circle, #06B6D4 0%, #14B8A6 100%);
           opacity: 0.15;
           filter: blur(60px);
           z-index: 0;
         }
 
-        /* Stat bar */
         .hero-stat-bar {
           display: grid;
           grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -127,8 +126,8 @@ export default function HeroSection({ onBook, onDoctors }: HeroProps) {
           backdrop-filter: blur(16px);
           border-radius: 20px;
           padding: 1.5rem 2rem;
-          border: 1px solid rgba(230,238,245,0.8);
-          box-shadow: 0 12px 32px rgba(31,45,61,0.06);
+          border: 1px solid rgba(226,232,240,0.8);
+          box-shadow: 0 12px 32px rgba(15,45,82,0.06);
           margin-top: 3rem;
         }
         .hero-stat-item {
@@ -136,16 +135,16 @@ export default function HeroSection({ onBook, onDoctors }: HeroProps) {
         }
         .hero-stat-icon {
           width: 48px; height: 48px; border-radius: 12px; flex-shrink: 0;
-          background: rgba(46,163,242,0.1);
-          border: 1px solid rgba(46,163,242,0.2);
+          background: rgba(20,184,166,0.1);
+          border: 1px solid rgba(20,184,166,0.2);
           display: flex; align-items: center; justify-content: center;
         }
         .hero-stat-num {
           font-family: 'Poppins', sans-serif;
-          font-size: 1.5rem; font-weight: 700; color: #1F2D3D; line-height: 1;
+          font-size: 1.5rem; font-weight: 700; color: #0F2D52; line-height: 1;
         }
         .hero-stat-label {
-          font-size: 0.8rem; color: #6B7C93;
+          font-size: 0.8rem; color: #64748B;
           margin-top: 0.2rem; font-weight: 500;
         }
 
@@ -178,7 +177,7 @@ export default function HeroSection({ onBook, onDoctors }: HeroProps) {
           border-radius: 24px;
           z-index: 2;
           position: relative;
-          box-shadow: 0 20px 50px rgba(31,45,61,0.15);
+          box-shadow: 0 20px 50px rgba(15,45,82,0.15);
         }
 
         /* Responsive */
@@ -205,17 +204,17 @@ export default function HeroSection({ onBook, onDoctors }: HeroProps) {
             <h1 style={{
               fontFamily: 'Poppins, sans-serif',
               fontSize: 'clamp(2.5rem, 4vw, 3.5rem)',
-              color: '#1F2D3D',
+              color: '#0F2D52',
               fontWeight: 700,
               lineHeight: 1.2,
               marginBottom: '1.25rem',
             }}>
               We Are Committed To <br/>
-              <span style={{ color: '#2EA3F2' }}>Your Health.</span>
+              <span style={{ color: '#14B8A6' }}>Your Health.</span>
             </h1>
 
             <p style={{
-              color: '#6B7C93', fontSize: '1.05rem', lineHeight: 1.7,
+              color: '#64748B', fontSize: '1.05rem', lineHeight: 1.7,
               marginBottom: '2.5rem', fontWeight: 400,
             }}>
               Experience modern, compassionate healthcare. Our state-of-the-art facilities and expert medical team are here to provide the premium care you deserve, right when you need it most.
@@ -253,7 +252,7 @@ export default function HeroSection({ onBook, onDoctors }: HeroProps) {
           {stats.map(stat => (
             <div key={stat.label} className="hero-stat-item">
               <div className="hero-stat-icon">
-                <i className={stat.icon} style={{ fontSize: '1.2rem', color: '#2EA3F2' }} />
+                <i className={stat.icon} style={{ fontSize: '1.2rem', color: '#14B8A6' }} />
               </div>
               <div>
                 <div className="hero-stat-num">

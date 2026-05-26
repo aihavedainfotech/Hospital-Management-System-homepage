@@ -86,7 +86,7 @@ const MiniCalendar: React.FC<{
   };
 
   return (
-    <div className="rounded-2xl shadow-lg p-3 w-full mt-2" style={{ background: '#FFFFFF', border: '1px solid #E6EEF5', boxShadow: '0 8px 24px rgba(31,45,61,0.06)' }}>
+    <div className="rounded-2xl shadow-lg p-3 w-full mt-2" style={{ background: '#F8FFFE', border: '1px solid #E2E8F0', boxShadow: '0 8px 24px rgba(15,45,82,0.06)' }}>
       <div className="flex items-center justify-between mb-2">
         <button onClick={prevMonth} className="p-1 hover:bg-slate-100 rounded-lg transition"><FaChevronLeft className="text-slate-500 text-xs" /></button>
         <span className="text-xs font-bold text-slate-700">{monthNames[viewMonth]} {viewYear}</span>
@@ -105,9 +105,9 @@ const MiniCalendar: React.FC<{
           const isToday = today.getDate() === day && today.getMonth() === viewMonth && today.getFullYear() === viewYear;
           return (
             <button key={day} onClick={() => handleDay(day)} disabled={disabled} className={`mx-auto w-7 h-7 rounded-full text-[11px] font-medium flex items-center justify-center transition-all ${disabled ? 'text-slate-300 cursor-not-allowed' : 'cursor-pointer text-slate-700'} ${isToday && !disabled ? 'font-bold' : ''}`}
-              style={!disabled ? { ...(isToday ? { outline: '2px solid #2EA3F2', color: '#2EA3F2' } : {}) } : {}}
-              onMouseEnter={e => { if (!disabled) { (e.currentTarget as HTMLButtonElement).style.background = '#2EA3F2'; (e.currentTarget as HTMLButtonElement).style.color = 'white'; } }}
-              onMouseLeave={e => { if (!disabled) { (e.currentTarget as HTMLButtonElement).style.background = 'transparent'; (e.currentTarget as HTMLButtonElement).style.color = isToday ? '#2EA3F2' : '#334155'; } }}>
+              style={!disabled ? { ...(isToday ? { outline: '2px solid #14B8A6', color: '#14B8A6' } : {}) } : {}}
+              onMouseEnter={e => { if (!disabled) { (e.currentTarget as HTMLButtonElement).style.background = '#14B8A6'; (e.currentTarget as HTMLButtonElement).style.color = 'white'; } }}
+              onMouseLeave={e => { if (!disabled) { (e.currentTarget as HTMLButtonElement).style.background = 'transparent'; (e.currentTarget as HTMLButtonElement).style.color = isToday ? '#14B8A6' : '#334155'; } }}>
               {day}
             </button>
           );
@@ -136,13 +136,13 @@ const TimeSlotPicker: React.FC<{ doctorName?: string; date?: string; onSelect: (
 
   return (
     <div className="mt-2">
-      <div className="flex items-center gap-1.5 text-xs font-semibold text-slate-600 mb-2" style={{ color: '#2EA3F2' }}><FaClock style={{ color: '#2EA3F2' }} /> Available time slots</div>
+      <div className="flex items-center gap-1.5 text-xs font-semibold text-slate-600 mb-2" style={{ color: '#14B8A6' }}><FaClock style={{ color: '#14B8A6' }} /> Available time slots</div>
       <div className="grid grid-cols-3 gap-1.5">
         {slots.map(slot => (
           <button key={slot} onClick={() => onSelect(slot)} className="py-1.5 px-2 text-[11px] font-semibold rounded-xl border transition-all"
-            style={{ background: '#F7FBFF', color: '#2EA3F2', borderColor: '#E6EEF5' }}
-            onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.background = '#2EA3F2'; (e.currentTarget as HTMLButtonElement).style.color = 'white'; (e.currentTarget as HTMLButtonElement).style.borderColor = '#2EA3F2'; }}
-            onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.background = '#F7FBFF'; (e.currentTarget as HTMLButtonElement).style.color = '#2EA3F2'; (e.currentTarget as HTMLButtonElement).style.borderColor = '#E6EEF5'; }}>
+            style={{ background: '#F8FFFE', color: '#14B8A6', borderColor: '#E2E8F0' }}
+            onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.background = '#14B8A6'; (e.currentTarget as HTMLButtonElement).style.color = 'white'; (e.currentTarget as HTMLButtonElement).style.borderColor = '#14B8A6'; }}
+            onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.background = '#F8FFFE'; (e.currentTarget as HTMLButtonElement).style.color = '#14B8A6'; (e.currentTarget as HTMLButtonElement).style.borderColor = '#E2E8F0'; }}>
             {slot}
           </button>
         ))}
@@ -310,8 +310,8 @@ const ChatBot: React.FC = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div initial={{ opacity: 0, y: 40, scale: 0.95 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 40, scale: 0.95 }}
-            className="mb-6 w-80 sm:w-[400px] h-[600px] bg-white rounded-3xl shadow-2xl flex flex-col overflow-hidden border border-[#E6EEF5]">
-            <div className="p-6 text-white flex-shrink-0" style={{ background: 'linear-gradient(135deg, #1F2D3D 0%, #2EA3F2 100%)' }}>
+            className="mb-6 w-80 sm:w-[400px] h-[600px] bg-[#F8FFFE] rounded-3xl shadow-2xl flex flex-col overflow-hidden border border-[#E2E8F0]">
+            <div className="p-6 text-white flex-shrink-0" style={{ background: 'linear-gradient(135deg, #0F766E 0%, #14B8A6 100%)' }}>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center shadow-lg"><FaRobot className="text-2xl" /></div>
@@ -326,10 +326,10 @@ const ChatBot: React.FC = () => {
                 </div>
               </div>
             </div>
-            <div ref={scrollRef} className="flex-1 overflow-y-auto p-5 space-y-4 bg-[#F7FBFF] custom-scrollbar">
+            <div ref={scrollRef} className="flex-1 overflow-y-auto p-5 space-y-4 bg-[#F8FFFE] custom-scrollbar">
               {messages.map((msg, i) => (
                 <div key={i} className={`flex flex-col ${msg.sender === 'user' ? 'items-end' : 'items-start'}`}>
-                  <div className={`max-w-[85%] px-4 py-3 rounded-2xl text-[14px] ${msg.sender === 'user' ? 'bg-[#2EA3F2] text-white rounded-tr-none' : 'bg-white text-slate-800 border border-[#E6EEF5] rounded-tl-none shadow-sm'}`}>
+                  <div className={`max-w-[85%] px-4 py-3 rounded-2xl text-[14px] ${msg.sender === 'user' ? 'bg-[#14B8A6] text-white rounded-tr-none' : 'bg-[#ECFEFF] text-[#0F172A] border border-[#E2E8F0] rounded-tl-none shadow-sm'}`}>
                     {msg.text}
                   </div>
                   {msg.sender === 'bot' && msg.showPicker && (
@@ -338,8 +338,8 @@ const ChatBot: React.FC = () => {
                   {/* Service banner + quick actions after the first bot message */}
                   {msg.sender === 'bot' && i === 0 && quickActionsVisible && (
                     <div className="w-full mt-3">
-                      <div className="text-[12px] text-slate-500 bg-white border border-[#E6EEF5] rounded-xl px-3 py-2 mb-3 shadow-sm" style={{ lineHeight: 1.5 }}>
-                        <span style={{ color: '#2EA3F2', fontWeight: 600 }}>💬 </span>{SERVICE_BANNER}
+                      <div className="text-[12px] text-[#64748B] bg-white border border-[#E2E8F0] rounded-xl px-3 py-2 mb-3 shadow-sm" style={{ lineHeight: 1.5 }}>
+                        <span style={{ color: '#14B8A6', fontWeight: 600 }}>💬 </span>{SERVICE_BANNER}
                       </div>
                       <div className="grid grid-cols-2 gap-2">
                         {QUICK_ACTIONS.map((action) => (
@@ -347,9 +347,9 @@ const ChatBot: React.FC = () => {
                             key={action.label}
                             onClick={() => handleQuickAction(action.message)}
                             className="text-left px-3 py-2.5 rounded-xl border text-[12px] font-semibold transition-all"
-                            style={{ background: '#F7FBFF', borderColor: '#E6EEF5', color: '#1F2D3D' }}
-                            onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.background = '#2EA3F2'; (e.currentTarget as HTMLButtonElement).style.color = 'white'; (e.currentTarget as HTMLButtonElement).style.borderColor = '#2EA3F2'; }}
-                            onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.background = '#F7FBFF'; (e.currentTarget as HTMLButtonElement).style.color = '#1F2D3D'; (e.currentTarget as HTMLButtonElement).style.borderColor = '#E6EEF5'; }}
+                            style={{ background: '#F8FFFE', borderColor: '#E2E8F0', color: '#0F172A' }}
+                            onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.background = '#14B8A6'; (e.currentTarget as HTMLButtonElement).style.color = 'white'; (e.currentTarget as HTMLButtonElement).style.borderColor = '#14B8A6'; }}
+                            onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.background = '#F8FFFE'; (e.currentTarget as HTMLButtonElement).style.color = '#0F172A'; (e.currentTarget as HTMLButtonElement).style.borderColor = '#E2E8F0'; }}
                           >
                             {action.label}
                           </button>
@@ -359,19 +359,19 @@ const ChatBot: React.FC = () => {
                   )}
                 </div>
               ))}
-              {isProcessing && <div className="flex gap-1 p-2"><div className="w-2 h-2 bg-[#2EA3F2] rounded-full animate-bounce"></div><div className="w-2 h-2 bg-[#2EA3F2] rounded-full animate-bounce delay-75"></div><div className="w-2 h-2 bg-[#2EA3F2] rounded-full animate-bounce delay-150"></div></div>}
+              {isProcessing && <div className="flex gap-1 p-2"><div className="w-2 h-2 bg-[#14B8A6] rounded-full animate-bounce"></div><div className="w-2 h-2 bg-[#14B8A6] rounded-full animate-bounce delay-75"></div><div className="w-2 h-2 bg-[#14B8A6] rounded-full animate-bounce delay-150"></div></div>}
             </div>
-            <div className="p-5 border-t border-[#E6EEF5] bg-white">
+            <div className="p-5 border-t border-[#E2E8F0] bg-white">
               <div className="flex gap-2">
-                <input type="text" value={inputText} onChange={(e) => setInputText(e.target.value)} onKeyPress={(e) => e.key === 'Enter' && handleSendText()} placeholder="Type a message..." className="flex-1 px-4 py-3 bg-[#F7FBFF] rounded-xl border border-[#E6EEF5] outline-none focus:border-[#2EA3F2] transition-all" />
-                <button onClick={isRecording ? () => mediaRecorderRef.current?.stop() : startRecording} className={`p-4 rounded-xl ${isRecording ? 'bg-red-500 text-white animate-pulse' : 'bg-[#F7FBFF] text-slate-600 border border-[#E6EEF5]'}`}><FaMicrophone /></button>
-                <button onClick={handleSendText} className="p-4 bg-[#2EA3F2] text-white rounded-xl shadow-lg"><FaPaperPlane /></button>
+                <input type="text" value={inputText} onChange={(e) => setInputText(e.target.value)} onKeyPress={(e) => e.key === 'Enter' && handleSendText()} placeholder="Type a message..." className="flex-1 px-4 py-3 bg-[#F8FFFE] rounded-xl border border-[#E2E8F0] outline-none focus:border-[#14B8A6] transition-all" />
+                <button onClick={isRecording ? () => mediaRecorderRef.current?.stop() : startRecording} className={`p-4 rounded-xl ${isRecording ? 'bg-red-500 text-white animate-pulse' : 'bg-[#F8FFFE] text-[#64748B] border border-[#E2E8F0]'}`}><FaMicrophone /></button>
+                <button onClick={handleSendText} className="p-4 bg-gradient-to-r from-[#14B8A6] to-[#06B6D4] text-white rounded-xl shadow-lg"><FaPaperPlane /></button>
               </div>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-      <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} onClick={() => { setIsOpen(!isOpen); if (!isOpen) setQuickActionsVisible(messages.length <= 1); }} className="w-16 h-16 bg-[#2EA3F2] text-white rounded-full shadow-2xl flex items-center justify-center border-4 border-white cursor-move"><FaRobot className="text-3xl" /></motion.button>
+      <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} onClick={() => { setIsOpen(!isOpen); if (!isOpen) setQuickActionsVisible(messages.length <= 1); }} className="w-16 h-16 bg-gradient-to-r from-[#14B8A6] to-[#06B6D4] text-white rounded-full shadow-2xl flex items-center justify-center border-4 border-white cursor-move"><FaRobot className="text-3xl" /></motion.button>
     </motion.div>
   );
 };

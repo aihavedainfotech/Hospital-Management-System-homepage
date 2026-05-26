@@ -49,7 +49,7 @@ export default function IntroAnimation() {
           position: absolute; border-radius: 50%;
           animation: ivRing 2.8s ease-in-out infinite;
         }
-        .iv-ring-bl { border: 1.5px solid rgba(46,163,242,0.30); }
+        .iv-ring-bl { border: 1.5px solid rgba(20, 184, 166,0.30); }
         .iv-ring-tl { border: 1.5px solid rgba(43,191,156,0.25); }
         @keyframes ivRing {
           0%,100% { transform: scale(1);    opacity: 0.5; }
@@ -96,8 +96,8 @@ export default function IntroAnimation() {
           animation: ivGlowPulse 1.8s ease-in-out 2.2s infinite alternate;
         }
         @keyframes ivGlowPulse {
-          from { filter: drop-shadow(0 0 6px  rgba(46,163,242,0.5)) drop-shadow(0 0 12px rgba(43,191,156,0.3)); }
-          to   { filter: drop-shadow(0 0 22px rgba(46,163,242,0.9)) drop-shadow(0 0 40px rgba(43,191,156,0.6)); }
+          from { filter: drop-shadow(0 0 6px  rgba(20, 184, 166,0.5)) drop-shadow(0 0 12px rgba(43,191,156,0.3)); }
+          to   { filter: drop-shadow(0 0 22px rgba(20, 184, 166,0.9)) drop-shadow(0 0 40px rgba(43,191,156,0.6)); }
         }
 
         /* Scan line */
@@ -119,7 +119,7 @@ export default function IntroAnimation() {
           font-family: 'Montserrat', sans-serif;
           font-size: 18px; font-weight: 800;
           letter-spacing: 0.45em; text-transform: uppercase;
-          background: linear-gradient(135deg, #1F4E79 0%, #2EA3F2 50%, #1F4E79 100%);
+          background: linear-gradient(135deg, #1F4E79 0%, #14B8A6 50%, #1F4E79 100%);
           background-size: 200% auto;
           -webkit-background-clip: text; -webkit-text-fill-color: transparent;
           background-clip: text;
@@ -160,7 +160,7 @@ export default function IntroAnimation() {
         @keyframes ivLine { to { width: 60px; } }
         .iv-ddot {
           width: 5px; height: 5px; border-radius: 50%;
-          background: #2BBF9C;
+          background: #06B6D4;
           box-shadow: 0 0 8px rgba(43,191,156,0.9);
         }
 
@@ -168,7 +168,7 @@ export default function IntroAnimation() {
         .iv-bar {
           position: absolute; bottom: 0; left: 0;
           height: 2px; width: 0;
-          background: linear-gradient(90deg, #2EA3F2, #2BBF9C, #2EA3F2);
+          background: linear-gradient(90deg, #14B8A6, #06B6D4, #14B8A6);
           box-shadow: 0 0 10px rgba(43,191,156,0.7);
           animation: ivBar 4.3s cubic-bezier(0.4,0,0.2,1) forwards;
         }
@@ -180,12 +180,12 @@ export default function IntroAnimation() {
         {/* Blue + teal particles */}
         {[
           { l:'8%',  s:'3px', d:'9s',  dl:'0s',   c:'rgba(43,191,156,0.6)'  },
-          { l:'20%', s:'2px', d:'12s', dl:'1.2s',  c:'rgba(46,163,242,0.7)'  },
+          { l:'20%', s:'2px', d:'12s', dl:'1.2s',  c:'rgba(20, 184, 166,0.7)'  },
           { l:'35%', s:'4px', d:'8s',  dl:'0.4s',  c:'rgba(43,191,156,0.5)' },
           { l:'50%', s:'2px', d:'11s', dl:'2s',    c:'rgba(43,191,156,0.6)' },
           { l:'63%', s:'3px', d:'10s', dl:'0.8s',  c:'rgba(43,191,156,0.7)' },
-          { l:'75%', s:'2px', d:'13s', dl:'1.8s',  c:'rgba(46,163,242,0.5)'  },
-          { l:'88%', s:'3px', d:'7s',  dl:'0.2s',  c:'rgba(46,163,242,0.6)'},
+          { l:'75%', s:'2px', d:'13s', dl:'1.8s',  c:'rgba(20, 184, 166,0.5)'  },
+          { l:'88%', s:'3px', d:'7s',  dl:'0.2s',  c:'rgba(20, 184, 166,0.6)'},
         ].map((p, i) => (
           <div key={i} className="iv-p" style={{
             left: p.l, width: p.s, height: p.s,
@@ -212,19 +212,19 @@ export default function IntroAnimation() {
           >
             <defs>
               <linearGradient id="ivGLeft" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%"   stopColor="#2EA3F2" />
-                <stop offset="50%"  stopColor="#2BBF9C" />
-                <stop offset="100%" stopColor="#2EA3F2" />
+                <stop offset="0%"   stopColor="#14B8A6" />
+                <stop offset="50%"  stopColor="#06B6D4" />
+                <stop offset="100%" stopColor="#14B8A6" />
               </linearGradient>
               <linearGradient id="ivGRight" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%"   stopColor="#2EA3F2" />
-                <stop offset="50%"  stopColor="#2BBF9C" />
-                <stop offset="100%" stopColor="#2EA3F2" />
+                <stop offset="0%"   stopColor="#14B8A6" />
+                <stop offset="50%"  stopColor="#06B6D4" />
+                <stop offset="100%" stopColor="#14B8A6" />
               </linearGradient>
               <linearGradient id="ivGCross" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%"   stopColor="#2EA3F2" />
+                <stop offset="0%"   stopColor="#14B8A6" />
                 <stop offset="50%"  stopColor="#EAF4FF" />
-                <stop offset="100%" stopColor="#2EA3F2" />
+                <stop offset="100%" stopColor="#14B8A6" />
               </linearGradient>
               <filter id="ivGlow" x="-60%" y="-60%" width="220%" height="220%">
                 <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur" />

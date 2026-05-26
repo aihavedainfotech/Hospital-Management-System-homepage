@@ -51,7 +51,7 @@ const DoctorIconPlaceholder = ({ name }: { name: string }) => {
   return (
     <div style={{
       width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center',
-      background: 'linear-gradient(135deg, #1a2b4a 0%, #3d8c8c 100%)', position: 'relative', overflow: 'hidden'
+      background: 'linear-gradient(135deg, #0F2D52 0%, #14B8A6 100%)', position: 'relative', overflow: 'hidden'
     }}>
       <div style={{ position: 'absolute', opacity: 0.1, fontSize: '8rem', fontWeight: 900, color: 'white', transform: 'rotate(-15deg)', right: '-1rem', bottom: '-1rem' }}>
         <i className="fas fa-user-md"></i>
@@ -101,7 +101,7 @@ function DoctorProfileModal({ doctor, onClose, onBook }: { doctor: Doctor; onClo
             { icon: 'fas fa-hospital', label: 'Department', value: doctor.department, color: 'var(--navy)' },
             { icon: 'fas fa-award', label: 'Experience', value: `${doctor.experience} Years`, color: 'var(--gold)' },
             { icon: 'fas fa-calendar-day', label: 'Available Days', value: doctor.available_days, color: 'var(--teal)' },
-            { icon: 'fas fa-clock', label: 'Timings', value: doctor.timings, color: '#8e44ad' },
+            { icon: 'fas fa-clock', label: 'Timings', value: doctor.timings, color: '#06B6D4' },
           ].map((item, i) => (
             <div key={i} style={{ background: 'var(--bg-primary)', borderRadius: '12px', padding: '0.875rem', display: 'flex', gap: '0.625rem', alignItems: 'flex-start' }}>
               <i className={item.icon} style={{ color: item.color, fontSize: '0.95rem', marginTop: '0.15rem', flexShrink: 0 }}></i>
@@ -253,7 +253,7 @@ export default function DoctorsSection({ onBook }: DoctorsSectionProps) {
           if (card) {
             if (entry.isIntersecting) {
               card.style.transform = 'scale(1.05)';
-              card.style.boxShadow = '0 10px 25px rgba(61, 140, 140, 0.25)';
+              card.style.boxShadow = '0 10px 25px rgba(20, 184, 166, 0.25)';
               card.style.borderColor = 'var(--teal)';
               card.style.zIndex = '10';
             } else {
@@ -343,7 +343,7 @@ export default function DoctorsSection({ onBook }: DoctorsSectionProps) {
 
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.2rem', marginBottom: '0.4rem' }}>
               {doc.qualification && (
-                <span style={{ fontSize: '0.6rem', background: 'rgba(142,68,173,0.06)', color: '#8e44ad', padding: '0.1rem 0.4rem', borderRadius: '4px', border: '1px solid rgba(142,68,173,0.1)', display: 'flex', alignItems: 'center', gap: '0.2rem' }}>
+                <span style={{ fontSize: '0.6rem', background: 'rgba(6,182,212,0.06)', color: '#06B6D4', padding: '0.1rem 0.4rem', borderRadius: '4px', border: '1px solid rgba(6,182,212,0.1)', display: 'flex', alignItems: 'center', gap: '0.2rem' }}>
                   <i className="fas fa-graduation-cap" style={{ fontSize: '0.55rem' }}></i>
                   {doc.qualification}
                 </span>
@@ -447,7 +447,7 @@ export default function DoctorsSection({ onBook }: DoctorsSectionProps) {
               {/* Qualification */}
               <div>
                 <label style={{ display: 'block', fontSize: '0.78rem', color: 'var(--text-muted)', marginBottom: '0.35rem', fontWeight: 600 }}>
-                  <i className="fas fa-graduation-cap" style={{ color: '#8e44ad', marginRight: '0.35rem' }}></i>Qualification
+                  <i className="fas fa-graduation-cap" style={{ color: '#06B6D4', marginRight: '0.35rem' }}></i>Qualification
                 </label>
                 <select value={qualFilter} onChange={e => setQualFilter(e.target.value)} style={inputStyle}>
                   {qualifications.map(q => <option key={q}>{q}</option>)}
@@ -457,7 +457,7 @@ export default function DoctorsSection({ onBook }: DoctorsSectionProps) {
               {/* Availability */}
               <div>
                 <label style={{ display: 'block', fontSize: '0.78rem', color: 'var(--text-muted)', marginBottom: '0.35rem', fontWeight: 600 }}>
-                  <i className="fas fa-calendar-check" style={{ color: '#27ae60', marginRight: '0.35rem' }}></i>Availability
+                  <i className="fas fa-calendar-check" style={{ color: '#16A34A', marginRight: '0.35rem' }}></i>Availability
                 </label>
                 <select value={availFilter} onChange={e => setAvailFilter(e.target.value)} style={inputStyle}>
                   <option value="All">All Days</option>
@@ -482,8 +482,8 @@ export default function DoctorsSection({ onBook }: DoctorsSectionProps) {
               {/* Clear button */}
               <div style={{ display: 'flex', alignItems: 'flex-end' }}>
                 <button onClick={clearAllFilters} style={{
-                  width: '100%', padding: '0.65rem 1rem', background: 'rgba(231,76,60,0.08)', border: '1.5px solid rgba(231,76,60,0.3)',
-                  borderRadius: '10px', color: '#e74c3c', cursor: 'pointer', fontWeight: 600, fontSize: '0.9rem',
+                  width: '100%', padding: '0.65rem 1rem', background: 'rgba(239,68,68,0.08)', border: '1.5px solid rgba(239,68,68,0.3)',
+                  borderRadius: '10px', color: '#EF4444', cursor: 'pointer', fontWeight: 600, fontSize: '0.9rem',
                   display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem'
                 }}>
                   <i className="fas fa-times-circle"></i>Clear All
@@ -500,9 +500,9 @@ export default function DoctorsSection({ onBook }: DoctorsSectionProps) {
           </span>
           {activeFilterCount > 0 && (
             <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap' }}>
-              {deptFilter !== 'All' && <span style={{ background: 'rgba(61,140,140,0.12)', color: 'var(--teal)', borderRadius: '20px', padding: '0.2rem 0.75rem', fontSize: '0.78rem', fontWeight: 600 }}>{deptFilter} ×</span>}
+              {deptFilter !== 'All' && <span style={{ background: 'rgba(20,184,166,0.12)', color: 'var(--teal)', borderRadius: '20px', padding: '0.2rem 0.75rem', fontSize: '0.78rem', fontWeight: 600 }}>{deptFilter} ×</span>}
               {expFilter !== 'All' && <span style={{ background: 'rgba(200,169,81,0.12)', color: 'var(--gold)', borderRadius: '20px', padding: '0.2rem 0.75rem', fontSize: '0.78rem', fontWeight: 600 }}>{expFilter} yrs ×</span>}
-              {availFilter !== 'All' && <span style={{ background: 'rgba(39,174,96,0.12)', color: '#27ae60', borderRadius: '20px', padding: '0.2rem 0.75rem', fontSize: '0.78rem', fontWeight: 600 }}>{availFilter} ×</span>}
+              {availFilter !== 'All' && <span style={{ background: 'rgba(22,163,74,0.12)', color: '#16A34A', borderRadius: '20px', padding: '0.2rem 0.75rem', fontSize: '0.78rem', fontWeight: 600 }}>{availFilter} ×</span>}
             </div>
           )}
         </div>

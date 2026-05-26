@@ -663,7 +663,7 @@ export default function AppointmentSection({ preSelectedDoctor, initialCancelMod
               <div style={{ background: 'var(--card-bg)', borderRadius: '14px', padding: '1.5rem', textAlign: 'center', border: '1px solid var(--border-color)', boxShadow: 'var(--shadow-sm)', transition: 'transform 0.3s' }}
                 onMouseEnter={e => (e.currentTarget as HTMLDivElement).style.transform = 'translateY(-4px)'}
                 onMouseLeave={e => (e.currentTarget as HTMLDivElement).style.transform = 'translateY(0)'}>
-                <div style={{ width: '52px', height: '52px', borderRadius: '50%', background: 'rgba(61,140,140,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 0.875rem' }}>
+                <div style={{ width: '52px', height: '52px', borderRadius: '50%', background: 'rgba(20,184,166,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 0.875rem' }}>
                   <i className={p.icon} style={{ fontSize: '1.3rem', color: 'var(--teal)' }}></i>
                 </div>
                 <h4 style={{ fontFamily: 'Playfair Display, serif', fontWeight: 700, color: 'var(--text-primary)', fontSize: '0.95rem', marginBottom: '0.4rem' }}>{p.title}</h4>
@@ -745,7 +745,7 @@ export default function AppointmentSection({ preSelectedDoctor, initialCancelMod
                               setShowReasonModal(true);
                             }}
                             className="btn-outline"
-                            style={{ borderColor: '#ff4d4f', color: '#ff4d4f', padding: '0.5rem 1rem', fontSize: '0.8rem' }}
+                            style={{ borderColor: '#EF4444', color: '#EF4444', padding: '0.5rem 1rem', fontSize: '0.8rem' }}
                           >
                             Cancel
                           </button>
@@ -804,7 +804,7 @@ export default function AppointmentSection({ preSelectedDoctor, initialCancelMod
                                   borderRadius: '12px', padding: '0.875rem 1rem',
                                   cursor: inactive ? 'not-allowed' : 'pointer',
                                   display: 'flex', alignItems: 'center', gap: '0.875rem',
-                                  background: inactive ? 'rgba(239,68,68,0.04)' : selectedDoctor?.id === doc.id ? 'rgba(61,140,140,0.06)' : 'var(--bg-primary)',
+                                  background: inactive ? 'rgba(239,68,68,0.04)' : selectedDoctor?.id === doc.id ? 'rgba(20,184,166,0.06)' : 'var(--bg-primary)',
                                   transition: 'all 0.2s', opacity: inactive ? 0.75 : 1,
                                 }}>
                                 <div style={{ width: '44px', height: '44px', borderRadius: '50%', background: inactive ? '#9CA3AF' : 'linear-gradient(135deg, var(--navy), var(--teal))', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 700, fontSize: '1rem', flexShrink: 0 }}>
@@ -931,14 +931,14 @@ export default function AppointmentSection({ preSelectedDoctor, initialCancelMod
                             position: 'fixed', 
                             top: '20px', 
                             left: '20px', 
-                            background: '#e74c3c', 
+                            background: '#EF4444', 
                             color: 'white', 
                             padding: '0.6rem 1.25rem', 
                             borderRadius: '50px', 
                             fontSize: '0.9rem', 
                             fontWeight: 700, 
                             zIndex: 9999, 
-                            boxShadow: '0 4px 15px rgba(231,76,60,0.4)',
+                            boxShadow: '0 4px 15px rgba(239,68,68,0.4)',
                             display: 'flex',
                             alignItems: 'center',
                             gap: '0.6rem',
@@ -961,7 +961,7 @@ export default function AppointmentSection({ preSelectedDoctor, initialCancelMod
                             }}>
                               <i className="fas fa-calendar-times" style={{ color: '#EF4444', fontSize: '1.2rem', marginTop: '0.1rem', flexShrink: 0 }}></i>
                               <div>
-                                <p style={{ fontWeight: 700, color: '#DC2626', fontSize: '0.9rem', marginBottom: '0.25rem' }}>
+                                <p style={{ fontWeight: 700, color: '#EF4444', fontSize: '0.9rem', marginBottom: '0.25rem' }}>
                                   Dr. {selectedDoctor?.name} is on leave today
                                 </p>
                                 <p style={{ fontSize: '0.8rem', color: '#EF4444' }}>
@@ -994,7 +994,7 @@ export default function AppointmentSection({ preSelectedDoctor, initialCancelMod
                                   {slot.time}
                                   {isMine && <div style={{ fontSize: '0.55rem', position: 'absolute', top: '-8px', right: '-4px', background: 'var(--gold)', color: 'white', padding: '1px 5px', borderRadius: '4px', fontWeight: 700, boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>MINE</div>}
                                   {isLocked && <div style={{ fontSize: '0.55rem', color: '#e67e22', fontWeight: 600 }}>Locked</div>}
-                                  {isBooked && <div style={{ fontSize: '0.55rem', color: '#e74c3c', fontWeight: 600 }}>Booked</div>}
+                                  {isBooked && <div style={{ fontSize: '0.55rem', color: '#EF4444', fontWeight: 600 }}>Booked</div>}
                                   {isPast && <div style={{ fontSize: '0.55rem', color: '#95a5a6', fontWeight: 600 }}>Past</div>}
                                 </button>
                               );
@@ -1019,42 +1019,42 @@ export default function AppointmentSection({ preSelectedDoctor, initialCancelMod
                 {/* STEP 3 */}
                 {step === 3 && (
                   <div>
-                    <div style={{ background: 'rgba(61,140,140,0.08)', border: '1px solid rgba(61,140,140,0.2)', borderRadius: '10px', padding: '0.875rem', marginBottom: '1.5rem', fontSize: '0.875rem', color: 'var(--text-secondary)' }}>
+                    <div style={{ background: 'rgba(20,184,166,0.08)', border: '1px solid rgba(20,184,166,0.2)', borderRadius: '10px', padding: '0.875rem', marginBottom: '1.5rem', fontSize: '0.875rem', color: 'var(--text-secondary)' }}>
                       <strong>Dr. {selectedDoctor?.name}</strong> - {selectedDate} at {selectedSlot}
                     </div>
 
                     {/* FOLLOW-UP ELIGIBILITY BANNER */}
                     {selectedPatientId && selectedDoctor && (
                       checkingFollowup ? (
-                        <div style={{ background: 'rgba(61,140,140,0.06)', border: '1px solid rgba(61,140,140,0.2)', borderRadius: '10px', padding: '0.75rem 1rem', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                        <div style={{ background: 'rgba(20,184,166,0.06)', border: '1px solid rgba(20,184,166,0.2)', borderRadius: '10px', padding: '0.75rem 1rem', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                           <i className="fas fa-spinner fa-spin" style={{ color: 'var(--teal)', fontSize: '0.8rem' }}></i>
                           <span style={{ fontSize: '0.8rem', color: 'var(--teal)' }}>Checking follow-up eligibility...</span>
                         </div>
                       ) : followupInfo?.has_previous_visit ? (
                         <div style={{
-                          background: followupInfo.is_free_followup ? 'rgba(82,196,26,0.08)' : followupInfo.is_followup_eligible ? 'rgba(250,173,20,0.08)' : 'rgba(61,140,140,0.06)',
-                          border: `1px solid ${followupInfo.is_free_followup ? 'rgba(82,196,26,0.3)' : followupInfo.is_followup_eligible ? 'rgba(250,173,20,0.3)' : 'rgba(61,140,140,0.2)'}`,
+                          background: followupInfo.is_free_followup ? 'rgba(22,163,74,0.08)' : followupInfo.is_followup_eligible ? 'rgba(245,158,11,0.08)' : 'rgba(20,184,166,0.06)',
+                          border: `1px solid ${followupInfo.is_free_followup ? 'rgba(22,163,74,0.3)' : followupInfo.is_followup_eligible ? 'rgba(245,158,11,0.3)' : 'rgba(20,184,166,0.2)'}`,
                           borderRadius: '10px', padding: '0.875rem 1rem', marginBottom: '1rem'
                         }}>
                           <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.6rem' }}>
                             <i className={`fas ${followupInfo.is_free_followup ? 'fa-gift' : followupInfo.is_followup_eligible ? 'fa-clock' : 'fa-history'}`}
-                              style={{ color: followupInfo.is_free_followup ? '#52c41a' : followupInfo.is_followup_eligible ? '#faad14' : 'var(--teal)', marginTop: '0.1rem', fontSize: '0.9rem' }}></i>
+                              style={{ color: followupInfo.is_free_followup ? '#16A34A' : followupInfo.is_followup_eligible ? '#F59E0B' : 'var(--teal)', marginTop: '0.1rem', fontSize: '0.9rem' }}></i>
                             <div>
                               {followupInfo.is_free_followup ? (
                                 <>
-                                  <p style={{ fontWeight: 700, fontSize: '0.85rem', color: '#389e0d', marginBottom: '0.2rem' }}>
+                                  <p style={{ fontWeight: 700, fontSize: '0.85rem', color: '#16A34A', marginBottom: '0.2rem' }}>
                                     Free Follow-up Visit
                                   </p>
-                                  <p style={{ fontSize: '0.78rem', color: '#52c41a' }}>
+                                  <p style={{ fontSize: '0.78rem', color: '#16A34A' }}>
                                     Last visit was {followupInfo.days_since_last} day{followupInfo.days_since_last !== 1 ? 's' : ''} ago · {followupInfo.remaining_followups} free follow-up{followupInfo.remaining_followups !== 1 ? 's' : ''} remaining · No charge
                                   </p>
                                 </>
                               ) : followupInfo.is_followup_eligible ? (
                                 <>
-                                  <p style={{ fontWeight: 700, fontSize: '0.85rem', color: '#d48806', marginBottom: '0.2rem' }}>
+                                  <p style={{ fontWeight: 700, fontSize: '0.85rem', color: '#F5A623', marginBottom: '0.2rem' }}>
                                     Follow-up Visit — ₹{followupInfo.followup_fee}
                                   </p>
-                                  <p style={{ fontSize: '0.78rem', color: '#faad14' }}>
+                                  <p style={{ fontSize: '0.78rem', color: '#F59E0B' }}>
                                     Last visit was {followupInfo.days_since_last} day{followupInfo.days_since_last !== 1 ? 's' : ''} ago · All free follow-ups used ({followupInfo.followup_count}/{followupInfo.max_followup_count})
                                   </p>
                                 </>
@@ -1104,7 +1104,7 @@ export default function AppointmentSection({ preSelectedDoctor, initialCancelMod
                             maxLength={10}
                             disabled={otpVerified}
                             style={{ 
-                              borderColor: phone.length > 0 && phone.length !== 10 ? '#e74c3c' : undefined,
+                              borderColor: phone.length > 0 && phone.length !== 10 ? '#EF4444' : undefined,
                               paddingRight: phone.length === 10 && !otpVerified ? '100px' : undefined
                             }}
                           />
@@ -1133,13 +1133,13 @@ export default function AppointmentSection({ preSelectedDoctor, initialCancelMod
                           )}
                         </div>
                         {phone.length > 0 && phone.length !== 10 && (
-                          <div style={{ fontSize: '0.75rem', color: '#e74c3c', marginTop: '0.25rem' }}>
+                          <div style={{ fontSize: '0.75rem', color: '#EF4444', marginTop: '0.25rem' }}>
                             <i className="fas fa-exclamation-circle" style={{ marginRight: '0.3rem' }}></i>
                             Enter exactly 10 digits ({phone.length}/10)
                           </div>
                         )}
                         {otpVerified && (
-                          <div style={{ fontSize: '0.75rem', color: '#52c41a', marginTop: '0.25rem' }}>
+                          <div style={{ fontSize: '0.75rem', color: '#16A34A', marginTop: '0.25rem' }}>
                             <i className="fas fa-check-circle" style={{ marginRight: '0.3rem' }}></i>
                             Phone verified
                           </div>
@@ -1159,19 +1159,19 @@ export default function AppointmentSection({ preSelectedDoctor, initialCancelMod
                     {/* Existing Patient Banner */}
                     {isPatientFound && selectedPatientData && (
                       <div style={{
-                        background: 'rgba(82,196,26,0.08)',
-                        border: '1px solid rgba(82,196,26,0.3)',
+                        background: 'rgba(22,163,74,0.08)',
+                        border: '1px solid rgba(22,163,74,0.3)',
                         borderRadius: '12px',
                         padding: '1rem',
                         marginBottom: '1rem'
                       }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.5rem' }}>
-                          <i className="fas fa-user-check" style={{ color: '#52c41a', fontSize: '1.2rem' }}></i>
+                          <i className="fas fa-user-check" style={{ color: '#16A34A', fontSize: '1.2rem' }}></i>
                           <div>
-                            <h4 style={{ color: '#389e0d', fontSize: '0.9rem', fontWeight: 700, margin: 0 }}>
+                            <h4 style={{ color: '#16A34A', fontSize: '0.9rem', fontWeight: 700, margin: 0 }}>
                               Existing Patient Found
                             </h4>
-                            <p style={{ color: '#52c41a', fontSize: '0.8rem', margin: 0 }}>
+                            <p style={{ color: '#16A34A', fontSize: '0.8rem', margin: 0 }}>
                               Patient ID: {selectedPatientData.id} • All details auto-filled
                             </p>
                           </div>
@@ -1180,8 +1180,8 @@ export default function AppointmentSection({ preSelectedDoctor, initialCancelMod
                             style={{
                               marginLeft: 'auto',
                               background: 'none',
-                              border: '1px solid rgba(82,196,26,0.4)',
-                              color: '#52c41a',
+                              border: '1px solid rgba(22,163,74,0.4)',
+                              color: '#16A34A',
                               padding: '0.3rem 0.6rem',
                               borderRadius: '6px',
                               fontSize: '0.75rem',
@@ -1197,8 +1197,8 @@ export default function AppointmentSection({ preSelectedDoctor, initialCancelMod
                     {/* New Patient Banner */}
                     {isNewPatient && !isPatientFound && (
                       <div style={{
-                        background: 'rgba(61,140,140,0.08)',
-                        border: '1px solid rgba(61,140,140,0.3)',
+                        background: 'rgba(20,184,166,0.08)',
+                        border: '1px solid rgba(20,184,166,0.3)',
                         borderRadius: '12px',
                         padding: '1rem',
                         marginBottom: '1rem'
@@ -1242,7 +1242,7 @@ export default function AppointmentSection({ preSelectedDoctor, initialCancelMod
                               }}
                               onMouseEnter={e => {
                                 e.currentTarget.style.borderColor = 'var(--teal)';
-                                e.currentTarget.style.background = 'rgba(61,140,140,0.04)';
+                                e.currentTarget.style.background = 'rgba(20,184,166,0.04)';
                               }}
                               onMouseLeave={e => {
                                 e.currentTarget.style.borderColor = 'var(--border-color)';
@@ -1272,7 +1272,7 @@ export default function AppointmentSection({ preSelectedDoctor, initialCancelMod
                           {ageAutoCalculated && (
                             <span style={{ 
                               fontSize: '0.75rem', 
-                              color: '#52c41a', 
+                              color: '#16A34A', 
                               marginLeft: '0.5rem',
                               fontWeight: 'normal'
                             }}>
@@ -1297,14 +1297,14 @@ export default function AppointmentSection({ preSelectedDoctor, initialCancelMod
                           min="0" 
                           max="150"
                           style={{
-                            borderColor: ageAutoCalculated ? '#52c41a' : undefined,
-                            background: ageAutoCalculated ? 'rgba(82,196,26,0.05)' : undefined
+                            borderColor: ageAutoCalculated ? '#16A34A' : undefined,
+                            background: ageAutoCalculated ? 'rgba(22,163,74,0.05)' : undefined
                           }}
                         />
                         {ageAutoCalculated && (
                           <div style={{ 
                             fontSize: '0.75rem', 
-                            color: '#52c41a', 
+                            color: '#16A34A', 
                             marginTop: '0.25rem',
                             display: 'flex',
                             alignItems: 'center',
@@ -1378,11 +1378,11 @@ export default function AppointmentSection({ preSelectedDoctor, initialCancelMod
                         <div style={{
                           padding: '0.6rem 0.875rem',
                           borderRadius: '8px',
-                          border: `1.5px solid ${visitType === 'follow_up' ? 'rgba(82,196,26,0.4)' : 'rgba(61,140,140,0.3)'}`,
-                          background: visitType === 'follow_up' ? 'rgba(82,196,26,0.06)' : 'rgba(61,140,140,0.04)',
+                          border: `1.5px solid ${visitType === 'follow_up' ? 'rgba(22,163,74,0.4)' : 'rgba(20,184,166,0.3)'}`,
+                          background: visitType === 'follow_up' ? 'rgba(22,163,74,0.06)' : 'rgba(20,184,166,0.04)',
                           display: 'flex', alignItems: 'center', gap: '0.5rem',
                           fontSize: '0.9rem', fontWeight: 600,
-                          color: visitType === 'follow_up' ? '#389e0d' : 'var(--teal)',
+                          color: visitType === 'follow_up' ? '#16A34A' : 'var(--teal)',
                         }}>
                           <i className={`fas ${visitType === 'follow_up' ? 'fa-redo' : 'fa-stethoscope'}`} style={{ fontSize: '0.8rem' }}></i>
                           {visitType === 'follow_up' ? 'Follow-up' : 'Consultation'}
@@ -1458,7 +1458,7 @@ export default function AppointmentSection({ preSelectedDoctor, initialCancelMod
             ) : (
               /* CONFIRMATION VIEW */
               <div style={{ textAlign: 'center', padding: '1rem 0' }}>
-                <div style={{ width: '80px', height: '80px', borderRadius: '50%', background: 'linear-gradient(135deg, var(--teal), #52c41a)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.5rem', color: 'white', fontSize: '2.5rem', boxShadow: '0 10px 20px rgba(82,196,26,0.2)' }}>
+                <div style={{ width: '80px', height: '80px', borderRadius: '50%', background: 'linear-gradient(135deg, var(--teal), #16A34A)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.5rem', color: 'white', fontSize: '2.5rem', boxShadow: '0 10px 20px rgba(22,163,74,0.2)' }}>
                   <i className="fas fa-check"></i>
                 </div>
                 <h3 style={{ fontFamily: 'Playfair Display, serif', fontSize: '1.5rem', fontWeight: 700, marginBottom: '0.5rem' }}>
@@ -1470,7 +1470,7 @@ export default function AppointmentSection({ preSelectedDoctor, initialCancelMod
                     : 'Your appointment has been successfully scheduled.'}
                 </p>
                 {isNewPatient && !isRescheduling && (
-                  <div style={{ display: 'inline-block', background: 'rgba(61,140,140,0.1)', color: 'var(--teal)', padding: '0.4rem 1rem', borderRadius: '50px', fontSize: '0.75rem', marginBottom: '1rem', fontWeight: 600 }}>
+                  <div style={{ display: 'inline-block', background: 'rgba(20,184,166,0.1)', color: 'var(--teal)', padding: '0.4rem 1rem', borderRadius: '50px', fontSize: '0.75rem', marginBottom: '1rem', fontWeight: 600 }}>
                     <i className="fas fa-info-circle" style={{ marginRight: '0.35rem' }}></i> New patient registered automatically
                   </div>
                 )}
@@ -1623,7 +1623,7 @@ export default function AppointmentSection({ preSelectedDoctor, initialCancelMod
                 onClick={handleCancelSubmit}
                 disabled={submitting || !cancelReason}
                 className="btn-primary"
-                style={{ flex: 1, justifyContent: 'center', background: '#ff4d4f', borderColor: '#ff4d4f' }}
+                style={{ flex: 1, justifyContent: 'center', background: '#EF4444', borderColor: '#EF4444' }}
               >
                 {submitting ? 'Cancelling...' : 'Confirm'}
               </button>

@@ -3,39 +3,44 @@
 @tailwind utilities;
 
 :root {
-  /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-     MINT & LAVENDER PALETTE â€” HOMEPAGE
-     â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
-  --primary:        #2EA3F2;
-  --primary-hover:  #248ac2;
-  --primary-light:  #EAF4FF;
-  
-  --accent:         #2BBF9C;
-  --accent-hover:   #23a384;
-  --accent-light:   #DFF5F2;
+  /* ════════════════════════════════════════════════════════════════════════
+     PREMIUM HEALTHCARE PALETTE — HOMEPAGE
+     ════════════════════════════════════════════════════════════════════════ */
+  --blue-primary: #14B8A6;
+  --blue-dark: #0F766E;
+  --blue-mid: #0F766E;
+  --blue-light: #ECFEFF;
+  --blue-icon: #CCFBF1;
 
-  --bg-primary:     #F7FBFF;
-  --bg-secondary:   #FFFFFF;
-  --bg-tertiary:    #F0F7FD;
+  --navy-dark: #0F2D52;
+  --navy: #163B65;
 
-  --card-bg:        #FFFFFF;
-  --card-hover:     #F7FBFF;
+  --teal: #14B8A6;
+  --teal-light: #DFF7F4;
+  --teal-dark: #0F766E;
 
-  --text-primary:   #1F2D3D;
-  --text-secondary: #6B7C93;
-  --text-muted:     #8DA2B5;
+  --bg-primary: #F8FFFE;
+  --bg-secondary: #FFFFFF;
+  --bg-tertiary: #F0F7FD;
 
-  --border-color:   #E6EEF5;
+  --card-bg: #FFFFFF;
+  --card-hover: #F8FFFE;
 
-  --shadow-sm: 0 4px 12px rgba(31,45,61,0.04);
-  --shadow-md: 0 8px 24px rgba(31,45,61,0.06);
-  --shadow-lg: 0 12px 32px rgba(31,45,61,0.08);
-  --shadow-xl: 0 20px 50px rgba(31,45,61,0.12);
+  --text-primary: #1E293B;
+  --text-secondary: #64748B;
+  --text-muted: #94A3B8;
 
-  --glow-primary: 0 0 24px rgba(46,163,242,0.2);
-  --glow-accent: 0 0 24px rgba(43,191,156,0.2);
+  --border-color: #E2E8F0;
 
-  --navbar-bg: rgba(255,255,255,0.95);
+  --shadow-sm: 0 4px 12px rgba(15, 45, 82, 0.04);
+  --shadow-md: 0 8px 24px rgba(15, 45, 82, 0.06);
+  --shadow-lg: 0 12px 32px rgba(15, 45, 82, 0.08);
+  --shadow-xl: 0 20px 50px rgba(15, 45, 82, 0.12);
+
+  --glow-primary: 0 0 24px rgba(20, 184, 166, 0.2);
+  --glow-accent: 0 0 24px rgba(6, 182, 212, 0.2);
+
+  --navbar-bg: rgba(255, 255, 255, 0.95);
   --soft-white: #FFFFFF;
 
   /* Legacy mappings for safety */

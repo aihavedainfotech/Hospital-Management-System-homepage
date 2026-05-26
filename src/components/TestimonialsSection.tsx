@@ -85,7 +85,7 @@ export default function TestimonialsSection() {
 
   return (
     <section className="section-pad" style={{
-      background: 'linear-gradient(160deg, #F7FBFF 0%, #FFFFFF 50%, #F7FBFF 100%)',
+      background: 'linear-gradient(160deg, #F8FFFE 0%, #FFFFFF 50%, #F8FFFE 100%)',
       overflow: 'hidden',
       position: 'relative',
       minHeight: '200px'
@@ -98,7 +98,7 @@ export default function TestimonialsSection() {
         }
         .compliment-blob-1 {
           top: -60px; left: -60px; width: 320px; height: 320px;
-          background: radial-gradient(circle, rgba(46,163,242,0.05) 0%, transparent 65%);
+          background: radial-gradient(circle, rgba(20, 184, 166,0.05) 0%, transparent 65%);
         }
         .compliment-blob-2 {
           bottom: -40px; right: -40px; width: 280px; height: 280px;
@@ -109,8 +109,8 @@ export default function TestimonialsSection() {
           backdrop-filter: blur(14px);
           border-radius: 16px;
           padding: 1.5rem;
-          border: 1px solid #E6EEF5;
-          box-shadow: 0 4px 16px rgba(31, 45, 61, 0.05);
+          border: 1px solid #E2E8F0;
+          box-shadow: 0 4px 16px rgba(15, 45, 82, 0.05);
           flex-shrink: 0;
           width: 300px;
           position: relative;
@@ -118,20 +118,20 @@ export default function TestimonialsSection() {
           margin-right: 20px;
         }
         .compliment-card:hover {
-          box-shadow: 0 12px 32px rgba(31, 45, 61, 0.08);
-          border-color: #2EA3F2;
+          box-shadow: 0 12px 32px rgba(15, 45, 82, 0.08);
+          border-color: #14B8A6;
           transform: translateY(-4px);
         }
         .compliment-quote-icon {
           position: absolute; bottom: 1rem; right: 1rem;
-          font-size: 1.2rem; color: rgba(46,163,242,0.15);
+          font-size: 1.2rem; color: rgba(20, 184, 166,0.15);
         }
         .compliment-name {
-          font-weight: 600; color: #1F2D3D; font-size: 1rem;
+          font-weight: 600; color: #0F2D52; font-size: 1rem;
           margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;
         }
         .compliment-feedback {
-          font-size: 0.875rem; color: #6B7C93; line-height: 1.6;
+          font-size: 0.875rem; color: #64748B; line-height: 1.6;
           font-style: italic; margin-bottom: 0.5rem;
         }
         .compliment-stars { display: flex; gap: 2px; margin-top: 0.75rem; }
@@ -146,17 +146,17 @@ export default function TestimonialsSection() {
           marginBottom: '2rem', opacity: 1, transform: 'translateY(0)', transition: 'all 0.6s ease'
         }}>
           <h2 style={{
-            color: '#1F2D3D', textAlign: 'center', fontSize: '2.5rem', fontWeight: '700',
+            color: '#0F2D52', textAlign: 'center', fontSize: '2.5rem', fontWeight: '700',
             marginBottom: '1rem', fontFamily: 'Playfair Display, serif', position: 'relative', zIndex: 10
           }}>
             What Our Patients Say
           </h2>
           <div style={{
-            margin: '12px auto 16px', background: '#2EA3F2',
+            margin: '12px auto 16px', background: '#14B8A6',
             width: '60px', height: '4px', borderRadius: '2px', display: 'block'
           }} />
           <p style={{
-            color: '#6B7C93', textAlign: 'center', maxWidth: '600px',
+            color: '#64748B', textAlign: 'center', maxWidth: '600px',
             margin: '0 auto 2rem', fontSize: '1.1rem', lineHeight: '1.6'
           }}>
             Real feedback from our valued patients who trusted us with their health.
@@ -181,7 +181,7 @@ export default function TestimonialsSection() {
               {[...compliments, ...compliments, ...compliments].map((compliment, i) => (
                 <div key={`${compliment.id}-${i}`} className="compliment-card">
                   <div className="compliment-name">
-                    <i className="fas fa-user-circle" style={{ color: '#2EA3F2', fontSize: '1.2rem' }} />
+                    <i className="fas fa-user-circle" style={{ color: '#14B8A6', fontSize: '1.2rem' }} />
                     {compliment.name}
                   </div>
                   <div className="compliment-feedback">
@@ -200,31 +200,31 @@ export default function TestimonialsSection() {
             {/* Gradient fade edges */}
             <div style={{
               position: 'absolute', left: 0, top: 0, bottom: 0, width: '80px',
-              background: 'linear-gradient(to right, #F7FBFF, transparent)',
+              background: 'linear-gradient(to right, #F8FFFE, transparent)',
               pointerEvents: 'none', zIndex: 1
             }} />
             <div style={{
               position: 'absolute', right: 0, top: 0, bottom: 0, width: '80px',
-              background: 'linear-gradient(to left, #F7FBFF, transparent)',
+              background: 'linear-gradient(to left, #F8FFFE, transparent)',
               pointerEvents: 'none', zIndex: 1
             }} />
           </>
         ) : (
           <div style={{
             textAlign: 'center', padding: '3rem 2rem',
-            color: '#6B7C93', fontSize: '1.1rem', fontStyle: 'italic'
+            color: '#64748B', fontSize: '1.1rem', fontStyle: 'italic'
           }}>
-            <i className="fas fa-heart" style={{ fontSize: '2rem', color: '#2EA3F2', marginBottom: '1rem', display: 'block' }} />
+            <i className="fas fa-heart" style={{ fontSize: '2rem', color: '#14B8A6', marginBottom: '1rem', display: 'block' }} />
             We'd love to hear from you! Share your experience with us.
             <div style={{ marginTop: '1rem' }}>
               <button
                 style={{
-                  background: '#2EA3F2', color: 'white', border: 'none',
+                  background: '#14B8A6', color: 'white', border: 'none',
                   padding: '0.75rem 1.5rem', borderRadius: '8px',
                   fontSize: '1rem', cursor: 'pointer', transition: 'all 0.3s ease'
                 }}
                 onMouseOver={(e) => (e.target as HTMLButtonElement).style.background = '#1e8bc3'}
-                onMouseOut={(e) => (e.target as HTMLButtonElement).style.background = '#2EA3F2'}
+                onMouseOut={(e) => (e.target as HTMLButtonElement).style.background = '#14B8A6'}
                 onClick={() => {
                   const feedbackSection = document.querySelector('[data-section="feedback"]');
                   if (feedbackSection) feedbackSection.scrollIntoView({ behavior: 'smooth' });

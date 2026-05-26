@@ -62,13 +62,13 @@ const WorkingDoctorsSection: React.FC<Props> = ({ onBook }) => {
   };
 
   if (loading) return (
-    <section id="doctors" style={{ padding: '80px 20px', textAlign: 'center', background: '#F7FBFF' }}>
+    <section id="doctors" style={{ padding: '80px 20px', textAlign: 'center', background: '#F8FFFE' }}>
       <div style={{
         width: 48, height: 48,
-        border: '4px solid #2EA3F2', borderTop: '4px solid transparent',
+        border: '4px solid #14B8A6', borderTop: '4px solid transparent',
         borderRadius: '50%', animation: 'wds-spin 1s linear infinite', margin: '0 auto 16px',
       }} />
-      <p style={{ color: '#6B7C93' }}>Loading specialists...</p>
+      <p style={{ color: '#64748B' }}>Loading specialists...</p>
     </section>
   );
 
@@ -95,7 +95,7 @@ const WorkingDoctorsSection: React.FC<Props> = ({ onBook }) => {
         }
         .wds-blob-1 {
           top: -100px; left: -100px; width: 500px; height: 500px;
-          background: radial-gradient(circle, rgba(46,163,242,0.05) 0%, transparent 65%);
+          background: radial-gradient(circle, rgba(20, 184, 166,0.05) 0%, transparent 65%);
         }
         .wds-blob-2 {
           bottom: -80px; right: -80px; width: 420px; height: 420px;
@@ -105,7 +105,7 @@ const WorkingDoctorsSection: React.FC<Props> = ({ onBook }) => {
         /* Dot grid pattern */
         .wds-dotgrid {
           position: absolute; inset: 0; pointer-events: none; z-index: 0;
-          background-image: radial-gradient(rgba(46,163,242,0.05) 1px, transparent 1px);
+          background-image: radial-gradient(rgba(20, 184, 166,0.05) 1px, transparent 1px);
           background-size: 28px 28px;
         }
 
@@ -113,22 +113,22 @@ const WorkingDoctorsSection: React.FC<Props> = ({ onBook }) => {
         .wds-chip {
           display: inline-flex; align-items: center; gap: 5px;
           padding: 7px 18px; border-radius: 50px;
-          border: 1.5px solid rgba(46,163,242,0.2);
+          border: 1.5px solid rgba(20, 184, 166,0.2);
           background: #FFFFFF; backdrop-filter: blur(8px);
-          color: #6B7C93; font-size: 12px; font-weight: 500;
+          color: #64748B; font-size: 12px; font-weight: 500;
           cursor: pointer; white-space: nowrap;
-          box-shadow: 0 2px 8px rgba(46,163,242,0.04);
+          box-shadow: 0 2px 8px rgba(20, 184, 166,0.04);
           transition: all 0.22s ease;
         }
         .wds-chip:hover {
-          border-color: #2EA3F2; color: #2EA3F2;
+          border-color: #14B8A6; color: #14B8A6;
           transform: translateY(-1px) scale(1.02);
-          box-shadow: 0 4px 14px rgba(46,163,242,0.1);
+          box-shadow: 0 4px 14px rgba(20, 184, 166,0.1);
         }
         .wds-chip.active {
-          background: #2EA3F2;
+          background: #14B8A6;
           border-color: transparent; color: #fff;
-          box-shadow: 0 4px 16px rgba(46,163,242,0.2);
+          box-shadow: 0 4px 16px rgba(20, 184, 166,0.2);
         }
 
         /* Card shell */
@@ -149,19 +149,19 @@ const WorkingDoctorsSection: React.FC<Props> = ({ onBook }) => {
           border-radius: 20px;
           overflow: hidden;
           background: #FFFFFF;
-          border: 1px solid #E6EEF5;
-          box-shadow: 0 8px 32px rgba(31, 45, 61, 0.08);
+          border: 1px solid #E2E8F0;
+          box-shadow: 0 8px 32px rgba(15, 45, 82, 0.08);
           transition: box-shadow 0.28s ease;
           position: relative;
         }
 
         .wds-card.is-center .wds-card-inner {
-          box-shadow: 0 12px 40px rgba(46, 163, 242, 0.12);
-          border-color: rgba(46, 163, 242, 0.2);
+          box-shadow: 0 12px 40px rgba(20, 184, 166, 0.12);
+          border-color: rgba(20, 184, 166, 0.2);
         }
 
         .wds-card.is-center:hover .wds-card-inner {
-          box-shadow: 0 16px 50px rgba(46, 163, 242, 0.15);
+          box-shadow: 0 16px 50px rgba(20, 184, 166, 0.15);
         }
 
         /* Hero banner */
@@ -180,7 +180,7 @@ const WorkingDoctorsSection: React.FC<Props> = ({ onBook }) => {
           width: 84px; height: 84px;
           border-radius: 50%;
           border: 4px solid #FFFFFF;
-          box-shadow: 0 4px 16px rgba(31, 45, 61, 0.1);
+          box-shadow: 0 4px 16px rgba(15, 45, 82, 0.1);
           overflow: hidden;
           background: #FFFFFF;
           position: relative; z-index: 2;
@@ -199,10 +199,10 @@ const WorkingDoctorsSection: React.FC<Props> = ({ onBook }) => {
         /* Experience badge */
         .wds-exp-badge {
           position: absolute; top: 12px; right: 12px; z-index: 3;
-          background: #2EA3F2;
+          background: #14B8A6;
           color: #FFFFFF; padding: 4px 10px; border-radius: 6px;
           font-size: 11px; font-weight: 600;
-          box-shadow: 0 2px 8px rgba(46, 163, 242, 0.2);
+          box-shadow: 0 2px 8px rgba(20, 184, 166, 0.2);
         }
 
         /* Card body */
@@ -213,66 +213,66 @@ const WorkingDoctorsSection: React.FC<Props> = ({ onBook }) => {
         .wds-name {
           margin: 0 0 4px;
           font-size: 1.1rem; font-weight: 600;
-          color: #1F2D3D;
+          color: #0F2D52;
           white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
         }
         .wds-spec {
           margin: 0 0 8px;
           font-size: 0.8rem; font-weight: 500;
-          color: #2EA3F2;
+          color: #14B8A6;
           text-transform: uppercase; letter-spacing: 0.05em;
         }
         .wds-verified {
           display: inline-flex; align-items: center; gap: 4px;
-          font-size: 0.75rem; font-weight: 500; color: #2BBF9C;
+          font-size: 0.75rem; font-weight: 500; color: #06B6D4;
           margin-bottom: 12px;
         }
 
         .wds-divider {
           width: 40px; height: 2px; border-radius: 2px; margin: 0 auto 12px;
-          background: #E6EEF5;
+          background: #E2E8F0;
         }
 
         .wds-meta {
           display: flex; flex-direction: column; gap: 6px;
-          font-size: 0.8rem; color: #6B7C93;
+          font-size: 0.8rem; color: #64748B;
           margin-bottom: 16px;
         }
         .wds-meta-row {
           display: flex; align-items: center; justify-content: center; gap: 8px;
         }
         .wds-meta-icon {
-          color: #2EA3F2; font-size: 11px;
+          color: #14B8A6; font-size: 11px;
         }
 
         /* Book Now button */
         .wds-book-btn {
           width: 100%; padding: 10px;
-          background: #2EA3F2;
+          background: #14B8A6;
           color: #fff; border: none; border-radius: 8px;
           font-size: 0.9rem; font-weight: 500;
           cursor: pointer;
           display: flex; align-items: center; justify-content: center; gap: 8px;
-          box-shadow: 0 2px 8px rgba(46, 163, 242, 0.2);
+          box-shadow: 0 2px 8px rgba(20, 184, 166, 0.2);
           transition: all 0.2s ease;
         }
         .wds-book-btn:hover {
           background: #1f8ad1;
-          box-shadow: 0 4px 12px rgba(46, 163, 242, 0.3);
+          box-shadow: 0 4px 12px rgba(20, 184, 166, 0.3);
         }
 
         .wds-view-btn {
           width: 100%; padding: 10px;
           background: transparent;
-          color: #1F2D3D; border: 1px solid #E6EEF5;
+          color: #0F2D52; border: 1px solid #E2E8F0;
           border-radius: 8px; font-size: 0.9rem; font-weight: 500;
           cursor: pointer;
           display: flex; align-items: center; justify-content: center; gap: 6px;
           transition: all 0.2s ease;
         }
         .wds-view-btn:hover {
-          border-color: #2EA3F2; color: #2EA3F2;
-          background: #F7FBFF;
+          border-color: #14B8A6; color: #14B8A6;
+          background: #F8FFFE;
         }
 
         /* Nav arrows */
@@ -280,30 +280,30 @@ const WorkingDoctorsSection: React.FC<Props> = ({ onBook }) => {
           position: absolute; top: 50%; transform: translateY(-50%);
           width: 44px; height: 44px; border-radius: 8px;
           background: #FFFFFF;
-          border: 1px solid #E6EEF5;
+          border: 1px solid #E2E8F0;
           display: flex; align-items: center; justify-content: center;
           cursor: pointer; z-index: 20;
-          box-shadow: 0 4px 12px rgba(31, 45, 61, 0.05);
-          color: #2EA3F2; font-size: 14px;
+          box-shadow: 0 4px 12px rgba(15, 45, 82, 0.05);
+          color: #14B8A6; font-size: 14px;
           transition: all 0.2s ease;
         }
         .wds-arrow:hover {
-          background: #F7FBFF;
-          border-color: #2EA3F2;
-          color: #2EA3F2;
+          background: #F8FFFE;
+          border-color: #14B8A6;
+          color: #14B8A6;
         }
 
         /* Dots */
         .wds-dots { display: flex; gap: 8px; justify-content: center; margin-top: 40px; }
         .wds-dot {
           width: 8px; height: 8px; border-radius: 50%;
-          background: #E6EEF5; cursor: pointer;
+          background: #E2E8F0; cursor: pointer;
           transition: all 0.2s ease;
         }
-        .wds-dot:hover { background: #6B7C93; }
+        .wds-dot:hover { background: #64748B; }
         .wds-dot.active {
           width: 24px; border-radius: 4px;
-          background: #2EA3F2;
+          background: #14B8A6;
         }
 
         /* Flip card */
@@ -356,10 +356,10 @@ const WorkingDoctorsSection: React.FC<Props> = ({ onBook }) => {
           font-size: 13px;
           box-shadow: 0 2px 8px rgba(0,0,0,0.15);
           transition: all 0.2s ease;
-          color: #2EA3F2;
+          color: #14B8A6;
         }
         .wds-flip-btn:hover {
-          background: #2EA3F2;
+          background: #14B8A6;
           color: white;
           transform: scale(1.1);
         }
@@ -391,15 +391,15 @@ const WorkingDoctorsSection: React.FC<Props> = ({ onBook }) => {
       {/* Header */}
       <div className="container" style={{ marginBottom: '52px', position: 'relative', zIndex: 1 }}>
         <div style={{ textAlign: 'center', marginBottom: '30px' }}>
-          <h2 className="section-title" style={{ color: '#1F2D3D' }}>Meet Our Medical Experts</h2>
-          <div className="section-divider" style={{ margin: '12px auto 16px', background: '#2EA3F2', width: '60px', height: '4px', borderRadius: '2px' }} />
-          <p className="section-subtitle" style={{ maxWidth: '520px', margin: '0 auto', color: '#6B7C93' }}>
+          <h2 className="section-title" style={{ color: '#0F2D52' }}>Meet Our Medical Experts</h2>
+          <div className="section-divider" style={{ margin: '12px auto 16px', background: '#14B8A6', width: '60px', height: '4px', borderRadius: '2px' }} />
+          <p className="section-subtitle" style={{ maxWidth: '520px', margin: '0 auto', color: '#64748B' }}>
             World-class specialists dedicated to your care.
           </p>
         </div>
         
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', justifyContent: 'center', alignItems: 'center' }}>
-          <i className="fas fa-filter" style={{ color: '#2EA3F2', fontSize: '14px', marginRight: '8px' }} />
+          <i className="fas fa-filter" style={{ color: '#14B8A6', fontSize: '14px', marginRight: '8px' }} />
           {specs.map((s, si) => (
             <button
               key={s}
@@ -489,7 +489,7 @@ const WorkingDoctorsSection: React.FC<Props> = ({ onBook }) => {
                           {doctor.photo
                             ? <img src={doctor.photo} alt={doctor.name} />
                             : <div className="wds-avatar-icon">
-                                <i className="fas fa-user-md" style={{ fontSize: '34px', color: '#2BBF9C' }} />
+                                <i className="fas fa-user-md" style={{ fontSize: '34px', color: '#06B6D4' }} />
                               </div>
                           }
                         </div>
@@ -574,17 +574,17 @@ const WorkingDoctorsSection: React.FC<Props> = ({ onBook }) => {
                     {/* Doctor avatar */}
                     <div style={{
                       width: 68, height: 68, borderRadius: '50%',
-                      border: '3px solid rgba(46,163,242,0.7)',
+                      border: '3px solid rgba(20, 184, 166,0.7)',
                       overflow: 'hidden',
                       marginBottom: 10,
                       flexShrink: 0,
                       background: 'linear-gradient(135deg, #DFF5F2 0%, #EAF4FF 100%)',
-                      boxShadow: '0 4px 16px rgba(46,163,242,0.25)',
+                      boxShadow: '0 4px 16px rgba(20, 184, 166,0.25)',
                     }}>
                       {doctor.photo
                         ? <img src={doctor.photo} alt={doctor.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                         : <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                            <i className="fas fa-user-md" style={{ fontSize: '26px', color: '#2BBF9C' }} />
+                            <i className="fas fa-user-md" style={{ fontSize: '26px', color: '#06B6D4' }} />
                           </div>
                       }
                     </div>
@@ -597,7 +597,7 @@ const WorkingDoctorsSection: React.FC<Props> = ({ onBook }) => {
                       {doctor.name.startsWith('Dr.') ? doctor.name : `Dr. ${doctor.name}`}
                     </p>
                     <p style={{
-                      color: '#2EA3F2', fontSize: '0.68rem', fontWeight: 600,
+                      color: '#14B8A6', fontSize: '0.68rem', fontWeight: 600,
                       textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 6,
                       textAlign: 'center',
                     }}>
@@ -606,17 +606,17 @@ const WorkingDoctorsSection: React.FC<Props> = ({ onBook }) => {
                     {/* Experience badge */}
                     <div style={{
                       display: 'inline-flex', alignItems: 'center', gap: 4,
-                      background: 'rgba(46,163,242,0.15)', border: '1px solid rgba(46,163,242,0.3)',
+                      background: 'rgba(20, 184, 166,0.15)', border: '1px solid rgba(20, 184, 166,0.3)',
                       borderRadius: 20, padding: '2px 10px', marginBottom: 10,
                     }}>
-                      <i className="fas fa-clock" style={{ fontSize: '9px', color: '#2BBF9C' }} />
+                      <i className="fas fa-clock" style={{ fontSize: '9px', color: '#06B6D4' }} />
                       <span style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.68rem', fontWeight: 500 }}>
                         {doctor.experience}+ Years Experience
                       </span>
                     </div>
 
                     {/* Decorative line */}
-                    <div style={{ width: 36, height: 2, background: 'linear-gradient(90deg, #2EA3F2, #2BBF9C)', borderRadius: 2, marginBottom: 10, flexShrink: 0 }} />
+                    <div style={{ width: 36, height: 2, background: 'linear-gradient(90deg, #14B8A6, #06B6D4)', borderRadius: 2, marginBottom: 10, flexShrink: 0 }} />
 
                     {/* Scrollable description */}
                     <div style={{
@@ -648,10 +648,10 @@ const WorkingDoctorsSection: React.FC<Props> = ({ onBook }) => {
                       <button
                         style={{
                           marginTop: 10, padding: '7px 18px',
-                          background: 'linear-gradient(135deg, #2EA3F2, #2BBF9C)',
+                          background: 'linear-gradient(135deg, #14B8A6, #06B6D4)',
                           color: '#fff', border: 'none', borderRadius: 8,
                           fontSize: '0.8rem', fontWeight: 600, cursor: 'pointer',
-                          boxShadow: '0 4px 14px rgba(46,163,242,0.3)',
+                          boxShadow: '0 4px 14px rgba(20, 184, 166,0.3)',
                           flexShrink: 0,
                         }}
                         onMouseDown={e => e.stopPropagation()}

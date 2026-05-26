@@ -61,8 +61,8 @@ export default function Navbar({ onAppointmentClick, onPortalClick, onCancelClic
           height: 70px;
           background: rgba(255, 255, 255, 0.92);
           backdrop-filter: blur(8px);
-          border-bottom: 1px solid #E6EEF5;
-          box-shadow: 0 4px 20px rgba(31, 45, 61, 0.04);
+          border-bottom: 1px solid #E2E8F0;
+          box-shadow: 0 4px 20px rgba(15, 45, 82, 0.04);
         }
 
         .hn-inner {
@@ -85,7 +85,7 @@ export default function Navbar({ onAppointmentClick, onPortalClick, onCancelClic
         }
         
         .hn-logo-icon {
-          color: #2EA3F2;
+          color: #14B8A6;
           font-size: 1.8rem;
           display: flex;
           align-items: center;
@@ -99,7 +99,7 @@ export default function Navbar({ onAppointmentClick, onPortalClick, onCancelClic
         .hn-logo-name {
           font-size: 1.25rem;
           font-weight: 700;
-          color: #1F2D3D;
+          color: #0F2D52;
           letter-spacing: 0.5px;
           line-height: 1.1;
         }
@@ -107,7 +107,7 @@ export default function Navbar({ onAppointmentClick, onPortalClick, onCancelClic
         .hn-logo-sub {
           font-size: 0.65rem;
           font-weight: 500;
-          color: #6B7C93;
+          color: #64748B;
           text-transform: uppercase;
           letter-spacing: 1.5px;
         }
@@ -123,7 +123,7 @@ export default function Navbar({ onAppointmentClick, onPortalClick, onCancelClic
           text-decoration: none;
           font-size: 0.9rem;
           font-weight: 500;
-          color: #6B7C93;
+          color: #64748B;
           cursor: pointer;
           transition: color 0.2s ease;
           position: relative;
@@ -136,14 +136,14 @@ export default function Navbar({ onAppointmentClick, onPortalClick, onCancelClic
           bottom: 0; left: 0;
           width: 100%;
           height: 2px;
-          background: #2EA3F2;
+          background: #14B8A6;
           transform: scaleX(0);
           transition: transform 0.2s ease;
           border-radius: 2px;
         }
 
         .hn-link:hover {
-          color: #2EA3F2;
+          color: #14B8A6;
         }
 
         .hn-link:hover::after, .hn-link.active::after {
@@ -151,7 +151,7 @@ export default function Navbar({ onAppointmentClick, onPortalClick, onCancelClic
         }
 
         .hn-link.active {
-          color: #2EA3F2;
+          color: #14B8A6;
         }
 
         /* Actions */
@@ -163,8 +163,8 @@ export default function Navbar({ onAppointmentClick, onPortalClick, onCancelClic
 
         .btn-outline {
           background: transparent;
-          border: 1px solid #E6EEF5;
-          color: #1F2D3D;
+          border: 1px solid #E2E8F0;
+          color: #0F2D52;
           padding: 10px 16px;
           border-radius: 8px;
           font-size: 0.9rem;
@@ -178,13 +178,13 @@ export default function Navbar({ onAppointmentClick, onPortalClick, onCancelClic
         }
 
         .btn-outline:hover {
-          border-color: #2EA3F2;
-          color: #2EA3F2;
-          background: #F7FBFF;
+          border-color: #14B8A6;
+          color: #14B8A6;
+          background: #F8FFFE;
         }
 
         .btn-solid {
-          background: #2EA3F2;
+          background: #14B8A6;
           border: none;
           color: #FFFFFF;
           padding: 10px 20px;
@@ -196,12 +196,12 @@ export default function Navbar({ onAppointmentClick, onPortalClick, onCancelClic
           display: flex;
           align-items: center;
           gap: 8px;
-          box-shadow: 0 2px 8px rgba(46, 163, 242, 0.2);
+          box-shadow: 0 2px 8px rgba(20, 184, 166, 0.2);
         }
 
         .btn-solid:hover {
-          background: #1f8ad1;
-          box-shadow: 0 4px 12px rgba(46, 163, 242, 0.3);
+          background: #0F766E;
+          box-shadow: 0 4px 12px rgba(20, 184, 166, 0.3);
         }
 
         /* Hamburger */
@@ -209,7 +209,7 @@ export default function Navbar({ onAppointmentClick, onPortalClick, onCancelClic
           display: none;
           background: transparent;
           border: none;
-          color: #1F2D3D;
+          color: #0F2D52;
           font-size: 1.5rem;
           cursor: pointer;
         }
@@ -217,7 +217,7 @@ export default function Navbar({ onAppointmentClick, onPortalClick, onCancelClic
         /* Overlay */
         .hn-overlay {
           position: fixed; inset: 0;
-          background: rgba(31, 45, 61, 0.4);
+          background: rgba(15, 45, 82, 0.4);
           backdrop-filter: blur(4px);
           z-index: 1998;
           opacity: 0; pointer-events: none;
@@ -230,7 +230,7 @@ export default function Navbar({ onAppointmentClick, onPortalClick, onCancelClic
           position: fixed; top: 0; right: -320px;
           width: 300px; height: 100vh;
           background: #FFFFFF;
-          box-shadow: -4px 0 24px rgba(31, 45, 61, 0.1);
+          box-shadow: -4px 0 24px rgba(15, 45, 82, 0.1);
           z-index: 1999;
           padding: 24px;
           transition: right 0.3s ease;
@@ -246,16 +246,16 @@ export default function Navbar({ onAppointmentClick, onPortalClick, onCancelClic
         }
         
         .hn-sb-close {
-          background: #F7FBFF;
+          background: #F8FFFE;
           border: none;
-          color: #6B7C93;
+          color: #64748B;
           width: 36px; height: 36px;
           border-radius: 8px;
           display: flex; align-items: center; justify-content: center;
           cursor: pointer;
           transition: background 0.2s;
         }
-        .hn-sb-close:hover { background: #E6EEF5; color: #1F2D3D; }
+        .hn-sb-close:hover { background: #E2E8F0; color: #0F2D52; }
 
         .hn-sb-links {
           display: flex; flex-direction: column; gap: 8px;
@@ -266,7 +266,7 @@ export default function Navbar({ onAppointmentClick, onPortalClick, onCancelClic
           display: flex; align-items: center; gap: 12px;
           padding: 12px;
           border-radius: 8px;
-          color: #6B7C93;
+          color: #64748B;
           text-decoration: none;
           font-weight: 500;
           transition: all 0.2s ease;
@@ -279,8 +279,8 @@ export default function Navbar({ onAppointmentClick, onPortalClick, onCancelClic
         }
 
         .hn-sb-link:hover, .hn-sb-link.active {
-          background: #F7FBFF;
-          color: #2EA3F2;
+          background: #F8FFFE;
+          color: #14B8A6;
         }
 
         .hn-sb-actions {

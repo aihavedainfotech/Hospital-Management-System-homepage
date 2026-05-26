@@ -9,12 +9,12 @@ export default function AmbulanceService() {
       padding: '3rem 0',
       background: '#FFFFFF',
       position: 'relative', overflow: 'hidden',
-      borderTop: '1px solid #E6EEF5'
+      borderTop: '1px solid #E2E8F0'
     }}>
       <style>{`
         .amb-dot-grid {
           position: absolute; inset: 0; pointer-events: none;
-          background-image: radial-gradient(rgba(46,163,242,0.05) 1px, transparent 1px);
+          background-image: radial-gradient(rgba(20, 184, 166,0.05) 1px, transparent 1px);
           background-size: 28px 28px;
         }
         @keyframes ambPulse {
@@ -38,18 +38,18 @@ export default function AmbulanceService() {
           border-radius: 20px; padding: 2.5rem;
           width: 100%; max-width: 700px; max-height: 90vh;
           overflow-y: auto; position: relative;
-          border: 1px solid #E6EEF5;
-          box-shadow: 0 20px 50px rgba(31, 45, 61, 0.1);
+          border: 1px solid #E2E8F0;
+          box-shadow: 0 20px 50px rgba(15, 45, 82, 0.1);
         }
         .amb-close-btn {
           position: absolute; top: 1.25rem; right: 1.25rem;
-          background: #F7FBFF; border: 1px solid #E6EEF5;
+          background: #F8FFFE; border: 1px solid #E2E8F0;
           border-radius: 8px; width: 36px; height: 36px; font-size: 1rem;
-          cursor: pointer; color: #6B7C93;
+          cursor: pointer; color: #64748B;
           display: flex; align-items: center; justify-content: center;
           transition: all 0.2s ease;
         }
-        .amb-close-btn:hover { background: #EAF4FF; color: #2EA3F2; }
+        .amb-close-btn:hover { background: #EAF4FF; color: #14B8A6; }
         .amb-call-banner {
           background: linear-gradient(135deg, #EF4444 0%, #F87171 100%);
           border-radius: 16px; padding: 1.75rem; margin-bottom: 1.5rem;
@@ -59,10 +59,10 @@ export default function AmbulanceService() {
           position: relative; overflow: hidden;
         }
         .amb-info-box {
-          background: #F7FBFF;
+          background: #F8FFFE;
           border-radius: 12px; padding: 1.25rem;
           display: flex; align-items: center; gap: 1rem;
-          border: 1px solid #E6EEF5;
+          border: 1px solid #E2E8F0;
         }
         @keyframes ambModalIn {
           from { opacity: 0; transform: scale(0.98) translateY(10px); }
@@ -77,10 +77,10 @@ export default function AmbulanceService() {
         <button className="amb-btn" onClick={() => setShowModal(true)}>
           <i className="fas fa-ambulance" />
         </button>
-        <h3 style={{ fontSize: '1.25rem', fontWeight: 600, color: '#1F2D3D', marginBottom: '0.25rem' }}>
+        <h3 style={{ fontSize: '1.25rem', fontWeight: 600, color: '#0F2D52', marginBottom: '0.25rem' }}>
           Ambulance Services
         </h3>
-        <p style={{ fontSize: '0.85rem', color: '#6B7C93' }}>Emergency Support 24/7</p>
+        <p style={{ fontSize: '0.85rem', color: '#64748B' }}>Emergency Support 24/7</p>
       </div>
 
       {showModal && (
@@ -88,7 +88,7 @@ export default function AmbulanceService() {
           onClick={() => setShowModal(false)}
           style={{
             position: 'fixed', inset: 0,
-            background: 'rgba(31,45,61,0.4)',
+            background: 'rgba(15, 45, 82,0.4)',
             backdropFilter: 'blur(4px)',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             zIndex: 1000, padding: '1rem',
@@ -107,10 +107,10 @@ export default function AmbulanceService() {
               }}>
                 <i className="fas fa-ambulance" style={{ color: '#EF4444', fontSize: '1.5rem', margin: 'auto' }} />
               </div>
-              <h2 style={{ fontSize: '1.75rem', fontWeight: 700, color: '#1F2D3D', marginBottom: '0.5rem' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 700, color: '#0F2D52', marginBottom: '0.5rem' }}>
                 Emergency Ambulance
               </h2>
-              <p style={{ color: '#6B7C93', fontSize: '0.95rem', maxWidth: '500px', margin: '0 auto', lineHeight: 1.6 }}>
+              <p style={{ color: '#64748B', fontSize: '0.95rem', maxWidth: '500px', margin: '0 auto', lineHeight: 1.6 }}>
                 Rapid medical response within minutes. Our advanced life support fleet is ready to assist you anytime.
               </p>
             </div>
@@ -140,9 +140,9 @@ export default function AmbulanceService() {
             </div>
 
             <div className="amb-info-box">
-              <i className="fas fa-info-circle" style={{ color: '#2EA3F2', fontSize: '1.2rem', flexShrink: 0 }} />
-              <p style={{ fontSize: '0.85rem', color: '#6B7C93', lineHeight: 1.6, margin: 0 }}>
-                <strong style={{ color: '#1F2D3D' }}>Response Time: Under 10 minutes.</strong> Fully equipped with ICU facilities and expert medical staff to handle all emergencies.
+              <i className="fas fa-info-circle" style={{ color: '#14B8A6', fontSize: '1.2rem', flexShrink: 0 }} />
+              <p style={{ fontSize: '0.85rem', color: '#64748B', lineHeight: 1.6, margin: 0 }}>
+                <strong style={{ color: '#0F2D52' }}>Response Time: Under 10 minutes.</strong> Fully equipped with ICU facilities and expert medical staff to handle all emergencies.
               </p>
             </div>
           </div>
