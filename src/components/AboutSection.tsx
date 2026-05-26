@@ -45,33 +45,36 @@ export default function AboutSection() {
                 {/* Duplicate list for seamless scrolling */}
                 {[...services, ...services].map((s, idx) => (
                   <div key={`${s.id}-${idx}`} style={{
-                    width: '140px',
-                    height: '140px',
+                    width: '260px',
+                    height: '180px',
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    padding: '1rem',
+                    padding: '1.5rem',
                     background: 'white',
-                    borderRadius: '16px',
+                    borderRadius: '20px',
                     border: '1px solid #E2E8F0',
-                    boxShadow: '0 4px 15px rgba(0,0,0,0.05)',
+                    boxShadow: '0 6px 20px rgba(15,45,82,0.04)',
                     textAlign: 'center',
-                    transition: 'transform 0.2s, box-shadow 0.2s',
+                    transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                    boxSizing: 'border-box',
                     cursor: 'pointer'
                   }}
-                  onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-5px)'; e.currentTarget.style.boxShadow = '0 8px 25px rgba(20,184,166,0.15)'; }}
-                  onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 4px 15px rgba(0,0,0,0.05)'; }}
+                  onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-6px)'; e.currentTarget.style.boxShadow = '0 12px 30px rgba(20,184,166,0.15)'; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 6px 20px rgba(15,45,82,0.04)'; }}
                   >
                     <div style={{
-                      width: '50px', height: '50px', borderRadius: '50%',
+                      width: '56px', height: '56px', borderRadius: '50%',
                       background: '#F8FFFE', color: 'var(--blue-primary)',
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      fontSize: '1.5rem', marginBottom: '12px'
+                      fontSize: '1.6rem', marginBottom: '14px',
+                      flexShrink: 0
                     }}>
                       <i className={s.icon || 'fas fa-stethoscope'}></i>
                     </div>
-                    <h4 style={{ margin: 0, fontSize: '0.9rem', color: 'var(--text-dark)', fontWeight: 600 }}>{s.title}</h4>
+                    <h4 style={{ margin: '0 0 6px 0', fontSize: '1.1rem', color: 'var(--text-dark)', fontWeight: 600 }}>{s.title}</h4>
+                    <p style={{ margin: 0, fontSize: '0.85rem', color: '#64748B', lineHeight: '1.5', fontWeight: 400 }}>{s.description}</p>
                   </div>
                 ))}
               </div>
