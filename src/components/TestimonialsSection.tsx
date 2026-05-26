@@ -85,7 +85,7 @@ export default function TestimonialsSection() {
 
   return (
     <section className="section-pad" style={{
-      background: 'linear-gradient(160deg, #F8FFFE 0%, #FFFFFF 50%, #F8FFFE 100%)',
+      background: 'var(--bg-primary)',
       overflow: 'hidden',
       position: 'relative',
       minHeight: '200px'
@@ -200,12 +200,12 @@ export default function TestimonialsSection() {
             {/* Gradient fade edges */}
             <div style={{
               position: 'absolute', left: 0, top: 0, bottom: 0, width: '80px',
-              background: 'linear-gradient(to right, #F8FFFE, transparent)',
+              background: 'linear-gradient(to right, var(--bg-primary), transparent)',
               pointerEvents: 'none', zIndex: 1
             }} />
             <div style={{
               position: 'absolute', right: 0, top: 0, bottom: 0, width: '80px',
-              background: 'linear-gradient(to left, #F8FFFE, transparent)',
+              background: 'linear-gradient(to left, var(--bg-primary), transparent)',
               pointerEvents: 'none', zIndex: 1
             }} />
           </>

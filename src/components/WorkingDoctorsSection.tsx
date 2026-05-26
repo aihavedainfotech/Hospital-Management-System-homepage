@@ -72,7 +72,7 @@ const WorkingDoctorsSection: React.FC<Props> = ({ onBook }) => {
   };
 
   if (loading) return (
-    <section id="doctors" style={{ padding: '80px 20px', textAlign: 'center', background: '#F8FFFE' }}>
+    <section id="doctors" style={{ padding: '80px 20px', textAlign: 'center', background: 'var(--bg-primary)' }}>
       <div style={{
         width: 48, height: 48,
         border: '4px solid #14B8A6', borderTop: '4px solid transparent',
@@ -93,7 +93,7 @@ const WorkingDoctorsSection: React.FC<Props> = ({ onBook }) => {
   return (
     <section id="doctors" style={{
       padding: '80px 0 70px',
-      background: '#FFFFFF',
+      background: 'var(--bg-primary)',
       overflow: 'hidden', position: 'relative',
     }}>
       <style>{`

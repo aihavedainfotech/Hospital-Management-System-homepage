@@ -57,7 +57,7 @@ export default function HeroSection({ onBook, onDoctors }: HeroProps) {
       minHeight: '72vh',
       display: 'flex',
       flexDirection: 'column',
-      background: 'linear-gradient(135deg, #DFF7F4 0%, #F8FFFE 100%)',
+      background: 'linear-gradient(135deg, #DFF7F4 0%, var(--bg-primary) 100%)',
     }}>
       <style>{`
         /* Floating animations for icons */

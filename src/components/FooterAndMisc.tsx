@@ -50,7 +50,7 @@ export function HealthTipsSection() {
   ];
 
   return (
-    <section className="section-pad" style={{ background: '#F8FFFE', borderTop: '1px solid #E2E8F0' }}>
+    <section className="section-pad" style={{ background: 'var(--bg-primary)', borderTop: '1px solid #E2E8F0' }}>
       <div className="container">
         <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
           <h2 className="section-title" style={{ color: '#0F2D52' }}>Health Tips</h2>

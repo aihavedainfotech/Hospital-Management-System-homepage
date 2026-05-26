@@ -116,7 +116,7 @@ export default function EventsSection() {
 
   return (
     <section id="events" className="section-pad" style={{
-      background: '#FFFFFF',
+      background: 'var(--bg-primary)',
       position: 'relative', overflow: 'hidden', borderTop: '1px solid #E2E8F0'
     }}>
       <style>{`
