@@ -128,14 +128,14 @@ export default function EventsSection() {
         .ev-card {
           background: #FFFFFF;
           border-radius: 16px; overflow: hidden;
-          border: 1px solid #E2E8F0;
-          box-shadow: 0 4px 12px rgba(15, 45, 82, 0.05);
+          border: 1px solid rgba(15, 45, 82, 0.12);
+          box-shadow: 0 10px 30px rgba(15, 45, 82, 0.1);
           transition: all 0.2s ease; cursor: pointer; height: 100%;
         }
         .ev-card:hover {
           transform: translateY(-4px);
-          box-shadow: 0 12px 24px rgba(15, 45, 82, 0.1);
-          border-color: #14B8A6;
+          box-shadow: 0 16px 40px rgba(20, 184, 166, 0.22);
+          border-color: rgba(20, 184, 166, 0.35);
         }
         .ev-cat-pill {
           display: inline-flex; align-items: center; gap: 6px;
@@ -145,14 +145,14 @@ export default function EventsSection() {
         .ach-card {
           background: #FFFFFF;
           border-radius: 16px; padding: 2rem; text-align: center;
-          border: 1px solid #E2E8F0;
-          box-shadow: 0 4px 12px rgba(15, 45, 82, 0.05);
+          border: 1px solid rgba(15, 45, 82, 0.12);
+          box-shadow: 0 10px 30px rgba(15, 45, 82, 0.1);
           transition: all 0.2s ease;
         }
         .ach-card:hover {
           transform: translateY(-4px);
-          box-shadow: 0 12px 24px rgba(15, 45, 82, 0.1);
-          border-color: #14B8A6;
+          box-shadow: 0 16px 40px rgba(20, 184, 166, 0.22);
+          border-color: rgba(20, 184, 166, 0.35);
         }
       `}</style>
 

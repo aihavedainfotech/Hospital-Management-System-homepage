@@ -186,19 +186,19 @@ const WorkingDoctorsSection: React.FC<Props> = ({ onBook }) => {
           border-radius: 20px;
           overflow: hidden;
           background: #FFFFFF;
-          border: 1px solid #E2E8F0;
-          box-shadow: 0 8px 32px rgba(15, 45, 82, 0.08);
-          transition: box-shadow 0.28s ease;
+          border: 1px solid rgba(15, 45, 82, 0.12);
+          box-shadow: 0 12px 36px rgba(15, 45, 82, 0.14);
+          transition: box-shadow 0.28s ease, border-color 0.28s ease;
           position: relative;
         }
 
         .wds-card.is-center .wds-card-inner {
-          box-shadow: 0 12px 40px rgba(20, 184, 166, 0.12);
-          border-color: rgba(20, 184, 166, 0.2);
+          box-shadow: 0 18px 48px rgba(15, 45, 82, 0.2);
+          border-color: rgba(20, 184, 166, 0.35);
         }
 
         .wds-card.is-center:hover .wds-card-inner {
-          box-shadow: 0 16px 50px rgba(20, 184, 166, 0.15);
+          box-shadow: 0 24px 60px rgba(15, 45, 82, 0.26);
         }
 
         /* Hero banner */

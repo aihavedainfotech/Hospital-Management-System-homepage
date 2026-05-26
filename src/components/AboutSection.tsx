@@ -54,15 +54,15 @@ export default function AboutSection() {
                     padding: '1.5rem',
                     background: 'white',
                     borderRadius: '20px',
-                    border: '1px solid #E2E8F0',
-                    boxShadow: '0 6px 20px rgba(15,45,82,0.04)',
+                    border: '1px solid rgba(15, 45, 82, 0.12)',
+                    boxShadow: '0 10px 30px rgba(15, 45, 82, 0.1)',
                     textAlign: 'center',
-                    transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                    transition: 'transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease',
                     boxSizing: 'border-box',
                     cursor: 'pointer'
                   }}
-                  onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-6px)'; e.currentTarget.style.boxShadow = '0 12px 30px rgba(20,184,166,0.15)'; }}
-                  onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 6px 20px rgba(15,45,82,0.04)'; }}
+                  onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-6px)'; e.currentTarget.style.boxShadow = '0 16px 40px rgba(20, 184, 166, 0.22)'; e.currentTarget.style.borderColor = 'rgba(20, 184, 166, 0.3)'; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 10px 30px rgba(15, 45, 82, 0.1)'; e.currentTarget.style.borderColor = 'rgba(15, 45, 82, 0.12)'; }}
                   >
                     <div style={{
                       width: '56px', height: '56px', borderRadius: '50%',

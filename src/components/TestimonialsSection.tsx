@@ -109,8 +109,8 @@ export default function TestimonialsSection() {
           backdrop-filter: blur(14px);
           border-radius: 16px;
           padding: 1.5rem;
-          border: 1px solid #E2E8F0;
-          box-shadow: 0 4px 16px rgba(15, 45, 82, 0.05);
+          border: 1px solid rgba(15, 45, 82, 0.12);
+          box-shadow: 0 10px 30px rgba(15, 45, 82, 0.1);
           flex-shrink: 0;
           width: 300px;
           position: relative;
@@ -118,8 +118,8 @@ export default function TestimonialsSection() {
           margin-right: 20px;
         }
         .compliment-card:hover {
-          box-shadow: 0 12px 32px rgba(15, 45, 82, 0.08);
-          border-color: #14B8A6;
+          box-shadow: 0 16px 40px rgba(20, 184, 166, 0.22);
+          border-color: rgba(20, 184, 166, 0.35);
           transform: translateY(-4px);
         }
         .compliment-quote-icon {
