@@ -129,7 +129,7 @@ export default function Footer({ onBook, onPortal }: { onBook: () => void; onPor
   };
 
   return (
-    <footer id="contact" style={{ paddingTop: '4rem', background: '#0F766E', color: 'white' }}>
+    <footer id="contact" style={{ paddingTop: '4rem', background: '#0F2D52', color: 'white' }}>
       <div className="container">
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '3rem', paddingBottom: '3rem', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
           <div>
