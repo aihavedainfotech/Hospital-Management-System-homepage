@@ -150,17 +150,9 @@ function AppContent() {
 
         {/* Complaint & Suggestion Box Modal */}
         {showFeedback && (
-          <div style={{ position: 'fixed', inset: 0, zIndex: 10000, background: 'rgba(15, 45, 82, 0.7)', overflowY: 'auto', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem' }}>
-            <button 
-              onClick={() => setShowFeedback(false)} 
-              style={{ position: 'fixed', top: '30px', right: '40px', background: 'white', color: '#EF4444', border: 'none', width: '50px', height: '50px', borderRadius: '50%', cursor: 'pointer', zIndex: 10001, display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 15px rgba(0,0,0,0.2)', transition: 'transform 0.2s' }}
-              onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(1.1)'; e.currentTarget.style.background = '#EF4444'; e.currentTarget.style.color = 'white'; }}
-              onMouseLeave={(e) => { e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.background = 'white'; e.currentTarget.style.color = '#EF4444'; }}
-            >
-              <i className="fas fa-times" style={{ fontSize: '1.5rem' }}></i>
-            </button>
-            <div style={{ background: 'white', borderRadius: '20px', width: '100%', maxWidth: '1000px', position: 'relative', boxShadow: '0 25px 50px -12px rgba(0,0,0,0.25)', overflow: 'hidden' }}>
-              <ComplaintSuggestion />
+          <div style={{ position: 'fixed', inset: 0, zIndex: 10000, background: 'rgba(15, 45, 82, 0.7)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1rem' }}>
+            <div style={{ background: 'white', borderRadius: '20px', width: '100%', maxWidth: '860px', maxHeight: '94vh', position: 'relative', boxShadow: '0 25px 50px -12px rgba(0,0,0,0.25)', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+              <ComplaintSuggestion onClose={() => setShowFeedback(false)} />
             </div>
           </div>
         )}

@@ -172,6 +172,49 @@ export default function HeroSection({ onBook, onDoctors }: HeroProps) {
           justify-content: center;
           align-items: center;
           z-index: 1;
+          cursor: pointer;
+        }
+
+        /* Pulsing outer ring */
+        .hero-image-wrapper::before {
+          content: '';
+          position: absolute;
+          inset: -10px;
+          border-radius: 38px;
+          border: 2px solid rgba(20,184,166,0);
+          transition: border-color 0.4s ease, inset 0.4s ease;
+          z-index: 0;
+          pointer-events: none;
+        }
+        .hero-image-wrapper:hover::before {
+          border-color: rgba(20,184,166,0.45);
+          inset: -14px;
+          animation: hero-ring-pulse 2s ease-in-out infinite;
+        }
+        @keyframes hero-ring-pulse {
+          0%, 100% { border-color: rgba(20,184,166,0.45); }
+          50%       { border-color: rgba(6,182,212,0.7); }
+        }
+
+        /* Shimmer overlay */
+        .hero-image-wrapper::after {
+          content: '';
+          position: absolute;
+          inset: 8px;
+          border-radius: 24px;
+          background: linear-gradient(115deg, transparent 40%, rgba(255,255,255,0.18) 50%, transparent 60%);
+          background-size: 200% 100%;
+          background-position: 200% 0;
+          z-index: 10;
+          pointer-events: none;
+          transition: background-position 0s;
+        }
+        .hero-image-wrapper:hover::after {
+          animation: hero-shimmer 0.8s ease forwards;
+        }
+        @keyframes hero-shimmer {
+          0%   { background-position: 200% 0; }
+          100% { background-position: -200% 0; }
         }
 
         .hero-image {
@@ -183,7 +226,53 @@ export default function HeroSection({ onBook, onDoctors }: HeroProps) {
           box-shadow: 0 30px 60px rgba(15,45,82,0.2);
           border: 8px solid white;
           object-fit: cover;
+          transition: transform 0.45s cubic-bezier(0.34,1.56,0.64,1),
+                      box-shadow 0.45s ease,
+                      border-color 0.35s ease;
         }
+        .hero-image-wrapper:hover .hero-image {
+          transform: translateY(-10px) scale(1.025);
+          box-shadow: 0 40px 80px rgba(15,45,82,0.28), 0 0 0 4px rgba(20,184,166,0.25);
+          border-color: rgba(20,184,166,0.6);
+        }
+
+        /* Floating badge top-left */
+        .hero-img-badge-tl {
+          position: absolute; top: 18px; left: 18px; z-index: 20;
+          background: rgba(255,255,255,0.92);
+          backdrop-filter: blur(10px);
+          border-radius: 14px; padding: 8px 14px;
+          display: flex; align-items: center; gap: 8px;
+          box-shadow: 0 8px 24px rgba(15,45,82,0.14);
+          border: 1px solid rgba(20,184,166,0.2);
+          opacity: 0; transform: translate(-8px,-8px) scale(0.9);
+          transition: opacity 0.35s ease 0.05s, transform 0.4s cubic-bezier(0.34,1.56,0.64,1) 0.05s;
+          pointer-events: none;
+        }
+        .hero-img-badge-br {
+          position: absolute; bottom: 24px; right: 18px; z-index: 20;
+          background: rgba(255,255,255,0.92);
+          backdrop-filter: blur(10px);
+          border-radius: 14px; padding: 8px 14px;
+          display: flex; align-items: center; gap: 8px;
+          box-shadow: 0 8px 24px rgba(15,45,82,0.14);
+          border: 1px solid rgba(20,184,166,0.2);
+          opacity: 0; transform: translate(8px,8px) scale(0.9);
+          transition: opacity 0.35s ease 0.12s, transform 0.4s cubic-bezier(0.34,1.56,0.64,1) 0.12s;
+          pointer-events: none;
+        }
+        .hero-image-wrapper:hover .hero-img-badge-tl,
+        .hero-image-wrapper:hover .hero-img-badge-br {
+          opacity: 1; transform: translate(0,0) scale(1);
+        }
+        .hero-badge-icon {
+          width: 32px; height: 32px; border-radius: 9px;
+          background: linear-gradient(135deg,#14B8A6,#0F766E);
+          display: flex; align-items: center; justify-content: center;
+          color: white; font-size: 0.85rem; flex-shrink: 0;
+        }
+        .hero-badge-num  { font-size: 1rem; font-weight: 700; color: #0F2D52; line-height: 1; }
+        .hero-badge-lbl  { font-size: 0.65rem; color: #64748B; font-weight: 500; }
 
         /* Responsive */
         @media (max-width: 992px) {
@@ -238,6 +327,26 @@ export default function HeroSection({ onBook, onDoctors }: HeroProps) {
           <div className="hero-image-wrapper">
             <div className="hero-circular-glow"></div>
             <img src={heroImg} alt="Hospital Facility" className="hero-image" />
+
+            {/* Top-left badge */}
+            <div className="hero-img-badge-tl">
+              <div className="hero-badge-icon"><i className="fas fa-user-md" /></div>
+              <div>
+                <div className="hero-badge-num">120+</div>
+                <div className="hero-badge-lbl">Expert Doctors</div>
+              </div>
+            </div>
+
+            {/* Bottom-right badge */}
+            <div className="hero-img-badge-br">
+              <div className="hero-badge-icon" style={{ background: 'linear-gradient(135deg,#06B6D4,#0284C7)' }}>
+                <i className="fas fa-award" />
+              </div>
+              <div>
+                <div className="hero-badge-num">15+ Yrs</div>
+                <div className="hero-badge-lbl">of Excellence</div>
+              </div>
+            </div>
           </div>
         </div>
 
