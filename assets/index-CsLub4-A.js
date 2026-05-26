@@ -293,13 +293,15 @@ Error generating stack: `+e.message+`
 
         .hn-link {
           text-decoration: none;
-          font-size: 0.9rem;
-          font-weight: 500;
+          font-size: 0.85rem;
+          font-weight: 600;
           color: #64748B;
           cursor: pointer;
           transition: color 0.2s ease;
           position: relative;
           padding: 8px 0;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
         }
 
         .hn-link::after {
@@ -339,14 +341,16 @@ Error generating stack: `+e.message+`
           color: #0F2D52;
           padding: 10px 16px;
           border-radius: 8px;
-          font-size: 0.9rem;
-          font-weight: 500;
+          font-size: 0.85rem;
+          font-weight: 600;
           cursor: pointer;
           transition: all 0.2s ease;
           display: flex;
           align-items: center;
           gap: 8px;
           text-decoration: none;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
         }
 
         .btn-outline:hover {
@@ -361,14 +365,16 @@ Error generating stack: `+e.message+`
           color: #FFFFFF;
           padding: 10px 20px;
           border-radius: 8px;
-          font-size: 0.9rem;
-          font-weight: 500;
+          font-size: 0.85rem;
+          font-weight: 600;
           cursor: pointer;
           transition: all 0.2s ease;
           display: flex;
           align-items: center;
           gap: 8px;
           box-shadow: 0 2px 8px rgba(20, 184, 166, 0.2);
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
         }
 
         .btn-solid:hover {
@@ -440,14 +446,16 @@ Error generating stack: `+e.message+`
           border-radius: 8px;
           color: #64748B;
           text-decoration: none;
-          font-weight: 500;
+          font-weight: 600;
           transition: all 0.2s ease;
           background: transparent;
           border: none;
           text-align: left;
           width: 100%;
           cursor: pointer;
-          font-size: 0.95rem;
+          font-size: 0.85rem;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
         }
 
         .hn-sb-link:hover, .hn-sb-link.active {
@@ -465,7 +473,7 @@ Error generating stack: `+e.message+`
           .hn-actions { display: none; }
           .hn-hamburger { display: block; }
         }
-      `}),(0,I.jsx)(`nav`,{className:`hn-navbar${i?` scrolled`:``}`,children:(0,I.jsxs)(`div`,{className:`hn-inner`,children:[(0,I.jsxs)(`a`,{href:`#home`,className:`hn-logo`,onClick:e=>{e.preventDefault(),d(`#home`)},children:[(0,I.jsx)(`div`,{className:`hn-logo-icon`,children:(0,I.jsx)(De,{size:36,animated:!1,variant:`light`})}),(0,I.jsxs)(`div`,{className:`hn-logo-text`,children:[(0,I.jsx)(`span`,{className:`hn-logo-name`,children:`HAVEDA`}),(0,I.jsx)(`span`,{className:`hn-logo-sub`,children:`Healthcare`})]})]}),(0,I.jsx)(`div`,{className:`hn-links`,children:Oe.map(e=>(0,I.jsx)(`a`,{href:e.href,className:`hn-link${c===e.href?` active`:``}`,onClick:t=>{t.preventDefault(),e.label===`Cancel/Reschedule`?n?.():e.label===`Feedback`?r?.():d(e.href)},children:e.label},e.href))}),(0,I.jsxs)(`div`,{className:`hn-actions`,children:[(0,I.jsxs)(`button`,{className:`btn-outline`,onClick:t,children:[(0,I.jsx)(`i`,{className:`fas fa-user-circle`}),` Portal`]}),(0,I.jsx)(`button`,{className:`btn-solid`,onClick:e,children:`Book Now`})]}),(0,I.jsx)(`button`,{className:`hn-hamburger`,onClick:()=>s(!0),children:(0,I.jsx)(`i`,{className:`fas fa-bars`})})]})}),(0,I.jsx)(`div`,{className:`hn-overlay${o?` open`:``}`,onClick:()=>s(!1)}),(0,I.jsxs)(`div`,{ref:u,className:`hn-sidebar${o?` open`:``}`,children:[(0,I.jsxs)(`div`,{className:`hn-sb-header`,children:[(0,I.jsx)(`div`,{className:`hn-logo-text`,children:(0,I.jsx)(`span`,{className:`hn-logo-name`,children:`HAVEDA`})}),(0,I.jsx)(`button`,{className:`hn-sb-close`,onClick:()=>s(!1),children:(0,I.jsx)(`i`,{className:`fas fa-times`})})]}),(0,I.jsx)(`div`,{className:`hn-sb-links`,children:Oe.map(e=>(0,I.jsxs)(`button`,{className:`hn-sb-link${c===e.href?` active`:``}`,onClick:()=>{s(!1),e.label===`Cancel/Reschedule`?n?.():e.label===`Feedback`?r?.():d(e.href)},children:[(0,I.jsx)(`i`,{className:e.icon,style:{width:`24px`,textAlign:`center`}}),e.label]},e.href))}),(0,I.jsxs)(`div`,{className:`hn-sb-actions`,children:[(0,I.jsxs)(`button`,{className:`btn-outline`,onClick:()=>{s(!1),t?.()},style:{width:`100%`,justifyContent:`center`},children:[(0,I.jsx)(`i`,{className:`fas fa-user-circle`}),` Patient Portal`]}),(0,I.jsx)(`button`,{className:`btn-solid`,onClick:()=>{s(!1),e?.()},style:{width:`100%`,justifyContent:`center`},children:`Book Appointment`})]})]})]})}var Ae=`/Hospital-Management-System-homepage/assets/new_hero-CvL-vwmn.png`,je=[{value:355e3,label:`Patients Served`,suffix:`+`,icon:`fas fa-users`},{value:98,label:`Satisfaction Rate`,suffix:`%`,icon:`fas fa-heart`},{value:120,label:`Expert Doctors`,suffix:`+`,icon:`fas fa-user-md`}];function Me({target:e,suffix:t,duration:n=2e3}){let[r,i]=(0,b.useState)(0),a=(0,b.useRef)(null),o=(0,b.useRef)(!1);return(0,b.useEffect)(()=>{let t=a.current;if(!t)return;let r=new IntersectionObserver(([t])=>{if(t.isIntersecting&&!o.current){o.current=!0;let t=performance.now(),r=a=>{let o=a-t,s=Math.min(o/n,1),c=1-(1-s)**3;i(Math.floor(c*e)),s<1?requestAnimationFrame(r):i(e)};requestAnimationFrame(r)}},{threshold:.5});return r.observe(t),()=>r.disconnect()},[e,n]),(0,I.jsxs)(`span`,{ref:a,children:[e>=1e3?(r/1e3).toFixed(+(r>=1e3&&r<1e4))+`k`:r,t]})}function Ne({onBook:e,onDoctors:t}){return(0,I.jsxs)(`section`,{id:`home`,style:{paddingTop:`80px`,position:`relative`,overflow:`hidden`,minHeight:`85vh`,display:`flex`,flexDirection:`column`,background:`linear-gradient(135deg, #DFF7F4 0%, #F8FFFE 100%)`},children:[(0,I.jsx)(`style`,{children:`
+      `}),(0,I.jsx)(`nav`,{className:`hn-navbar${i?` scrolled`:``}`,children:(0,I.jsxs)(`div`,{className:`hn-inner`,children:[(0,I.jsxs)(`a`,{href:`#home`,className:`hn-logo`,onClick:e=>{e.preventDefault(),d(`#home`)},children:[(0,I.jsx)(`div`,{className:`hn-logo-icon`,children:(0,I.jsx)(De,{size:36,animated:!1,variant:`light`})}),(0,I.jsxs)(`div`,{className:`hn-logo-text`,children:[(0,I.jsx)(`span`,{className:`hn-logo-name`,children:`HAVEDA`}),(0,I.jsx)(`span`,{className:`hn-logo-sub`,children:`Healthcare`})]})]}),(0,I.jsx)(`div`,{className:`hn-links`,children:Oe.map(e=>(0,I.jsx)(`a`,{href:e.href,className:`hn-link${c===e.href?` active`:``}`,onClick:t=>{t.preventDefault(),e.label===`Cancel/Reschedule`?n?.():e.label===`Feedback`?r?.():d(e.href)},children:e.label},e.href))}),(0,I.jsxs)(`div`,{className:`hn-actions`,children:[(0,I.jsxs)(`button`,{className:`btn-outline`,onClick:t,children:[(0,I.jsx)(`i`,{className:`fas fa-user-circle`}),` Portal`]}),(0,I.jsx)(`button`,{className:`btn-solid`,onClick:e,children:`Appointment Booking`})]}),(0,I.jsx)(`button`,{className:`hn-hamburger`,onClick:()=>s(!0),children:(0,I.jsx)(`i`,{className:`fas fa-bars`})})]})}),(0,I.jsx)(`div`,{className:`hn-overlay${o?` open`:``}`,onClick:()=>s(!1)}),(0,I.jsxs)(`div`,{ref:u,className:`hn-sidebar${o?` open`:``}`,children:[(0,I.jsxs)(`div`,{className:`hn-sb-header`,children:[(0,I.jsx)(`div`,{className:`hn-logo-text`,children:(0,I.jsx)(`span`,{className:`hn-logo-name`,children:`HAVEDA`})}),(0,I.jsx)(`button`,{className:`hn-sb-close`,onClick:()=>s(!1),children:(0,I.jsx)(`i`,{className:`fas fa-times`})})]}),(0,I.jsx)(`div`,{className:`hn-sb-links`,children:Oe.map(e=>(0,I.jsxs)(`button`,{className:`hn-sb-link${c===e.href?` active`:``}`,onClick:()=>{s(!1),e.label===`Cancel/Reschedule`?n?.():e.label===`Feedback`?r?.():d(e.href)},children:[(0,I.jsx)(`i`,{className:e.icon,style:{width:`24px`,textAlign:`center`}}),e.label]},e.href))}),(0,I.jsxs)(`div`,{className:`hn-sb-actions`,children:[(0,I.jsxs)(`button`,{className:`btn-outline`,onClick:()=>{s(!1),t?.()},style:{width:`100%`,justifyContent:`center`},children:[(0,I.jsx)(`i`,{className:`fas fa-user-circle`}),` Patient Portal`]}),(0,I.jsx)(`button`,{className:`btn-solid`,onClick:()=>{s(!1),e?.()},style:{width:`100%`,justifyContent:`center`},children:`Appointment Booking`})]})]})]})}var Ae=`/Hospital-Management-System-homepage/assets/new_hero-CvL-vwmn.png`,je=[{value:355e3,label:`Patients Served`,suffix:`+`,icon:`fas fa-users`},{value:98,label:`Satisfaction Rate`,suffix:`%`,icon:`fas fa-heart`},{value:120,label:`Expert Doctors`,suffix:`+`,icon:`fas fa-user-md`}];function Me({target:e,suffix:t,duration:n=2e3}){let[r,i]=(0,b.useState)(0),a=(0,b.useRef)(null),o=(0,b.useRef)(!1);return(0,b.useEffect)(()=>{let t=a.current;if(!t)return;let r=new IntersectionObserver(([t])=>{if(t.isIntersecting&&!o.current){o.current=!0;let t=performance.now(),r=a=>{let o=a-t,s=Math.min(o/n,1),c=1-(1-s)**3;i(Math.floor(c*e)),s<1?requestAnimationFrame(r):i(e)};requestAnimationFrame(r)}},{threshold:.5});return r.observe(t),()=>r.disconnect()},[e,n]),(0,I.jsxs)(`span`,{ref:a,children:[e>=1e3?(r/1e3).toFixed(+(r>=1e3&&r<1e4))+`k`:r,t]})}function Ne({onBook:e,onDoctors:t}){return(0,I.jsxs)(`section`,{id:`home`,style:{paddingTop:`80px`,position:`relative`,overflow:`hidden`,minHeight:`85vh`,display:`flex`,flexDirection:`column`,background:`linear-gradient(135deg, #DFF7F4 0%, #F8FFFE 100%)`},children:[(0,I.jsx)(`style`,{children:`
         /* Floating animations for icons */
         @keyframes float1 {
           0% { transform: translateY(0) rotate(0deg); }
