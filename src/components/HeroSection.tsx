@@ -210,23 +210,23 @@ export default function HeroSection({ onBook, onDoctors }: HeroProps) {
               lineHeight: 1.2,
               marginBottom: '1.25rem',
             }}>
-              We Are Committed To <br/>
-              <span style={{ color: '#14B8A6' }}>Your Health.</span>
+              Our Health, <br/>
+              <span style={{ color: '#14B8A6' }}>Our Priority.</span>
             </h1>
 
             <p style={{
               color: '#64748B', fontSize: '1.05rem', lineHeight: 1.7,
               marginBottom: '2.5rem', fontWeight: 400,
             }}>
-              Experience modern, compassionate healthcare. Our state-of-the-art facilities and expert medical team are here to provide the premium care you deserve, right when you need it most.
+              At Haveda Hospital, we combine advanced technology with compassionate care to help you and your family live healthier, happier lives. Our experienced healthcare professionals are dedicated to delivering safe, trusted, and patient-centered medical services with excellence, innovation, and 24/7 support.
             </p>
 
             <div className="hero-btn-group" style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-              <button className="btn-primary" onClick={onBook} style={{ padding: '0.875rem 2rem', fontSize: '1rem' }}>
-                Book Appointment
+              <button className="btn-primary" onClick={onBook} style={{ padding: '0.875rem 2rem', fontSize: '1rem', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                🗓️ Book Appointment
               </button>
-              <button className="btn-secondary" onClick={onDoctors} style={{ padding: '0.875rem 2rem', fontSize: '1rem' }}>
-                Consult a Doctor
+              <button className="btn-secondary" onClick={onDoctors} style={{ padding: '0.875rem 2rem', fontSize: '1rem', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                🩺 Find a Doctor
               </button>
             </div>
           </div>
