@@ -820,10 +820,10 @@ export default function PatientPortal({ onClose }: { onClose: () => void }) {
             )}
           </div>
         ) : !showPatientSelect ? (
-          <div style={{ display: 'flex', flex: 1, overflow: 'hidden' }}>
+          <div className="portal-layout" style={{ display: 'flex', flex: 1, overflow: 'hidden' }}>
             {/* Sidebar */}
             <div className="portal-sidebar" style={{ width: '200px', flexShrink: 0, overflowY: 'auto' }}>
-              <div style={{ padding: '1rem 0.75rem' }}>
+              <div className="portal-sidebar-inner" style={{ padding: '1rem 0.75rem' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', padding: '0.75rem', background: 'rgba(61,140,140,0.08)', borderRadius: '10px', marginBottom: '0.5rem' }}>
                   <div style={{ width: '36px', height: '36px', background: 'var(--teal)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 700, fontSize: '0.9rem', flexShrink: 0 }}>
                     {(patient?.name || 'P').charAt(0)}
@@ -844,7 +844,7 @@ export default function PatientPortal({ onClose }: { onClose: () => void }) {
             </div>
 
             {/* Content */}
-            <div style={{ flex: 1, overflowY: 'auto', padding: '1.25rem', position: 'relative' }}>
+            <div className="portal-content" style={{ flex: 1, overflowY: 'auto', padding: '1.25rem', position: 'relative' }}>
               {loadingRecords && (
                 <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(255,255,255,0.7)', zIndex: 10, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '1rem' }}>
                   <i className="fas fa-circle-notch fa-spin" style={{ fontSize: '2rem', color: 'var(--teal)' }}></i>

@@ -1627,6 +1627,48 @@ body {
   .cs-info-card {
     padding: 1rem !important;
   }
+
+  /* --- Mobile specific fixes as requested by user --- */
+
+  /* Patient Portal Mobile Fixes */
+  .portal-layout {
+    flex-direction: column !important;
+  }
+  .portal-sidebar {
+    width: 100% !important;
+    border-right: none !important;
+    border-bottom: 1px solid var(--border-color);
+    display: flex !important;
+    overflow-x: auto !important;
+    padding-bottom: 0.5rem !important;
+  }
+  .portal-sidebar-inner {
+    display: flex !important;
+    padding: 0.5rem !important;
+  }
+  .portal-sidebar-item {
+    white-space: nowrap;
+    padding: 0.5rem 0.75rem !important;
+    flex-shrink: 0;
+  }
+  .portal-content {
+    padding: 1rem !important;
+  }
+
+  /* Doctors Cards Mobile Fix */
+  .wds-card {
+    width: 100% !important;
+    max-width: 300px !important;
+    margin: 0 auto !important;
+  }
+
+  /* Slots View Mobile Fix */
+  .time-slot {
+    padding: 0.5rem !important;
+    font-size: 0.8rem !important;
+    flex: 1 1 calc(33.333% - 0.5rem) !important;
+    text-align: center;
+  }
 }
 
 /* Skeleton Loader */
