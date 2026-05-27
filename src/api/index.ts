@@ -152,7 +152,7 @@ export const fetchPatientPrescriptions = (phone: string) =>
   apiClient.get(`${HP}/patients/${phone}/prescriptions`).then(r => r.data);
 
 export const fetchPatientLabOrders = (patientId: string) =>
-  apiClient.get(`/patient/${patientId}/lab_orders`).then(r => r.data);
+  apiClient.get(`${HP}/patients/${patientId}/lab_orders`).then(r => r.data);
 
 export const fetchEvents = () =>
   apiClient.get(`${HP}/events`).then(r => r.data.data || r.data).catch(() => []);
@@ -189,7 +189,7 @@ export const fetchCompliments = () =>
     .catch(() => []);
 
 export const searchAppointments = (phone: string, date: string) =>
-  apiClient.get(`${HP}/appointments/search`, { params: { phone, date } }).then(r => r.data);
+  apiClient.get(`${HP}/cancellations/search`, { params: { phone, date } }).then(r => r.data);
 
 export const cancelAppointmentRequest = (id: string, reason: string) =>
   apiClient.post(`${HP}/cancellations/cancel`, { id, reason }).then(r => r.data);

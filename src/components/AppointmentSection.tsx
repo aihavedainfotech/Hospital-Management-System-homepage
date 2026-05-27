@@ -429,13 +429,15 @@ export default function AppointmentSection({ preSelectedDoctor, initialCancelMod
     if (pincode.length === 6) {
       const fetchAddress = async () => {
         try {
-          const response = await fetch(`https://api.postalpincode.in/pincode/${pincode}`);
-          const data = await response.json();
-          if (data[0] && data[0].Status === 'Success') {
-            const postOffice = data[0].PostOffice[0];
-            setCity(postOffice.District);
-            setStateName(postOffice.State);
-            toast.success(`Location found: ${postOffice.District}, ${postOffice.State}`);
+          const response = await fetch(`https://api.zippopotam.us/IN/${pincode}`);
+          if (response.ok) {
+            const data = await response.json();
+            if (data.places && data.places.length > 0) {
+              const place = data.places[0];
+              setCity(place['place name']);
+              setStateName(place.state);
+              toast.success(`Location found: ${place['place name']}, ${place.state}`);
+            }
           }
         } catch (error) {
           console.error('Pincode lookup failed:', error);

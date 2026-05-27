@@ -85,7 +85,7 @@ export default function TestimonialsSection() {
 
   return (
     <section className="section-pad" style={{
-      background: 'var(--bg-primary)',
+      background: 'var(--bg-section)',
       overflow: 'hidden',
       position: 'relative',
       minHeight: '200px'

@@ -509,15 +509,15 @@ export default function PatientPortal({ onClose }: { onClose: () => void }) {
         try {
           const pId = familyOtpTarget.id;
           const [reportsRes, apptsRes, rxRes] = await Promise.all([
-            apiClient.get(`/patient/${pId}/reports`),
-            apiClient.get(`/patient/${pId}/appointments`),
-            apiClient.get(`/patient/${pId}/prescriptions`),
+            apiClient.get(`/homepage/patients/${pId}/reports`),
+            apiClient.get(`/homepage/patients/${pId}/appointments`),
+            apiClient.get(`/homepage/patients/${pId}/prescriptions`),
           ]);
           const { fetchPatientLabOrders: fetchLab } = await import('../api');
           const labRes = await fetchLab(pId);
           setMemberRecords({
             appointments: Array.isArray(apptsRes.data) ? apptsRes.data : (apptsRes.data?.data || []),
-            reports: (reportsRes.data || []).map((r: any) => ({ ...r, file_url: `/api/patient/reports/${r.id}/download` })),
+            reports: (reportsRes.data || []).map((r: any) => ({ ...r, file_url: `/api/homepage/patients/reports/${r.id}/download` })),
             prescriptions: rxRes.data || [],
             labOrders: labRes || [],
           });
@@ -612,15 +612,15 @@ export default function PatientPortal({ onClose }: { onClose: () => void }) {
 
         try {
           const [reportsRes, apptsRes, rxRes] = await Promise.all([
-            apiClient.get(`/patient/${pId}/reports`),
-            apiClient.get(`/patient/${pId}/appointments`),
-            apiClient.get(`/patient/${pId}/prescriptions`)
+            apiClient.get(`/homepage/patients/${pId}/reports`),
+            apiClient.get(`/homepage/patients/${pId}/appointments`),
+            apiClient.get(`/homepage/patients/${pId}/prescriptions`)
           ]);
           const labOrders = await fetchPatientLabOrders(pId);
 
           setReports((reportsRes.data || []).map((r: any) => ({
             ...r,
-            file_url: `/api/patient/reports/${r.id}/download`
+            file_url: `/api/homepage/patients/reports/${r.id}/download`
           })));
           
           // Handle appointments data - could be nested in .data or direct array

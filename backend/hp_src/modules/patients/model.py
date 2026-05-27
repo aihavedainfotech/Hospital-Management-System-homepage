@@ -211,8 +211,8 @@ class Patient:
         """Get all fields from the prescriptions table for a patient"""
         if not patient_id: return []
         query = """
-        SELECT p.id, d.name as doctor_name, p.created_at as date, p.medication as medications, p.dosage, p.instructions,
-               p.status, p.created_at as updated_at
+        SELECT p.id, d.name as doctor_name, p.created_at::text as date, p.medication as medications, p.dosage, p.instructions,
+               p.status, p.created_at::text as updated_at
         FROM prescriptions p
         LEFT JOIN doctors d ON p.doctor_id = d.id
         WHERE p.patient_id = %s
@@ -226,8 +226,8 @@ class Patient:
         if not patient_id: return []
         
         query = """
-        SELECT id, report_code as title, generated_at as date, 'Lab Report' as type, 
-               doctor_id as doctor_name, lab_order_id, created_at
+        SELECT id, report_code as title, generated_at::text as date, 'Lab Report' as type, 
+               doctor_id as doctor_name, lab_order_id, created_at::text
         FROM generated_reports 
         WHERE patient_id = %s
         ORDER BY generated_at DESC
@@ -263,13 +263,13 @@ class Patient:
             id, 
             doctor_id, 
             doctor_name, 
-            appointment_date as date, 
-            appointment_time as time, 
+            appointment_date::text as date, 
+            appointment_time::text as time, 
             status, 
             reference_number, 
             department_name as department, 
             payment_status, 
-            payment_amount,
+            payment_amount::float as payment_amount,
             NULL as refund_status,
             NULL as cancellation_reason,
             NULL as cancelled_at
@@ -282,16 +282,16 @@ class Patient:
             id, 
             doctor_id, 
             doctor_name, 
-            appointment_date as date, 
-            appointment_time as time, 
+            appointment_date::text as date, 
+            appointment_time::text as time, 
             appoinment_status as status,
             id as reference_number,
             NULL as department,
             payment_status, 
-            amount as payment_amount,
+            amount::float as payment_amount,
             refund_status,
             cancellation_reason,
-            cancelled_at
+            cancelled_at::text
         FROM appointments_cancelled 
         WHERE patient_id = %s
         
@@ -306,8 +306,8 @@ class Patient:
         
         query = """
         SELECT order_id as id, test_name, doctor_name, 'Laboratory' as department, 
-               labtests_status as status, created_time as order_date, 
-               payment_status, amount, prescription_id
+               labtests_status as status, created_time::text as order_date, 
+               payment_status, amount::float as amount, prescription_id
         FROM lab_prescriptions_outpatients 
         WHERE patient_id = %s
         ORDER BY created_time DESC

@@ -374,7 +374,7 @@ export default function HeroSection({ onBook, onDoctors }: HeroProps) {
               lineHeight: 1.2,
               marginBottom: '1.25rem',
             }}>
-              Our Health, <br/>
+              Your Health, <br/>
               <span style={{ color: '#14B8A6' }}>Our Priority.</span>
             </h1>
 

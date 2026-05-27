@@ -72,7 +72,7 @@ const WorkingDoctorsSection: React.FC<Props> = ({ onBook }) => {
   };
 
   if (loading) return (
-    <section id="doctors" style={{ padding: '80px 20px', textAlign: 'center', background: 'var(--bg-primary)' }}>
+    <section id="doctors" style={{ padding: '80px 20px', textAlign: 'center', background: 'var(--bg-section)' }}>
       <div style={{
         width: 48, height: 48,
         border: '4px solid #14B8A6', borderTop: '4px solid transparent',
@@ -93,7 +93,7 @@ const WorkingDoctorsSection: React.FC<Props> = ({ onBook }) => {
   return (
     <section id="doctors" style={{
       padding: '80px 0 70px',
-      background: 'var(--bg-primary)',
+      background: 'var(--bg-section)',
       overflow: 'hidden', position: 'relative',
     }}>
       <style>{`
@@ -428,7 +428,7 @@ const WorkingDoctorsSection: React.FC<Props> = ({ onBook }) => {
       {/* Header */}
       <div className="container" style={{ marginBottom: '52px', position: 'relative', zIndex: 1 }}>
         <div style={{ textAlign: 'center', marginBottom: '30px' }}>
-          <h2 className="section-title" style={{ color: '#0F2D52' }}>Meet Our Medical Experts</h2>
+          <h2 className="section-title" style={{ color: '#0F2D52' }}>Meet Our Doctors</h2>
           <div className="section-divider" style={{ margin: '12px auto 16px', background: '#14B8A6', width: '60px', height: '4px', borderRadius: '2px' }} />
           <p className="section-subtitle" style={{ maxWidth: '520px', margin: '0 auto', color: '#64748B' }}>
             World-class specialists dedicated to your care.

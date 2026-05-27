@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import CancelRescheduleModal from './CancelRescheduleModal';
 
 interface FloatingBannerProps {
   onBook: () => void;
@@ -9,11 +10,14 @@ interface FloatingBannerProps {
 
 export default function FloatingBanner({ onBook, onFindDoctor, onCancel, onFeedback }: FloatingBannerProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [showCancelModal, setShowCancelModal] = useState(false);
+
+  const handleCancelClick = () => setShowCancelModal(true);
 
   const actions = [
     { label: 'Book Appointment', icon: 'fas fa-calendar-plus', color: '#0F766E', bg: 'linear-gradient(135deg,#14B8A6,#0F766E)', onClick: onBook },
     { label: 'Find Doctor',      icon: 'far fa-user',           color: '#2563EB', bg: 'linear-gradient(135deg,#3B82F6,#2563EB)', onClick: onFindDoctor },
-    { label: 'Cancel/Reschedule',icon: 'far fa-file-alt',       color: '#B45309', bg: 'linear-gradient(135deg,#F59E0B,#B45309)', onClick: onCancel },
+    { label: 'Cancel/Reschedule',icon: 'far fa-file-alt',       color: '#B45309', bg: 'linear-gradient(135deg,#F59E0B,#B45309)', onClick: handleCancelClick },
     { label: 'Feedback',         icon: 'far fa-star',           color: '#BE185D', bg: 'linear-gradient(135deg,#EC4899,#BE185D)', onClick: onFeedback },
   ];
 
@@ -152,6 +156,10 @@ export default function FloatingBanner({ onBook, onFindDoctor, onCancel, onFeedb
         {/* Spacer to push page content above bottom bar */}
         <div style={{ height: '72px' }} />
       </div>
+      {/* ── Cancel / Reschedule Popup Modal ── */}
+      {showCancelModal && (
+        <CancelRescheduleModal onClose={() => setShowCancelModal(false)} />
+      )}
     </>
   );
 }
