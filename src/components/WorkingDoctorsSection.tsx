@@ -13,7 +13,6 @@ const WorkingDoctorsSection: React.FC<Props> = ({ onBook }) => {
   const [loading, setLoading] = useState(true);
   const [activeFilter, setActiveFilter] = useState('Cardiology');
   const [specs, setSpecs] = useState<string[]>([]);
-  const [centerIdx, setCenterIdx] = useState(0);
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
   const [flippedIds, setFlippedIds] = useState<Set<string | number>>(new Set());
   const [hoveredButtonDocId, setHoveredButtonDocId] = useState<string | number | null>(null);
@@ -51,15 +50,8 @@ const WorkingDoctorsSection: React.FC<Props> = ({ onBook }) => {
       );
     }
     setFiltered(list);
-    setCenterIdx(0);
+    setFiltered(list);
   }, [activeFilter, searchQuery, doctors]);
-
-
-  const goTo = (i: number) => {
-    if (filtered.length === 0) return;
-    setCenterIdx(((i % filtered.length) + filtered.length) % filtered.length);
-  };
-
 
   const toggleFlip = (doctorId: string | number, e: React.MouseEvent) => {
     e.stopPropagation();
@@ -72,23 +64,39 @@ const WorkingDoctorsSection: React.FC<Props> = ({ onBook }) => {
   };
 
   if (loading) return (
-    <section id="doctors" style={{ padding: '80px 20px', textAlign: 'center', background: 'var(--bg-section)' }}>
-      <div style={{
-        width: 48, height: 48,
-        border: '4px solid #14B8A6', borderTop: '4px solid transparent',
-        borderRadius: '50%', animation: 'wds-spin 1s linear infinite', margin: '0 auto 16px',
-      }} />
-      <p style={{ color: '#64748B' }}>Loading specialists...</p>
+    <section id="doctors" style={{
+      padding: '80px 0 70px',
+      background: 'var(--bg-section)',
+      minHeight: '850px' // Reserve height to prevent Cumulative Layout Shift
+    }}>
+      <style>{`
+        @keyframes shimmer { 100% { transform: translateX(100%); } }
+        .skeleton { position: relative; overflow: hidden; background-color: #e2e8f0; border-radius: 20px; }
+        .skeleton::after {
+          content: ""; position: absolute; top: 0; right: 0; bottom: 0; left: 0;
+          transform: translateX(-100%);
+          background-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0.4) 20%, rgba(255, 255, 255, 0.6) 60%, rgba(255, 255, 255, 0) 100%);
+          animation: shimmer 2s infinite;
+        }
+      `}</style>
+      <div className="container" style={{ textAlign: 'center' }}>
+        <div className="skeleton" style={{ width: '120px', height: '20px', margin: '0 auto 16px', borderRadius: '4px' }}></div>
+        <div className="skeleton" style={{ width: '300px', height: '40px', margin: '0 auto 40px', borderRadius: '8px' }}></div>
+        
+        {/* Skeleton Tabs */}
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '10px', marginBottom: '40px', flexWrap: 'wrap' }}>
+          {[1,2,3,4].map(i => <div key={i} className="skeleton" style={{ width: '100px', height: '40px', borderRadius: '20px' }}></div>)}
+        </div>
+
+        {/* Skeleton Grid */}
+        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '30px', maxWidth: '1200px', margin: '0 auto' }}>
+          {[1,2,3,4,5].map(i => (
+             <div key={i} className="skeleton" style={{ height: '410px', width: '290px', maxWidth: '100%' }}></div>
+          ))}
+        </div>
+      </div>
     </section>
   );
-
-  const maxSlots = Math.min(VISIBLE, filtered.length);
-  const actualHalf = Math.floor(maxSlots / 2);
-  const slots = Array.from({ length: maxSlots }, (_, i) => {
-    const offset = i - actualHalf;
-    const idx = ((centerIdx + offset) % filtered.length + filtered.length) % filtered.length;
-    return { offset, doctor: filtered[idx], idx };
-  });
 
   return (
     <section id="doctors" style={{
@@ -168,18 +176,15 @@ const WorkingDoctorsSection: React.FC<Props> = ({ onBook }) => {
         }
         .wds-search-clear:hover { color: #EF4444; }
 
-        /* Card shell */
+        /* Card Grid Shell */
         .wds-card {
-          position: absolute;
-          width: ${CARD_W}px;
+          width: 290px;
+          max-width: 100%;
           border-radius: 20px;
           overflow: visible;
           cursor: pointer;
           user-select: none;
-          transition:
-            transform 0.38s cubic-bezier(0.25,0.46,0.45,0.94),
-            opacity   0.38s ease,
-            box-shadow 0.28s ease;
+          transition: transform 0.28s ease, box-shadow 0.28s ease;
         }
 
         .wds-card-inner {
@@ -188,17 +193,25 @@ const WorkingDoctorsSection: React.FC<Props> = ({ onBook }) => {
           background: #FFFFFF;
           border: 1px solid rgba(15, 45, 82, 0.12);
           box-shadow: 0 12px 36px rgba(15, 45, 82, 0.14);
-          transition: box-shadow 0.28s ease, border-color 0.28s ease;
+          transition: box-shadow 0.28s ease, border-color 0.28s ease, transform 0.28s ease;
           position: relative;
+          height: 100%;
         }
 
-        .wds-card.is-center .wds-card-inner {
-          box-shadow: 0 18px 48px rgba(15, 45, 82, 0.2);
+        .wds-card:hover .wds-card-inner {
+          box-shadow: 0 24px 60px rgba(15, 45, 82, 0.26);
           border-color: rgba(20, 184, 166, 0.35);
         }
-
-        .wds-card.is-center:hover .wds-card-inner {
-          box-shadow: 0 24px 60px rgba(15, 45, 82, 0.26);
+        
+        .wds-grid {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 30px;
+          width: 100%;
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 20px;
         }
 
         /* Hero banner */
@@ -310,37 +323,6 @@ const WorkingDoctorsSection: React.FC<Props> = ({ onBook }) => {
         .wds-view-btn:hover {
           border-color: #14B8A6; color: #14B8A6;
           background: #F8FFFE;
-        }
-
-        /* Nav arrows */
-        .wds-arrow {
-          position: absolute; top: 50%; transform: translateY(-50%);
-          width: 44px; height: 44px; border-radius: 8px;
-          background: #FFFFFF;
-          border: 1px solid #E2E8F0;
-          display: flex; align-items: center; justify-content: center;
-          cursor: pointer; z-index: 20;
-          box-shadow: 0 4px 12px rgba(15, 45, 82, 0.05);
-          color: #14B8A6; font-size: 14px;
-          transition: all 0.2s ease;
-        }
-        .wds-arrow:hover {
-          background: #F8FFFE;
-          border-color: #14B8A6;
-          color: #14B8A6;
-        }
-
-        /* Dots */
-        .wds-dots { display: flex; gap: 8px; justify-content: center; margin-top: 40px; }
-        .wds-dot {
-          width: 8px; height: 8px; border-radius: 50%;
-          background: #E2E8F0; cursor: pointer;
-          transition: all 0.2s ease;
-        }
-        .wds-dot:hover { background: #64748B; }
-        .wds-dot.active {
-          width: 24px; border-radius: 4px;
-          background: #14B8A6;
         }
 
         /* Flip card */
@@ -471,300 +453,243 @@ const WorkingDoctorsSection: React.FC<Props> = ({ onBook }) => {
       </div>
 
 
-      {/* Carousel */}
-      <div
-        style={{ position: 'relative', height: `${CARD_H + 80}px`, perspective: '1200px' }}
-        onMouseLeave={() => { setHoveredIdx(null); }}
-      >
+      {/* Grid Layout */}
+      <div className="wds-grid" onMouseLeave={() => setHoveredIdx(null)}>
         {filtered.length === 0 ? (
           <div style={{
             display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-            height: '100%', color: '#64748B', fontSize: '1rem', fontWeight: 500,
+            gridColumn: '1 / -1', minHeight: '300px', color: '#64748B', fontSize: '1rem', fontWeight: 500,
             padding: '20px', textAlign: 'center'
           }}>
             <i className="fas fa-user-md-slash" style={{ fontSize: '48px', color: '#CBD5E1', marginBottom: '16px' }} />
             <p>No specialists available in this department currently.</p>
           </div>
         ) : (
-          <>
-            <button className="wds-arrow" style={{ left: 'calc(50% - 420px)' }} onClick={() => goTo(centerIdx - 1)}>
-              <i className="fas fa-chevron-left" />
-            </button>
+          filtered.map((doctor, idx) => {
+            const isHovered = hoveredIdx === idx;
+            const isFlipped = (isHovered && hoveredButtonDocId !== doctor.id) || flippedIds.has(doctor.id);
 
-            {slots.map(({ offset, doctor, idx }) => {
-              if (!doctor) return null;
-              const isCenter = offset === 0;
-              const absOff = Math.abs(offset);
-              const isHovered = hoveredIdx === idx;
-              const isFlipped = (isHovered && hoveredButtonDocId !== doctor.id) || flippedIds.has(doctor.id);
-
-              const x = offset * (CARD_W * 0.76);
-              const rotY = offset * -32;
-              const scale = isCenter
-                ? (isHovered ? 1.05 : 1.0)
-                : (isHovered ? 1 - absOff * 0.05 : 1 - absOff * 0.1);
-              const z = isCenter ? 90 : -absOff * 60;
-              const opacity = isCenter ? 1 : 1 - absOff * 0.20;
-              const ty = isHovered ? -8 : 0;
-              const zIdx = VISIBLE - absOff + (isHovered ? 5 : 0);
-
-              return (
-                <div
-                  key={`${doctor.id}-${offset}`}
-                  className={`wds-card${isCenter ? ' is-center' : ''}`}
-                  style={{
-                    left: `calc(50% - ${CARD_W / 2}px)`,
-                    top: '30px',
-                    transform: `translateX(${x}px) translateY(${ty}px) translateZ(${z}px) rotateY(${rotY}deg) scale(${scale})`,
-                    opacity,
-                    zIndex: zIdx,
-                    height: `${CARD_H}px`,
-                  }}
-                  onMouseEnter={() => setHoveredIdx(idx)}
-                  onMouseLeave={() => {
-                    setHoveredIdx(null);
-                    setFlippedIds(prev => {
-                      const next = new Set(prev);
-                      next.delete(doctor.id);
-                      return next;
-                    });
-                  }}
-                  onClick={() => isCenter
-                    ? onBook(doctor)
-                    : goTo(((centerIdx + offset) % filtered.length + filtered.length) % filtered.length)
-                  }
-                >
-                  <div className="wds-flip-container">
-                    <div className={`wds-flip-inner${isFlipped ? ' flipped' : ''}`}>
-                      {/* FRONT FACE */}
-                      <div className="wds-flip-front">
-                        <div className="wds-card-inner" style={{ height: '100%' }}>
-                          {/* Flip button — always visible */}
-                          <button
-                            className="wds-flip-btn"
-                            onClick={e => toggleFlip(doctor.id, e)}
-                            title="See doctor profile"
-                          >
-                            ↺
-                          </button>
-                          {/* Hero with avatar inside */}
-                          <div className="wds-hero" style={{ position: 'relative' }}>
-                            <div className="wds-exp-badge">{doctor.experience}+ Yrs</div>
-                            {doctor.is_active === false && (
-                              <div style={{
-                                position: 'absolute', inset: 0,
-                                background: 'rgba(255,255,255,0.7)', zIndex: 5, backdropFilter: 'blur(2px)',
-                                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                              }}>
-                                <span style={{
-                                  background: '#EF4444', color: '#fff', fontSize: '0.7rem',
-                                  fontWeight: 600, padding: '4px 10px', borderRadius: '6px',
-                                }}>Unavailable</span>
-                              </div>
-                            )}
-                            <div className="wds-avatar-ring" style={{ opacity: doctor.is_active === false ? 0.7 : 1 }}>
-                              {doctor.photo
-                                ? <img src={doctor.photo} alt={doctor.name} />
-                                : <div className="wds-avatar-icon">
-                                    <i className="fas fa-user-md" style={{ fontSize: '34px', color: '#06B6D4' }} />
-                                  </div>
-                              }
-                            </div>
-                          </div>
-
-                          {/* Body */}
-                          <div className="wds-body">
-                            <p className="wds-name">
-                              {doctor.name.startsWith('Dr.') ? doctor.name : `Dr. ${doctor.name}`}
-                            </p>
-                            <p className="wds-spec">{doctor.specialization}</p>
-                            {doctor.is_active !== false ? (
-                              <div className="wds-verified">
-                                <i className="fas fa-check-circle" />
-                                Verified Specialist
-                              </div>
-                            ) : (
-                              <div style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '0.75rem', color: '#EF4444', fontWeight: 500, marginBottom: '12px' }}>
-                                <i className="fas fa-times-circle" />
-                                Not Accepting Appointments
-                              </div>
-                            )}
-                            <div className="wds-divider" />
-
-                            <div className="wds-meta">
-                              <div className="wds-meta-row">
-                                <i className="fas fa-clock wds-meta-icon" />
-                                <span>{doctor.timings}</span>
-                              </div>
-                              <div className="wds-meta-row">
-                                <i className="fas fa-calendar-alt wds-meta-icon" />
-                                <span>{doctor.available_days}</span>
-                              </div>
-                            </div>
-
-                            {isCenter ? (
-                              doctor.is_active === false ? (
-                                <div style={{
-                                  width: '100%', padding: '10px', borderRadius: '8px',
-                                  background: '#F3F4F6', color: '#9CA3AF',
-                                  fontSize: '0.9rem', fontWeight: 500, textAlign: 'center',
-                                  border: '1px solid #E5E7EB',
-                                }}
-                                  onMouseEnter={() => setHoveredButtonDocId(doctor.id)}
-                                  onMouseLeave={() => setHoveredButtonDocId(null)}
-                                >
-                                  <i className="fas fa-ban" style={{ marginRight: '6px' }} />
-                                  Doctor Inactive
-                                </div>
-                              ) : (
-                                <button
-                                  className="wds-book-btn"
-                                  onMouseEnter={() => setHoveredButtonDocId(doctor.id)}
-                                  onMouseLeave={() => setHoveredButtonDocId(null)}
-                                  onMouseDown={e => e.stopPropagation()}
-                                  onClick={e => { e.stopPropagation(); onBook(doctor); }}
-                                >
-                                  <i className="fas fa-calendar-check" />
-                                  Book Now
-                                </button>
-                              )
-                            ) : (
-                              <button
-                                className="wds-view-btn"
-                                onMouseEnter={() => setHoveredButtonDocId(doctor.id)}
-                                onMouseLeave={() => setHoveredButtonDocId(null)}
-                                onMouseDown={e => e.stopPropagation()}
-                                onClick={e => { e.stopPropagation(); onBook(doctor); }}
-                                style={{ opacity: doctor.is_active === false ? 0.5 : 1 }}
-                              >
-                                <i className="fas fa-eye" />
-                                View Profile
-                              </button>
-                            )}
-                          </div>
-
-                        </div>
-                      </div>
-
-                      {/* BACK FACE */}
-                      <div className="wds-flip-back">
+            return (
+              <div
+                key={doctor.id}
+                className="wds-card"
+                style={{ height: `${CARD_H}px` }}
+                onMouseEnter={() => setHoveredIdx(idx)}
+                onMouseLeave={() => {
+                  setHoveredIdx(null);
+                  setFlippedIds(prev => {
+                    const next = new Set(prev);
+                    next.delete(doctor.id);
+                    return next;
+                  });
+                }}
+                onClick={() => onBook(doctor)}
+              >
+                <div className="wds-flip-container">
+                  <div className={`wds-flip-inner${isFlipped ? ' flipped' : ''}`}>
+                    {/* FRONT FACE */}
+                    <div className="wds-flip-front">
+                      <div className="wds-card-inner">
+                        {/* Flip button — always visible */}
                         <button
-                          className="wds-flip-back-btn"
+                          className="wds-flip-btn"
                           onClick={e => toggleFlip(doctor.id, e)}
-                          title="Flip back"
+                          title="See doctor profile"
                         >
                           ↺
                         </button>
-
-                        {/* Doctor avatar */}
-                        <div style={{
-                          width: 68, height: 68, borderRadius: '50%',
-                          border: '3px solid rgba(20, 184, 166,0.7)',
-                          overflow: 'hidden',
-                          marginBottom: 10,
-                          flexShrink: 0,
-                          background: 'linear-gradient(135deg, #DFF5F2 0%, #EAF4FF 100%)',
-                          boxShadow: '0 4px 16px rgba(20, 184, 166,0.25)',
-                        }}>
-                          {doctor.photo
-                            ? <img src={doctor.photo} alt={doctor.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                            : <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                                <i className="fas fa-user-md" style={{ fontSize: '26px', color: '#06B6D4' }} />
-                              </div>
-                          }
+                        {/* Hero with avatar inside */}
+                        <div className="wds-hero" style={{ position: 'relative' }}>
+                          <div className="wds-exp-badge">{doctor.experience}+ Yrs</div>
+                          {doctor.is_active === false && (
+                            <div style={{
+                              position: 'absolute', inset: 0,
+                              background: 'rgba(255,255,255,0.7)', zIndex: 5, backdropFilter: 'blur(2px)',
+                              display: 'flex', alignItems: 'center', justifyContent: 'center',
+                            }}>
+                              <span style={{
+                                background: '#EF4444', color: '#fff', fontSize: '0.7rem',
+                                fontWeight: 600, padding: '4px 10px', borderRadius: '6px',
+                              }}>Unavailable</span>
+                            </div>
+                          )}
+                          <div className="wds-avatar-ring" style={{ opacity: doctor.is_active === false ? 0.7 : 1 }}>
+                            {doctor.photo
+                              ? <img src={doctor.photo} alt={doctor.name} />
+                              : <div className="wds-avatar-icon">
+                                  <i className="fas fa-user-md" style={{ fontSize: '34px', color: '#06B6D4' }} />
+                                </div>
+                            }
+                          </div>
                         </div>
 
-                        {/* Name */}
-                        <p style={{
-                          color: '#ffffff', fontWeight: 700, fontSize: '0.95rem',
-                          marginBottom: 2, letterSpacing: '0.02em', textAlign: 'center',
-                        }}>
-                          {doctor.name.startsWith('Dr.') ? doctor.name : `Dr. ${doctor.name}`}
-                        </p>
-                        <p style={{
-                          color: '#14B8A6', fontSize: '0.68rem', fontWeight: 600,
-                          textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 6,
-                          textAlign: 'center',
-                        }}>
-                          {doctor.specialization}
-                        </p>
-                        {/* Experience badge */}
-                        <div style={{
-                          display: 'inline-flex', alignItems: 'center', gap: 4,
-                          background: 'rgba(20, 184, 166,0.15)', border: '1px solid rgba(20, 184, 166,0.3)',
-                          borderRadius: 20, padding: '2px 10px', marginBottom: 10,
-                        }}>
-                          <i className="fas fa-clock" style={{ fontSize: '9px', color: '#06B6D4' }} />
-                          <span style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.68rem', fontWeight: 500 }}>
-                            {doctor.experience}+ Years Experience
-                          </span>
-                        </div>
-
-                        {/* Decorative line */}
-                        <div style={{ width: 36, height: 2, background: 'linear-gradient(90deg, #14B8A6, #06B6D4)', borderRadius: 2, marginBottom: 10, flexShrink: 0 }} />
-
-                        {/* Scrollable description */}
-                        <div style={{
-                          flex: 1,
-                          overflowY: 'auto',
-                          width: '100%',
-                          paddingRight: 2,
-                          scrollbarWidth: 'none',       /* Firefox */
-                          msOverflowStyle: 'none',      /* IE/Edge */
-                        }}
-                        className="wds-desc-scroll"
-                        >
-                          <p style={{
-                            color: doctor.description ? 'rgba(255,255,255,0.9)' : 'rgba(255,255,255,0.4)',
-                            fontSize: '0.78rem',
-                            lineHeight: 1.7,
-                            fontStyle: 'italic',
-                            fontFamily: 'Georgia, serif',
-                            letterSpacing: '0.01em',
-                            textAlign: 'center',
-                            margin: 0,
-                          }}>
-                            {doctor.description || 'No description available yet.'}
+                        {/* Body */}
+                        <div className="wds-body">
+                          <p className="wds-name">
+                            {doctor.name.startsWith('Dr.') ? doctor.name : `Dr. ${doctor.name}`}
                           </p>
+                          <p className="wds-spec">{doctor.specialization}</p>
+                          {doctor.is_active !== false ? (
+                            <div className="wds-verified">
+                              <i className="fas fa-check-circle" />
+                              Verified Specialist
+                            </div>
+                          ) : (
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '0.75rem', color: '#EF4444', fontWeight: 500, marginBottom: '12px' }}>
+                              <i className="fas fa-times-circle" />
+                              Not Accepting Appointments
+                            </div>
+                          )}
+                          <div className="wds-divider" />
+
+                          <div className="wds-meta">
+                            <div className="wds-meta-row">
+                              <i className="fas fa-clock wds-meta-icon" />
+                              <span>{doctor.timings}</span>
+                            </div>
+                            <div className="wds-meta-row">
+                              <i className="fas fa-calendar-alt wds-meta-icon" />
+                              <span>{doctor.available_days}</span>
+                            </div>
+                          </div>
+
+                          {doctor.is_active === false ? (
+                            <div style={{
+                              width: '100%', padding: '10px', borderRadius: '8px',
+                              background: '#F3F4F6', color: '#9CA3AF',
+                              fontSize: '0.9rem', fontWeight: 500, textAlign: 'center',
+                              border: '1px solid #E5E7EB',
+                            }}
+                              onMouseEnter={() => setHoveredButtonDocId(doctor.id)}
+                              onMouseLeave={() => setHoveredButtonDocId(null)}
+                            >
+                              <i className="fas fa-ban" style={{ marginRight: '6px' }} />
+                              Doctor Inactive
+                            </div>
+                          ) : (
+                            <button
+                              className="wds-book-btn"
+                              onMouseEnter={() => setHoveredButtonDocId(doctor.id)}
+                              onMouseLeave={() => setHoveredButtonDocId(null)}
+                              onMouseDown={e => e.stopPropagation()}
+                              onClick={e => { e.stopPropagation(); onBook(doctor); }}
+                            >
+                              <i className="fas fa-calendar-check" />
+                              Book Now
+                            </button>
+                          )}
                         </div>
 
-                        {/* Book button on back */}
-                        {isCenter && doctor.is_active !== false && (
-                          <button
-                            style={{
-                              marginTop: 10, padding: '7px 18px',
-                              background: 'linear-gradient(135deg, #14B8A6, #06B6D4)',
-                              color: '#fff', border: 'none', borderRadius: 8,
-                              fontSize: '0.8rem', fontWeight: 600, cursor: 'pointer',
-                              boxShadow: '0 4px 14px rgba(20, 184, 166,0.3)',
-                              flexShrink: 0,
-                            }}
-                            onMouseDown={e => e.stopPropagation()}
-                            onClick={e => { e.stopPropagation(); onBook(doctor); }}
-                          >
-                            <i className="fas fa-calendar-check" style={{ marginRight: 6 }} />
-                            Book Appointment
-                          </button>
-                        )}
                       </div>
+                    </div>
+
+                    {/* BACK FACE */}
+                    <div className="wds-flip-back">
+                      <button
+                        className="wds-flip-back-btn"
+                        onClick={e => toggleFlip(doctor.id, e)}
+                        title="Flip back"
+                      >
+                        ↺
+                      </button>
+
+                      {/* Doctor avatar */}
+                      <div style={{
+                        width: 68, height: 68, borderRadius: '50%',
+                        border: '3px solid rgba(20, 184, 166,0.7)',
+                        overflow: 'hidden',
+                        marginBottom: 10,
+                        flexShrink: 0,
+                        background: 'linear-gradient(135deg, #DFF5F2 0%, #EAF4FF 100%)',
+                        boxShadow: '0 4px 16px rgba(20, 184, 166,0.25)',
+                      }}>
+                        {doctor.photo
+                          ? <img src={doctor.photo} alt={doctor.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                          : <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                              <i className="fas fa-user-md" style={{ fontSize: '26px', color: '#06B6D4' }} />
+                            </div>
+                        }
+                      </div>
+
+                      {/* Name */}
+                      <p style={{
+                        color: '#ffffff', fontWeight: 700, fontSize: '0.95rem',
+                        marginBottom: 2, letterSpacing: '0.02em', textAlign: 'center',
+                      }}>
+                        {doctor.name.startsWith('Dr.') ? doctor.name : `Dr. ${doctor.name}`}
+                      </p>
+                      <p style={{
+                        color: '#14B8A6', fontSize: '0.68rem', fontWeight: 600,
+                        textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 6,
+                        textAlign: 'center',
+                      }}>
+                        {doctor.specialization}
+                      </p>
+                      {/* Experience badge */}
+                      <div style={{
+                        display: 'inline-flex', alignItems: 'center', gap: 4,
+                        background: 'rgba(20, 184, 166,0.15)', border: '1px solid rgba(20, 184, 166,0.3)',
+                        borderRadius: 20, padding: '2px 10px', marginBottom: 10,
+                      }}>
+                        <i className="fas fa-clock" style={{ fontSize: '9px', color: '#06B6D4' }} />
+                        <span style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.68rem', fontWeight: 500 }}>
+                          {doctor.experience}+ Years Experience
+                        </span>
+                      </div>
+
+                      {/* Decorative line */}
+                      <div style={{ width: 36, height: 2, background: 'linear-gradient(90deg, #14B8A6, #06B6D4)', borderRadius: 2, marginBottom: 10, flexShrink: 0 }} />
+
+                      {/* Scrollable description */}
+                      <div style={{
+                        flex: 1,
+                        overflowY: 'auto',
+                        width: '100%',
+                        paddingRight: 2,
+                        scrollbarWidth: 'none',       /* Firefox */
+                        msOverflowStyle: 'none',      /* IE/Edge */
+                      }}
+                      className="wds-desc-scroll"
+                      >
+                        <p style={{
+                          color: doctor.description ? 'rgba(255,255,255,0.9)' : 'rgba(255,255,255,0.4)',
+                          fontSize: '0.78rem',
+                          lineHeight: 1.7,
+                          fontStyle: 'italic',
+                          fontFamily: 'Georgia, serif',
+                          letterSpacing: '0.01em',
+                          textAlign: 'center',
+                          margin: 0,
+                        }}>
+                          {doctor.description || 'No description available yet.'}
+                        </p>
+                      </div>
+
+                      {/* Book button on back */}
+                      {doctor.is_active !== false && (
+                        <button
+                          style={{
+                            marginTop: 10, padding: '7px 18px',
+                            background: 'linear-gradient(135deg, #14B8A6, #06B6D4)',
+                            color: '#fff', border: 'none', borderRadius: 8,
+                            fontSize: '0.8rem', fontWeight: 600, cursor: 'pointer',
+                            boxShadow: '0 4px 14px rgba(20, 184, 166,0.3)',
+                            flexShrink: 0,
+                          }}
+                          onMouseDown={e => e.stopPropagation()}
+                          onClick={e => { e.stopPropagation(); onBook(doctor); }}
+                        >
+                          <i className="fas fa-calendar-check" style={{ marginRight: 6 }} />
+                          Book Appointment
+                        </button>
+                      )}
                     </div>
                   </div>
                 </div>
-              );
-            })}
-
-            <button className="wds-arrow" style={{ right: 'calc(50% - 420px)' }} onClick={() => goTo(centerIdx + 1)}>
-              <i className="fas fa-chevron-right" />
-            </button>
-          </>
+              </div>
+            );
+          })
         )}
-      </div>
-
-      {/* Dots */}
-      <div className="wds-dots">
-        {filtered.map((_, i) => (
-          <div key={i} className={`wds-dot${i === centerIdx ? ' active' : ''}`} onClick={() => goTo(i)} />
-        ))}
       </div>
     </section>
   );

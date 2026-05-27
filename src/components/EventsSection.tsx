@@ -168,12 +168,21 @@ export default function EventsSection() {
         </AnimCard>
 
         {loading ? (
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '1.5rem', marginBottom: '3rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '1.5rem', marginBottom: '4rem' }}>
             {Array.from({ length: 3 }).map((_, i) => (
-              <div key={i} style={{ borderRadius: '16px', overflow: 'hidden', border: '1px solid #E2E8F0' }}>
-                <div className="skeleton" style={{ height: '12px', margin: '1.25rem', borderRadius: '6px' }} />
-                <div className="skeleton" style={{ height: '14px', margin: '0 1.25rem 0.5rem', borderRadius: '6px', width: '60%' }} />
-                <div className="skeleton" style={{ height: '60px', margin: '0 1.25rem 1.25rem' }} />
+              <div key={i} style={{ borderRadius: '16px', overflow: 'hidden', border: '1px solid #E2E8F0', height: '280px', display: 'flex', flexDirection: 'column' }}>
+                {/* Skeleton Header */}
+                <div style={{ padding: '1rem 1.5rem', borderBottom: '1px solid #E2E8F0', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <div className="skeleton" style={{ width: '80px', height: '20px', borderRadius: '4px' }} />
+                  <div className="skeleton" style={{ width: '50px', height: '14px', borderRadius: '4px' }} />
+                </div>
+                {/* Skeleton Body */}
+                <div style={{ padding: '1.5rem', flex: 1 }}>
+                  <div className="skeleton" style={{ height: '24px', marginBottom: '12px', borderRadius: '4px', width: '90%' }} />
+                  <div className="skeleton" style={{ height: '14px', marginBottom: '16px', borderRadius: '4px', width: '40%' }} />
+                  <div className="skeleton" style={{ height: '60px', marginBottom: '16px', borderRadius: '4px', width: '100%' }} />
+                  <div className="skeleton" style={{ height: '16px', width: '80px', borderRadius: '4px' }} />
+                </div>
               </div>
             ))}
           </div>

@@ -40,10 +40,14 @@ export default function AboutSection() {
               Comprehensive <br/><span style={{ color: 'var(--blue-primary)' }}>Medical Care</span>
             </h2>
             
-            <div className="services-marquee-container" style={{ overflow: 'hidden', position: 'relative', width: '100%', padding: '1rem 0' }}>
-              <div className="services-marquee-inner" style={{ display: 'inline-flex', gap: '1.5rem', animation: 'servicesScroll 25s linear infinite' }}>
-                {/* Duplicate list for seamless scrolling */}
-                {[...services, ...services].map((s, idx) => (
+            <div className="services-marquee-container" style={{ overflow: 'hidden', position: 'relative', width: '100%', padding: '1rem 0', minHeight: '270px' }}>
+              <div className="services-marquee-inner" style={{ display: 'inline-flex', gap: '1.5rem', animation: 'servicesScroll 20s linear infinite' }}>
+                {services.length === 0 ? (
+                  Array.from({ length: 6 }).map((_, idx) => (
+                    <div key={`skel-${idx}`} className="skeleton" style={{ width: '280px', height: '230px', borderRadius: '20px' }}></div>
+                  ))
+                ) : (
+                  [...services, ...services].map((s, idx) => (
                   <div key={`${s.id}-${idx}`} style={{
                     width: '280px',
                     height: '230px',
@@ -76,7 +80,7 @@ export default function AboutSection() {
                     <h4 style={{ margin: '0 0 6px 0', fontSize: '1.1rem', color: 'var(--text-dark)', fontWeight: 600 }}>{s.title}</h4>
                     <p style={{ margin: 0, fontSize: '0.85rem', color: '#64748B', lineHeight: '1.5', fontWeight: 400 }}>{s.description}</p>
                   </div>
-                ))}
+                )))}
               </div>
             </div>
             
@@ -84,6 +88,9 @@ export default function AboutSection() {
               @keyframes servicesScroll {
                 0% { transform: translateX(0); }
                 100% { transform: translateX(calc(-50% - 0.75rem)); }
+              }
+              .services-marquee-inner {
+                animation: servicesScroll 20s linear infinite;
               }
               .services-marquee-inner:hover {
                 animation-play-state: paused;
