@@ -276,37 +276,7 @@ export default function ComplaintSuggestion({ onClose }: Props) {
         {/* ── Body ── */}
         <div className="csm-body">
 
-          {/* Sidebar */}
-          <div className="csm-sidebar">
-            {[
-              { icon: 'fas fa-shield-alt', title: 'Confidential', desc: 'Secure & anonymous.', bg: 'linear-gradient(135deg,#14B8A6,#0F766E)', light: '#F0FDFA' },
-              { icon: 'fas fa-bolt',       title: 'Fast Response', desc: 'Reviewed in 48 hrs.', bg: 'linear-gradient(135deg,#0EA5E9,#0284C7)', light: '#F0F9FF' },
-              { icon: 'fas fa-seedling',   title: 'Improvement',  desc: 'Better patient care.', bg: 'linear-gradient(135deg,#A855F7,#7C3AED)', light: '#FAF5FF' },
-            ].map((item, i) => (
-              <div key={i} className="csm-sb-card">
-                <div className="csm-sb-icon" style={{ background: item.bg }}>
-                  <i className={item.icon} style={{ color: '#fff' }} />
-                </div>
-                <div>
-                  <div className="csm-sb-title">{item.title}</div>
-                  <div className="csm-sb-desc">{item.desc}</div>
-                </div>
-              </div>
-            ))}
 
-            <div className="csm-how">
-              <div className="csm-how-title">
-                <i className="fas fa-route" style={{ color: '#14B8A6', marginRight: 5 }} />
-                How it works
-              </div>
-              {['Submit feedback', 'Review & investigate', 'Resolution & follow-up'].map((s, i) => (
-                <div key={i} className="csm-step">
-                  <div className="csm-step-dot">{i + 1}</div>
-                  <div className="csm-step-text">{s}</div>
-                </div>
-              ))}
-            </div>
-          </div>
 
           {/* Form */}
           <div className="csm-form-area">

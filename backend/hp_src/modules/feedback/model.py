@@ -82,7 +82,10 @@ class Complaint:
 
             for col in info['cols']:
                 if col != 'id':
-                    mapped_data[col] = data.get(col)
+                    val = data.get(col)
+                    if col == 'visit_date' and val == '':
+                        val = None
+                    mapped_data[col] = val
             
             if data.get('anonymous'):
                 mapped_data['name'] = 'Anonymous'

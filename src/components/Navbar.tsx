@@ -224,7 +224,7 @@ export default function Navbar({ onAppointmentClick, onPortalClick, onCancelClic
           position: fixed; inset: 0;
           background: rgba(15, 45, 82, 0.4);
           backdrop-filter: blur(4px);
-          z-index: 1998;
+          z-index: 99998;
           opacity: 0; pointer-events: none;
           transition: opacity 0.3s ease;
         }
@@ -236,7 +236,7 @@ export default function Navbar({ onAppointmentClick, onPortalClick, onCancelClic
           width: 300px; height: 100vh;
           background: #FFFFFF;
           box-shadow: -4px 0 24px rgba(15, 45, 82, 0.1);
-          z-index: 1999;
+          z-index: 99999;
           padding: 24px;
           transition: right 0.3s ease;
           overflow-y: auto;

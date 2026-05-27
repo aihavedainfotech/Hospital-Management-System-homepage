@@ -30,10 +30,7 @@ export default function WorkingProcess() {
           </h2>
         </div>
 
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-          gap: '2rem',
+        <div className="working-process-grid" style={{
           position: 'relative'
         }}>
           {/* Connecting Line (hidden on small screens) */}
@@ -48,23 +45,88 @@ export default function WorkingProcess() {
           }}></div>
 
           <style>{`
+            .working-process-grid {
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+              gap: 2rem;
+              position: relative;
+            }
+            .step-circle {
+              width: 90px; height: 90px;
+              border: 4px solid var(--bg-secondary);
+            }
+            .step-badge {
+              width: 28px; height: 28px;
+              font-size: 0.85rem;
+            }
+            .step-icon {
+              font-size: 2rem;
+            }
+            .step-title {
+              font-size: 1.2rem;
+            }
+            .step-desc {
+              font-size: 0.95rem;
+              display: block;
+            }
+
             @media (max-width: 768px) {
-              .process-line { display: none; }
+              .working-process-grid {
+                display: flex !important;
+                flex-direction: row !important;
+                flex-wrap: nowrap !important;
+                gap: 0.2rem !important;
+                justify-content: space-between;
+              }
+              .working-process-step {
+                min-width: 0;
+                flex: 1;
+                padding: 0 0.2rem !important;
+              }
+              .process-line {
+                top: 25px !important;
+                left: 10% !important;
+                right: 10% !important;
+                width: auto !important;
+                display: block !important;
+              }
+              .step-circle {
+                width: 45px !important;
+                height: 45px !important;
+                border-width: 2px !important;
+                margin-bottom: 0.5rem !important;
+              }
+              .step-badge {
+                width: 16px !important;
+                height: 16px !important;
+                font-size: 0.55rem !important;
+              }
+              .step-icon {
+                font-size: 1rem !important;
+              }
+              .step-title {
+                font-size: 0.6rem !important;
+                margin-bottom: 0.3rem !important;
+                word-wrap: break-word;
+              }
+              .step-desc {
+                font-size: 0.5rem !important;
+                line-height: 1.2 !important;
+                display: none; /* Hide description on very small screens if needed, but user said text will be small, so let's show it */
+              }
             }
           `}</style>
 
           {steps.map((step, index) => (
-            <div key={index} style={{
+            <div key={index} className="working-process-step" style={{
               position: 'relative',
               zIndex: 1,
               textAlign: 'center',
               padding: '0 1rem'
             }}>
-              <div style={{
-                width: '90px', height: '90px',
+              <div className="step-circle" style={{
                 borderRadius: '50%',
                 background: 'var(--card-bg)',
-                border: '4px solid var(--bg-secondary)',
                 boxShadow: 'var(--shadow-md)',
                 margin: '0 auto 1.5rem',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -81,31 +143,28 @@ export default function WorkingProcess() {
               }}
               >
                 {/* Step Number Badge */}
-                <div style={{
+                <div className="step-badge" style={{
                   position: 'absolute',
                   top: '0', right: '0',
-                  width: '28px', height: '28px',
                   borderRadius: '50%',
                   background: 'var(--accent)',
                   color: 'white',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontSize: '0.85rem', fontWeight: 700,
+                  fontWeight: 700,
                   boxShadow: 'var(--shadow-sm)'
                 }}>
                   {index + 1}
                 </div>
-                <i className={step.icon} style={{ fontSize: '2rem', color: 'var(--primary)' }}></i>
+                <i className={`${step.icon} step-icon`} style={{ color: 'var(--primary)' }}></i>
               </div>
-              <h4 style={{
+              <h4 className="step-title" style={{
                 fontFamily: 'Poppins, sans-serif',
-                fontSize: '1.2rem',
                 fontWeight: 600,
                 color: 'var(--text-primary)',
                 marginBottom: '0.75rem'
               }}>{step.title}</h4>
-              <p style={{
+              <p className="step-desc" style={{
                 color: 'var(--text-secondary)',
-                fontSize: '0.95rem',
                 lineHeight: 1.6,
                 marginBottom: 0
               }}>{step.desc}</p>

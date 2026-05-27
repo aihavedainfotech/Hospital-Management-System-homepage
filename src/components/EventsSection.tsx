@@ -254,30 +254,7 @@ export default function EventsSection() {
           </>
         )}
 
-        {/* Achievements */}
-        <AnimCard>
-          <h3 style={{ fontSize: '1.5rem', color: '#0F2D52', fontWeight: 700, textAlign: 'center', marginBottom: '12px' }}>
-            Our Achievements
-          </h3>
-          <div className="section-divider" style={{ margin: '0 auto 2rem', background: '#14B8A6', width: '60px', height: '4px', borderRadius: '2px' }} />
-        </AnimCard>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1.5rem' }}>
-          {achievementsData.map((ach, i) => (
-            <AnimCard key={ach.id} delay={i * 100} direction={i % 2 === 0 ? 'left' : 'right'}>
-              <div className="ach-card">
-                <div style={{
-                  width: '56px', height: '56px', borderRadius: '12px',
-                  background: '#F8FFFE', border: '1px solid #E2E8F0',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px',
-                }}>
-                  <i className={ach.icon || 'fas fa-trophy'} style={{ fontSize: '1.4rem', color: '#14B8A6' }} />
-                </div>
-                <div style={{ fontSize: '1.5rem', fontWeight: 700, color: '#14B8A6', marginBottom: '4px' }}>{ach.value}</div>
-                <h4 style={{ fontWeight: 500, color: '#0F2D52', fontSize: '0.95rem' }}>{ach.title}</h4>
-              </div>
-            </AnimCard>
-          ))}
-        </div>
+
       </div>
 
       {selectedEvent && <EventModal event={selectedEvent} onClose={() => setSelectedEvent(null)} />}
