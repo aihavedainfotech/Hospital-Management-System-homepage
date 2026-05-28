@@ -8,6 +8,8 @@ import {
   rescheduleAppointment,
   lockSlot,
   unlockSlot,
+  requestPatientOTP,
+  verifyPatientOTP,
   Doctor,
 } from '../api';
 
@@ -21,6 +23,11 @@ export default function CancelRescheduleModal({ onClose }: Props) {
   const [cancelDate, setCancelDate] = useState('');
   const [searchResult, setSearchResult] = useState<any[]>([]);
   const [searching, setSearching] = useState(false);
+
+  // ── OTP state ─────────────────────────────────────────────────
+  const [otpSent, setOtpSent] = useState(false);
+  const [otp, setOtp] = useState('');
+  const [isVerified, setIsVerified] = useState(false);
 
   // ── Cancel state ──────────────────────────────────────────────
   const [cancelReason, setCancelReason] = useState('');
@@ -101,6 +108,52 @@ export default function CancelRescheduleModal({ onClose }: Props) {
       toast.error('Please enter both phone number and date.');
       return;
     }
+
+    if (!isVerified && !otpSent) {
+      setSearching(true);
+      try {
+        const res = await requestPatientOTP(cancelPhone);
+        if (res.success) {
+          toast.success(res.message || 'OTP sent successfully!');
+          setOtpSent(true);
+        } else {
+          toast.error(res.error || 'Failed to send OTP.');
+        }
+      } catch (e: any) {
+        toast.error(e?.response?.data?.error || 'Failed to request OTP.');
+      } finally {
+        setSearching(false);
+      }
+      return;
+    }
+
+    if (otpSent && !isVerified) {
+      if (!otp.trim()) {
+        toast.error('Please enter the OTP.');
+        return;
+      }
+      setSearching(true);
+      try {
+        const res = await verifyPatientOTP(cancelPhone, otp);
+        if (res.success) {
+          toast.success('OTP verified successfully!');
+          setIsVerified(true);
+          await performSearch();
+        } else {
+          toast.error(res.error || 'Invalid OTP.');
+        }
+      } catch (e: any) {
+        toast.error(e?.response?.data?.error || 'Error verifying OTP.');
+      } finally {
+        setSearching(false);
+      }
+      return;
+    }
+
+    await performSearch();
+  };
+
+  const performSearch = async () => {
     setSearching(true);
     try {
       const res = await searchAppointments(cancelPhone, cancelDate);
@@ -153,9 +206,14 @@ export default function CancelRescheduleModal({ onClose }: Props) {
     }
     setSubmitting(true);
     try {
-      const res = await rescheduleAppointment(reschedulingId, selectedDate, selectedSlot, lockToken);
+      const res = await rescheduleAppointment(reschedulingId, selectedDate, selectedSlot, lockToken, reschedulingDoctor?.id);
       if (res.success) {
         toast.success('Appointment rescheduled successfully! 📅');
+        setSearchResult(prev => prev.map(a => 
+          a.id === reschedulingId 
+            ? { ...a, date: selectedDate, time: selectedSlot, doctor_name: reschedulingDoctor?.name || a.doctor_name, doctor_id: reschedulingDoctor?.id || a.doctor_id }
+            : a
+        ));
         setRescheduleDone(true);
         setTimeLeft(null);
         unlockSlot(lockToken).catch(() => {});
@@ -322,10 +380,36 @@ export default function CancelRescheduleModal({ onClose }: Props) {
                   }}>
                     <i className="fas fa-user-md" style={{ color: '#fff', fontSize: '1.1rem' }} />
                   </div>
-                  <div>
-                    <div style={{ fontWeight: 700, color: '#0F2D52', fontSize: '0.95rem' }}>
-                      Dr. {reschedulingDoctor?.name}
-                    </div>
+                  <div style={{ flex: 1 }}>
+                    <select
+                      value={reschedulingDoctor?.id || ''}
+                      onChange={e => {
+                        const newDoc = doctors.find(d => String(d.id) === e.target.value);
+                        if (newDoc) {
+                          setReschedulingDoctor(newDoc);
+                          setSelectedDate('');
+                          setSelectedSlot('');
+                        }
+                      }}
+                      style={{
+                        width: '100%',
+                        padding: '0.4rem',
+                        borderRadius: '8px',
+                        border: '1px solid #E2E8F0',
+                        fontSize: '0.95rem',
+                        fontWeight: 700,
+                        color: '#0F2D52',
+                        background: '#fff',
+                        marginBottom: '0.2rem',
+                        cursor: 'pointer'
+                      }}
+                    >
+                      {doctors.map(d => (
+                        <option key={d.id} value={d.id}>
+                          Dr. {d.name}
+                        </option>
+                      ))}
+                    </select>
                     <div style={{ fontSize: '0.8rem', color: '#14B8A6', fontWeight: 500 }}>
                       {reschedulingDoctor?.specialization}
                     </div>
@@ -395,8 +479,8 @@ export default function CancelRescheduleModal({ onClose }: Props) {
                         {availableSlots.map((s: any) => (
                           <button
                             key={s.time}
-                            disabled={!s.is_available}
-                            onClick={() => handleSlotSelect(s.time, s.is_available)}
+                            disabled={!s.available}
+                            onClick={() => handleSlotSelect(s.time, s.available)}
                             className={`crm-slot${selectedSlot === s.time ? ' selected' : ''}`}
                           >
                             {s.time}
@@ -443,9 +527,10 @@ export default function CancelRescheduleModal({ onClose }: Props) {
                     </label>
                     <input
                       value={cancelPhone}
-                      onChange={e => setCancelPhone(e.target.value)}
+                      onChange={e => { setCancelPhone(e.target.value); setOtpSent(false); setIsVerified(false); setOtp(''); setSearchResult([]); }}
                       placeholder="10-digit mobile"
                       type="tel"
+                      disabled={isVerified}
                     />
                   </div>
                   <div className="form-group">
@@ -455,11 +540,28 @@ export default function CancelRescheduleModal({ onClose }: Props) {
                     </label>
                     <input
                       value={cancelDate}
-                      onChange={e => setCancelDate(e.target.value)}
+                      onChange={e => { setCancelDate(e.target.value); setSearchResult([]); }}
                       type="date"
                     />
                   </div>
                 </div>
+
+                {otpSent && !isVerified && (
+                  <div className="form-group" style={{ marginBottom: '1.25rem' }}>
+                    <label>
+                      <i className="fas fa-key" style={{ marginRight: '0.35rem', color: '#14B8A6' }} />
+                      Enter WhatsApp OTP
+                    </label>
+                    <input
+                      value={otp}
+                      onChange={e => setOtp(e.target.value)}
+                      placeholder="Enter 6-digit OTP"
+                      type="text"
+                      maxLength={6}
+                      style={{ letterSpacing: '2px', fontWeight: 'bold' }}
+                    />
+                  </div>
+                )}
 
                 <button
                   onClick={handleSearch}
@@ -475,8 +577,12 @@ export default function CancelRescheduleModal({ onClose }: Props) {
                   }}
                 >
                   {searching
-                    ? <><i className="fas fa-spinner fa-spin" /> Searching...</>
-                    : <><i className="fas fa-search" /> Search Appointments</>}
+                    ? <><i className="fas fa-spinner fa-spin" /> Processing...</>
+                    : !otpSent 
+                      ? <><i className="fab fa-whatsapp" /> Request OTP</> 
+                      : !isVerified 
+                        ? <><i className="fas fa-check-circle" /> Verify & Search</> 
+                        : <><i className="fas fa-search" /> Search Appointments</>}
                 </button>
 
                 {/* Results */}
@@ -500,6 +606,7 @@ export default function CancelRescheduleModal({ onClose }: Props) {
                                 {appt.doctor_name}
                               </div>
                               <div style={{ fontSize: '0.8rem', color: '#64748B', marginTop: '2px' }}>
+                                <i className="fas fa-calendar-alt" style={{ marginRight: '0.3rem', color: '#14B8A6' }} />{appt.date} <span style={{ margin: '0 4px' }}>•</span>
                                 <i className="fas fa-clock" style={{ marginRight: '0.3rem', color: '#14B8A6' }} />{appt.time}
                               </div>
                               <div style={{ fontSize: '0.75rem', color: '#94A3B8', marginTop: '2px' }}>

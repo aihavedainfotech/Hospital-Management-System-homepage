@@ -254,9 +254,15 @@ h4 {
 
 .marquee-inner {
   display: flex;
-  gap: 3rem;
-  animation: marqueeScroll 30s linear infinite;
+  gap: 0; /* Let .marquee-content handle the gap/padding */
+  animation: marqueeScroll 15s linear infinite;
   white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .marquee-inner {
+    animation-duration: 5s;
+  }
 }
 
 .marquee-inner:hover {

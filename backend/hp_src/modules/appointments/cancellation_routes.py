@@ -81,8 +81,10 @@ def reschedule_appointment():
         if not appt:
             return jsonify({'success': False, 'error': f'Appointment {appointment_id} not found'}), 404
             
+        new_doctor_id = data.get('doctor_id') or appt['doctor_id']
+        
         # 2. Validate slot availability
-        is_bookable, error = Appointment.is_slot_bookable(appt['doctor_id'], new_date, new_time, lock_token)
+        is_bookable, error = Appointment.is_slot_bookable(new_doctor_id, new_date, new_time, lock_token)
         if not is_bookable:
             print(f"DEBUG: Slot not bookable: {error}", file=sys.stderr)
             return jsonify({
@@ -91,7 +93,7 @@ def reschedule_appointment():
             }), 409
             
         # 3. Perform update
-        success = Appointment.update_slot(appointment_id, new_date, new_time)
+        success = Appointment.update_slot(appointment_id, new_date, new_time, new_doctor_id)
         if success:
             if lock_token:
                 try:

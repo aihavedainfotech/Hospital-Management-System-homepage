@@ -48,37 +48,35 @@ export default function AboutSection() {
                   ))
                 ) : (
                   [...services, ...services].map((s, idx) => (
-                  <div key={`${s.id}-${idx}`} style={{
-                    width: '280px',
-                    height: '230px',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    padding: '1.5rem',
-                    background: 'white',
-                    borderRadius: '20px',
-                    border: '1px solid rgba(15, 45, 82, 0.12)',
-                    boxShadow: '0 10px 30px rgba(15, 45, 82, 0.1)',
-                    textAlign: 'center',
-                    transition: 'transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease',
-                    boxSizing: 'border-box',
-                    cursor: 'pointer'
-                  }}
+                  <div key={`${s.id}-${idx}`}
+                    className="service-card"
+                    style={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      background: 'white',
+                      borderRadius: '20px',
+                      border: '1px solid rgba(15, 45, 82, 0.12)',
+                      boxShadow: '0 10px 30px rgba(15, 45, 82, 0.1)',
+                      textAlign: 'center',
+                      transition: 'transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease',
+                      boxSizing: 'border-box',
+                      cursor: 'pointer'
+                    }}
                   onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-6px)'; e.currentTarget.style.boxShadow = '0 16px 40px rgba(20, 184, 166, 0.22)'; e.currentTarget.style.borderColor = 'rgba(20, 184, 166, 0.3)'; }}
                   onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 10px 30px rgba(15, 45, 82, 0.1)'; e.currentTarget.style.borderColor = 'rgba(15, 45, 82, 0.12)'; }}
                   >
-                    <div style={{
-                      width: '56px', height: '56px', borderRadius: '50%',
+                    <div className="service-card-icon" style={{
+                      borderRadius: '50%',
                       background: '#F8FFFE', color: 'var(--blue-primary)',
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      fontSize: '1.6rem', marginBottom: '14px',
                       flexShrink: 0
                     }}>
                       <i className={s.icon || 'fas fa-stethoscope'}></i>
                     </div>
-                    <h4 style={{ margin: '0 0 6px 0', fontSize: '1.1rem', color: 'var(--text-dark)', fontWeight: 600 }}>{s.title}</h4>
-                    <p style={{ margin: 0, fontSize: '0.85rem', color: '#64748B', lineHeight: '1.5', fontWeight: 400 }}>{s.description}</p>
+                    <h4 className="service-card-title" style={{ margin: '0 0 6px 0', color: 'var(--text-dark)', fontWeight: 600 }}>{s.title}</h4>
+                    <p className="service-card-desc" style={{ margin: 0, color: '#64748B', lineHeight: '1.5', fontWeight: 400 }}>{s.description}</p>
                   </div>
                 )))}
               </div>
@@ -94,6 +92,24 @@ export default function AboutSection() {
               }
               .services-marquee-inner:hover {
                 animation-play-state: paused;
+              }
+              .service-card {
+                width: 280px; height: 230px; padding: 1.5rem;
+              }
+              .service-card-icon {
+                width: 56px; height: 56px; font-size: 1.6rem; margin-bottom: 14px;
+              }
+              .service-card-title { font-size: 1.1rem; }
+              .service-card-desc { font-size: 0.85rem; }
+
+              @media (max-width: 768px) {
+                .service-card {
+                  width: 160px; height: 180px; padding: 1rem 0.75rem;
+                }
+                .skeleton { width: 160px !important; height: 180px !important; }
+                .service-card-icon { width: 44px; height: 44px; font-size: 1.3rem; margin-bottom: 8px; }
+                .service-card-title { font-size: 0.95rem; }
+                .service-card-desc { font-size: 0.75rem; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
               }
             `}</style>
 

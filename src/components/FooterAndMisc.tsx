@@ -21,23 +21,40 @@ export function MarqueeTicker() {
   }, []);
 
   if (loading || tickerItems.length === 0) return null;
-
-  const doubled = [...tickerItems, ...tickerItems];
   return (
     <div className="marquee-wrapper" style={{ background: '#14B8A6', height: '40px' }}>
       <div style={{ display: 'flex', alignItems: 'center', height: '100%', overflow: 'hidden' }}>
-        <div style={{ background: '#0F766E', color: 'white', padding: '0 1.5rem', height: '100%', display: 'flex', alignItems: 'center', fontWeight: 700, fontSize: '0.8rem', zIndex: 2, flexShrink: 0 }}>
-          LATEST NEWS
+        <div className="latest-news-label" style={{ background: '#0F766E', color: 'white', padding: '0 1.5rem', height: '100%', display: 'flex', alignItems: 'center', fontWeight: 700, fontSize: '0.8rem', zIndex: 2, flexShrink: 0 }}>
+          <span className="desktop-text">LATEST NEWS</span>
+          <i className="fas fa-bullhorn mobile-icon" style={{ display: 'none' }}></i>
         </div>
-        <div className="marquee-inner" style={{ display: 'flex', gap: '3rem' }}>
-          {doubled.map((item, i) => (
-            <span key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', whiteSpace: 'nowrap', color: 'white' }}>
-              <i className={item.icon} style={{ color: 'white', opacity: 0.8 }}></i>
-              {item.text}
-            </span>
-          ))}
+        <div className="marquee-inner" style={{ display: 'flex' }}>
+          <div className="marquee-content" style={{ display: 'flex', gap: '3rem', paddingRight: '3rem' }}>
+            {tickerItems.map((item, i) => (
+              <span key={`1-${i}`} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', whiteSpace: 'nowrap', color: 'white' }}>
+                <i className={item.icon} style={{ color: 'white', opacity: 0.8 }}></i>
+                {item.text}
+              </span>
+            ))}
+          </div>
+          <div className="marquee-content" style={{ display: 'flex', gap: '3rem', paddingRight: '3rem' }}>
+            {tickerItems.map((item, i) => (
+              <span key={`2-${i}`} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', whiteSpace: 'nowrap', color: 'white' }}>
+                <i className={item.icon} style={{ color: 'white', opacity: 0.8 }}></i>
+                {item.text}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
+      <style>{`
+        @media (max-width: 768px) {
+          .latest-news-label { padding: 0 1rem !important; }
+          .desktop-text { display: none !important; }
+          .mobile-icon { display: block !important; font-size: 1.1rem; }
+          .marquee-content { gap: 2rem !important; padding-right: 2rem !important; }
+        }
+      `}</style>
     </div>
   );
 }
@@ -129,14 +146,14 @@ export default function Footer({ onBook, onPortal }: { onBook: () => void; onPor
   };
 
   return (
-    <footer id="contact" style={{ paddingTop: '4rem', background: '#0F2D52', color: 'white' }}>
+    <footer id="contact" className="footer-section" style={{ background: '#0F2D52', color: 'white' }}>
       <div className="container">
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '3rem', paddingBottom: '3rem', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
+        <div className="footer-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', marginBottom: '1.25rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', marginBottom: '1rem' }}>
               <img src={havedaLogo} alt="Haveda Hospital Logo" style={{ height: '40px', display: 'block' }} />
             </div>
-            <p style={{ fontSize: '0.9rem', lineHeight: 1.6, color: 'rgba(255,255,255,0.6)', marginBottom: '1.5rem' }}>
+            <p className="footer-logo-desc" style={{ fontSize: '0.9rem', lineHeight: 1.6, color: 'rgba(255,255,255,0.6)', marginBottom: '1.5rem' }}>
               Providing world-class healthcare with excellence and compassion. Your health is our priority.
             </p>
             <div style={{ display: 'flex', gap: '10px' }}>
@@ -149,7 +166,7 @@ export default function Footer({ onBook, onPortal }: { onBook: () => void; onPor
           </div>
 
           <div>
-            <h4 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '1.5rem' }}>Quick Links</h4>
+            <h4 className="footer-col-title" style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '1.5rem' }}>Quick Links</h4>
             <ul style={{ listStyle: 'none', padding: 0 }}>
               {links.map(link => (
                 <li key={link.name} style={{ marginBottom: '10px' }}>
@@ -172,8 +189,8 @@ export default function Footer({ onBook, onPortal }: { onBook: () => void; onPor
           </div>
 
           <div>
-            <h4 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '1.5rem' }}>Contact Info</h4>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+            <h4 className="footer-col-title" style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '1.5rem' }}>Contact Info</h4>
+            <div className="footer-contact" style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               <div style={{ display: 'flex', gap: '10px' }}>
                 <i className="fas fa-map-marker-alt" style={{ color: '#06B6D4', marginTop: '4px' }}></i>
                 <span style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.6)' }}>123 Health Ave, Hyderabad</span>
@@ -190,7 +207,7 @@ export default function Footer({ onBook, onPortal }: { onBook: () => void; onPor
           </div>
         </div>
 
-        <div style={{ padding: '1.5rem 0', display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', fontSize: '0.8rem', color: 'rgba(255,255,255,0.4)' }}>
+        <div className="footer-bottom" style={{ padding: '1.5rem 0', display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', fontSize: '0.8rem', color: 'rgba(255,255,255,0.4)' }}>
           <span>© 2024 Haveda Hospital. All rights reserved.</span>
           <div style={{ display: 'flex', gap: '1.5rem' }}>
             <span>Privacy Policy</span>
@@ -198,6 +215,24 @@ export default function Footer({ onBook, onPortal }: { onBook: () => void; onPor
           </div>
         </div>
       </div>
+      <style>{`
+        .footer-section { padding-top: 4rem; }
+        .footer-grid { gap: 3rem; padding-bottom: 3rem; }
+        
+        @media (max-width: 768px) {
+          .footer-section { padding-top: 2rem; }
+          .footer-grid { gap: 1.5rem; padding-bottom: 1.5rem; }
+          .footer-logo-desc { margin-bottom: 1rem !important; }
+          .footer-col-title { margin-bottom: 0.75rem !important; }
+          .footer-contact { gap: 0.5rem !important; }
+          .footer-bottom { 
+            padding: 1rem 0 !important; 
+            flex-direction: column; 
+            align-items: center; 
+            gap: 0.75rem; 
+          }
+        }
+      `}</style>
     </footer>
   );
 }

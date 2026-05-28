@@ -382,7 +382,7 @@ class Appointment:
             return False
 
     @staticmethod
-    def update_slot(appointment_id: str, new_date: str, new_time: str) -> bool:
+    def update_slot(appointment_id: str, new_date: str, new_time: str, new_doctor_id: str = None) -> bool:
         """Update an existing appointment's date and time with availability check"""
         try:
             # Normalize date
@@ -402,17 +402,28 @@ class Appointment:
             if not appt:
                 return False
             
-            doctor_id = appt['doctor_id']
+            doctor_id = new_doctor_id or appt['doctor_id']
             
             if Appointment.check_slot_exists(doctor_id, clean_date, new_time):
                 return False
 
-            query = """
-            UPDATE appointments 
-            SET appointment_date = %s, appointment_time = %s, status = 'pending'
-            WHERE id = %s
-            """
-            db.execute_query(query, (clean_date, new_time, appointment_id))
+            if new_doctor_id and str(new_doctor_id) != str(appt['doctor_id']):
+                from hp_src.modules.doctors.model import Doctor
+                doctor = Doctor.get_by_id(new_doctor_id)
+                doctor_name = doctor['name'] if doctor else ''
+                query = """
+                UPDATE appointments 
+                SET appointment_date = %s, appointment_time = %s, status = 'pending', doctor_id = %s, doctor_name = %s
+                WHERE id = %s
+                """
+                db.execute_query(query, (clean_date, new_time, new_doctor_id, doctor_name, appointment_id))
+            else:
+                query = """
+                UPDATE appointments 
+                SET appointment_date = %s, appointment_time = %s, status = 'pending'
+                WHERE id = %s
+                """
+                db.execute_query(query, (clean_date, new_time, appointment_id))
             return True
         except Exception as e:
             print(f"Error in update_slot: {e}")

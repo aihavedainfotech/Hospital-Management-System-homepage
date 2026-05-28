@@ -640,36 +640,50 @@ export default function AppointmentSection({ preSelectedDoctor, initialCancelMod
                   : 'No long queues. Book from the comfort of your home and receive instant confirmation.'}
               </p>
             </div>
-            {!confirmed && (
-              <button 
-                onClick={() => {
-                  setIsCancelMode(!isCancelMode);
-                  setSearchResult([]);
-                  setCancelPhone('');
-                  setCancelDate('');
-                }}
-                className={isCancelMode ? 'btn-secondary' : 'btn-outline'}
-                style={{ borderRadius: '50px', padding: '0.6rem 1.25rem', fontSize: '0.85rem' }}
-              >
-                <i className={isCancelMode ? 'fas fa-calendar-plus' : 'fas fa-calendar-times'} style={{ marginRight: '0.5rem' }}></i>
-                {isCancelMode ? 'Back to Booking' : 'Cancel Appointment'}
-              </button>
-            )}
           </div>
         </AnimCard>
 
+        <style>{`
+          @media (max-width: 768px) {
+            .why-book-grid {
+              grid-template-columns: repeat(2, 1fr) !important;
+              gap: 0.75rem !important;
+              margin-bottom: 2rem !important;
+            }
+            .why-book-card {
+              padding: 1rem 0.5rem !important;
+            }
+            .why-book-icon-wrapper {
+              width: 36px !important;
+              height: 36px !important;
+              margin-bottom: 0.5rem !important;
+            }
+            .why-book-icon {
+              font-size: 1rem !important;
+            }
+            .why-book-title {
+              font-size: 0.8rem !important;
+              margin-bottom: 0.2rem !important;
+              line-height: 1.2 !important;
+            }
+            .why-book-desc {
+              font-size: 0.65rem !important;
+              line-height: 1.3 !important;
+            }
+          }
+        `}</style>
         {/* Why Book Online */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.25rem', marginBottom: '3rem' }}>
+        <div className="why-book-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.25rem', marginBottom: '3rem' }}>
           {whyPoints.map((p, i) => (
             <AnimCard key={i}>
-              <div style={{ background: 'var(--card-bg)', borderRadius: '14px', padding: '1.5rem', textAlign: 'center', border: '1px solid var(--border-color)', boxShadow: 'var(--shadow-sm)', transition: 'transform 0.3s' }}
+              <div className="why-book-card" style={{ background: 'var(--card-bg)', borderRadius: '14px', padding: '1.5rem', textAlign: 'center', border: '1px solid var(--border-color)', boxShadow: 'var(--shadow-sm)', transition: 'transform 0.3s', height: '100%' }}
                 onMouseEnter={e => (e.currentTarget as HTMLDivElement).style.transform = 'translateY(-4px)'}
                 onMouseLeave={e => (e.currentTarget as HTMLDivElement).style.transform = 'translateY(0)'}>
-                <div style={{ width: '52px', height: '52px', borderRadius: '50%', background: 'rgba(20,184,166,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 0.875rem' }}>
-                  <i className={p.icon} style={{ fontSize: '1.3rem', color: 'var(--teal)' }}></i>
+                <div className="why-book-icon-wrapper" style={{ width: '52px', height: '52px', borderRadius: '50%', background: 'rgba(20,184,166,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 0.875rem' }}>
+                  <i className={`why-book-icon ${p.icon}`} style={{ fontSize: '1.3rem', color: 'var(--teal)' }}></i>
                 </div>
-                <h4 style={{ fontFamily: 'Playfair Display, serif', fontWeight: 700, color: 'var(--text-primary)', fontSize: '0.95rem', marginBottom: '0.4rem' }}>{p.title}</h4>
-                <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', lineHeight: 1.5 }}>{p.desc}</p>
+                <h4 className="why-book-title" style={{ fontFamily: 'Playfair Display, serif', fontWeight: 700, color: 'var(--text-primary)', fontSize: '0.95rem', marginBottom: '0.4rem' }}>{p.title}</h4>
+                <p className="why-book-desc" style={{ fontSize: '0.8rem', color: 'var(--text-muted)', lineHeight: 1.5 }}>{p.desc}</p>
               </div>
             </AnimCard>
           ))}

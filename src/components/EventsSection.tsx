@@ -154,6 +154,17 @@ export default function EventsSection() {
           box-shadow: 0 16px 40px rgba(20, 184, 166, 0.22);
           border-color: rgba(20, 184, 166, 0.35);
         }
+        @media (max-width: 768px) {
+          .ev-grid {
+            grid-template-columns: 1fr !important;
+            gap: 1rem !important;
+            margin-bottom: 2rem !important;
+          }
+          .ev-card-header { padding: 0.75rem 1rem !important; }
+          .ev-card-body { padding: 1rem !important; }
+          .ev-card-title { font-size: 0.95rem !important; margin-bottom: 6px !important; }
+          .ev-card-desc { font-size: 0.8rem !important; margin-bottom: 10px !important; }
+        }
       `}</style>
 
       <div className="ev-dot-grid" />
@@ -203,14 +214,14 @@ export default function EventsSection() {
             </div>
 
             {/* Events grid */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '1.5rem', marginBottom: '4rem' }}>
+            <div className="ev-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '1.5rem', marginBottom: '4rem' }}>
               {sorted.map((event, i) => {
                 const color = getCategoryColor(event.category);
                 return (
                   <AnimCard key={event.id} delay={i * 70} direction={i % 2 === 0 ? 'left' : 'right'}>
                     <div className="ev-card" onClick={() => setSelectedEvent(event)}>
                       {/* Card header */}
-                      <div style={{
+                      <div className="ev-card-header" style={{
                         background: '#F8FFFE',
                         padding: '1rem 1.5rem',
                         borderBottom: `1px solid #E2E8F0`,
@@ -231,15 +242,15 @@ export default function EventsSection() {
                         </div>
                       </div>
                       {/* Card body */}
-                      <div style={{ padding: '1.5rem' }}>
-                        <h3 style={{ fontSize: '1.1rem', fontWeight: 600, color: '#0F2D52', marginBottom: '8px', lineHeight: 1.4 }}>
+                      <div className="ev-card-body" style={{ padding: '1.5rem' }}>
+                        <h3 className="ev-card-title" style={{ fontSize: '1.1rem', fontWeight: 600, color: '#0F2D52', marginBottom: '8px', lineHeight: 1.4 }}>
                           {event.title}
                         </h3>
                         <p style={{ fontSize: '0.8rem', color: '#64748B', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '6px' }}>
                           <i className="fas fa-clock" style={{ color }} />
                           {new Date(event.datetime).toLocaleDateString('en-IN', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' })}
                         </p>
-                        <p style={{ fontSize: '0.9rem', color: '#64748B', lineHeight: 1.6, marginBottom: '16px' }}>
+                        <p className="ev-card-desc" style={{ fontSize: '0.9rem', color: '#64748B', lineHeight: 1.6, marginBottom: '16px' }}>
                           {event.description.length > 120 ? event.description.slice(0, 120) + '...' : event.description}
                         </p>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color, fontWeight: 500, fontSize: '0.85rem' }}>

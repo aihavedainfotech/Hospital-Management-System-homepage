@@ -821,10 +821,27 @@ export default function PatientPortal({ onClose }: { onClose: () => void }) {
           </div>
         ) : !showPatientSelect ? (
           <div className="portal-layout" style={{ display: 'flex', flex: 1, overflow: 'hidden' }}>
+            <style>{`
+              @media (max-width: 768px) {
+                .portal-layout { flex-direction: column !important; overflow-y: auto !important; }
+                .portal-sidebar { width: 100% !important; border-right: none !important; border-bottom: 1px solid var(--border-color) !important; overflow: visible !important; height: auto !important; flex-shrink: 0 !important; }
+                .portal-sidebar-inner { display: flex !important; flex-direction: row !important; flex-wrap: wrap !important; padding: 0.75rem !important; gap: 0.5rem !important; align-items: center !important; }
+                .portal-patient-info { width: 100% !important; border-right: none !important; border-bottom: 1px solid var(--border-color) !important; padding-right: 0 !important; padding-bottom: 0.75rem !important; margin-bottom: 0.25rem !important; flex-shrink: 0 !important; }
+                .portal-sidebar-item { margin-bottom: 0 !important; white-space: nowrap !important; padding: 0.6rem !important; flex: 1 1 calc(50% - 0.5rem) !important; justify-content: center !important; border-radius: 8px !important; }
+                .portal-content { padding: 1rem !important; overflow-y: visible !important; }
+                .portal-header-row { flex-direction: column !important; align-items: flex-start !important; gap: 1rem !important; }
+                .portal-header-btn { width: 100% !important; justify-content: center !important; }
+                .portal-dashboard-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 0.75rem !important; }
+                .portal-stat-card { padding: 1rem !important; }
+                .portal-stat-val { font-size: 1rem !important; }
+                .portal-stat-lbl { font-size: 0.65rem !important; }
+                .portal-stat-icon { font-size: 1.25rem !important; margin-bottom: 0.35rem !important; }
+              }
+            `}</style>
             {/* Sidebar */}
             <div className="portal-sidebar" style={{ width: '200px', flexShrink: 0, overflowY: 'auto' }}>
               <div className="portal-sidebar-inner" style={{ padding: '1rem 0.75rem' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', padding: '0.75rem', background: 'rgba(61,140,140,0.08)', borderRadius: '10px', marginBottom: '0.5rem' }}>
+                <div className="portal-patient-info" style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', padding: '0.75rem', background: 'rgba(61,140,140,0.08)', borderRadius: '10px', marginBottom: '0.5rem' }}>
                   <div style={{ width: '36px', height: '36px', background: 'var(--teal)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 700, fontSize: '0.9rem', flexShrink: 0 }}>
                     {(patient?.name || 'P').charAt(0)}
                   </div>
@@ -854,15 +871,16 @@ export default function PatientPortal({ onClose }: { onClose: () => void }) {
               {/* Overview */}
               {activeTab === 'overview' && (
                 <div>
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem' }}>
+                  <div className="portal-header-row" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem' }}>
                     <h3 style={{ fontFamily: 'Playfair Display, serif', fontSize: '1.2rem', fontWeight: 700, color: 'var(--text-primary)' }}>Dashboard Overview</h3>
                     <button
+                      className="portal-header-btn"
                       onClick={() => { setBookingForPatientId(patient?.patient_id || resolvedPatientId); setBookingForName(patient?.name || ''); setBookingForPhone(patient?.phone || ''); setBookingForAge(patient?.age || ''); setShowBooking(true); }}
                       style={{ background: 'var(--teal)', border: 'none', color: 'white', padding: '0.5rem 1.1rem', borderRadius: '20px', cursor: 'pointer', fontSize: '0.82rem', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '0.4rem', flexShrink: 0 }}>
                       <i className="fas fa-calendar-plus"></i> Book Appointment
                     </button>
                   </div>
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '1rem', marginBottom: '1.5rem' }}>
+                  <div className="portal-dashboard-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '1rem', marginBottom: '1.5rem' }}>
                     {[
                       { 
                         icon: 'fas fa-calendar-check', 
@@ -902,10 +920,10 @@ export default function PatientPortal({ onClose }: { onClose: () => void }) {
                         color: '#9b59b6' 
                       },
                     ].map((stat, i) => (
-                      <div key={i} style={{ background: 'var(--bg-primary)', borderRadius: '12px', padding: '1.25rem', border: '1px solid var(--border-color)', textAlign: 'center' }}>
-                        <i className={stat.icon} style={{ fontSize: '1.5rem', color: stat.color, display: 'block', marginBottom: '0.5rem' }}></i>
-                        <div style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--text-primary)' }}>{stat.value}</div>
-                        <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>{stat.label}</div>
+                      <div key={i} className="portal-stat-card" style={{ background: 'var(--bg-primary)', borderRadius: '12px', padding: '1.25rem', border: '1px solid var(--border-color)', textAlign: 'center' }}>
+                        <i className={`portal-stat-icon ${stat.icon}`} style={{ fontSize: '1.5rem', color: stat.color, display: 'block', marginBottom: '0.5rem' }}></i>
+                        <div className="portal-stat-val" style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--text-primary)' }}>{stat.value}</div>
+                        <div className="portal-stat-lbl" style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>{stat.label}</div>
                       </div>
                     ))}
                   </div>
@@ -927,7 +945,7 @@ export default function PatientPortal({ onClose }: { onClose: () => void }) {
               {/* Appointments */}
               {activeTab === 'appointments' && (
                 <div>
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem' }}>
+                  <div className="portal-header-row" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem' }}>
                     <h3 style={{ fontFamily: 'Playfair Display, serif', fontSize: '1.2rem', fontWeight: 700, color: 'var(--text-primary)' }}>
                       My Appointments
                       <span style={{ marginLeft: '0.75rem', fontSize: '0.85rem', fontWeight: 500, color: 'var(--text-muted)' }}>
@@ -935,6 +953,7 @@ export default function PatientPortal({ onClose }: { onClose: () => void }) {
                       </span>
                     </h3>
                     <button
+                      className="portal-header-btn"
                       onClick={() => { setBookingForPatientId(patient?.patient_id || resolvedPatientId); setBookingForName(patient?.name || ''); setBookingForPhone(patient?.phone || ''); setBookingForAge(patient?.age || ''); setShowBooking(true); }}
                       style={{ background: 'var(--teal)', border: 'none', color: 'white', padding: '0.5rem 1.1rem', borderRadius: '20px', cursor: 'pointer', fontSize: '0.82rem', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '0.4rem', flexShrink: 0 }}>
                       <i className="fas fa-calendar-plus"></i> Book New

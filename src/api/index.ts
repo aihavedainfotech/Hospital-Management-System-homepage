@@ -194,8 +194,8 @@ export const searchAppointments = (phone: string, date: string) =>
 export const cancelAppointmentRequest = (id: string, reason: string) =>
   apiClient.post(`${HP}/cancellations/cancel`, { id, reason }).then(r => r.data);
 
-export const rescheduleAppointment = (id: string | number, date: string, time: string, lockToken?: string) =>
-  apiClient.put(`${HP}/appointments/reschedule`, { id, date, time, lock_token: lockToken }).then(r => r.data);
+export const rescheduleAppointment = (id: string | number, date: string, time: string, lockToken?: string, doctorId?: number | string) =>
+  apiClient.put(`${HP}/cancellations/reschedule`, { id, date, time, lock_token: lockToken, doctor_id: doctorId }).then(r => r.data);
 
 export const searchPatient = (query: string) =>
   apiClient.get(`${HP}/patients/search`, { params: { q: query } }).then(r => r.data);

@@ -57,7 +57,8 @@ export default function TestimonialsSection() {
     if (compliments.length === 0) return;
 
     const speed = 0.5;
-    const cardWidth = 320; // card width (300px) + margin (20px)
+    const isMobile = window.innerWidth <= 768;
+    const cardWidth = isMobile ? 260 : 320; // mobile: 240px + 20px margin, desktop: 300px + 20px margin
     const totalWidth = compliments.length * cardWidth;
 
     const animate = (time: number) => {
@@ -136,6 +137,19 @@ export default function TestimonialsSection() {
         }
         .compliment-stars { display: flex; gap: 2px; margin-top: 0.75rem; }
         .compliment-star { font-size: 0.75rem; color: #FFD700; }
+
+        @media (max-width: 768px) {
+          .compliment-card {
+            width: 240px;
+            padding: 1.25rem;
+          }
+          .compliment-name {
+            font-size: 0.9rem;
+          }
+          .compliment-feedback {
+            font-size: 0.8rem;
+          }
+        }
       `}</style>
 
       <div className="compliment-blob compliment-blob-1" />
