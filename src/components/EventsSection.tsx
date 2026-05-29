@@ -107,8 +107,8 @@ export default function EventsSection() {
 
   const sorted = [...events].sort((a, b) => new Date(b.datetime).getTime() - new Date(a.datetime).getTime());
   const byCategory = sorted.reduce((acc, ev) => {
-    // Normalize category to Title Case (e.g. 'news' -> 'News')
-    const cat = ev.category.charAt(0).toUpperCase() + ev.category.slice(1).toLowerCase();
+    const catStr = ev.category || 'Event';
+    const cat = catStr.charAt(0).toUpperCase() + catStr.slice(1).toLowerCase();
     acc[cat] = acc[cat] || [];
     acc[cat].push({...ev, category: cat as EventItem['category']});
     return acc;
@@ -250,8 +250,8 @@ export default function EventsSection() {
                           <i className="fas fa-clock" style={{ color }} />
                           {new Date(event.datetime).toLocaleDateString('en-IN', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' })}
                         </p>
-                        <p className="ev-card-desc" style={{ fontSize: '0.9rem', color: '#64748B', lineHeight: 1.6, marginBottom: '16px' }}>
-                          {event.description.length > 120 ? event.description.slice(0, 120) + '...' : event.description}
+                        <p className="ev-card-desc" style={{ fontSize: '0.9rem', color: '#4b5e7a', lineHeight: 1.6, marginBottom: '16px', fontFamily: 'DM Sans, sans-serif' }}>
+                          {(event.description || '').length > 120 ? (event.description || '').slice(0, 120) + '...' : (event.description || '')}
                         </p>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color, fontWeight: 500, fontSize: '0.85rem' }}>
                           Read More <i className="fas fa-arrow-right" style={{ fontSize: '0.75rem' }} />

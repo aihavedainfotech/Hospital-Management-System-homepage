@@ -1472,60 +1472,27 @@ export default function AppointmentSection({ preSelectedDoctor, initialCancelMod
                 )}
               </>
             ) : (
-              /* CONFIRMATION VIEW */
-              <div style={{ textAlign: 'center', padding: '1rem 0' }}>
-                <div style={{ width: '80px', height: '80px', borderRadius: '50%', background: 'linear-gradient(135deg, var(--teal), #16A34A)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.5rem', color: 'white', fontSize: '2.5rem', boxShadow: '0 10px 20px rgba(22,163,74,0.2)' }}>
-                  <i className="fas fa-check"></i>
+              /* CONFIRMATION VIEW - Now shown as a floating modal */
+              <div className="modal-ov show" style={{ zIndex: 9999 }}>
+                <div className="modal-box">
+                  <div className="modal-ico">🎉</div>
+                  <h3>
+                    {isRescheduling ? 'Appointment Rescheduled!' : 'Appointment Confirmed!'}
+                  </h3>
+                  <p>
+                    {isRescheduling 
+                      ? 'Your appointment has been successfully updated.' 
+                      : `Your appointment has been booked at Haveda Hospital. A confirmation will be sent to ${phone}. Please arrive 15 minutes early.`}
+                  </p>
+                  {!isRescheduling && (
+                    <div className="modal-id">
+                      Appointment ID: {refNumber}
+                    </div>
+                  )}
+                  <button className="btn-primary" onClick={resetForm} style={{ width: '100%', justifyContent: 'center' }}>
+                    Got it
+                  </button>
                 </div>
-                <h3 style={{ fontFamily: 'Playfair Display, serif', fontSize: '1.5rem', fontWeight: 700, marginBottom: '0.5rem' }}>
-                  {isRescheduling ? 'Appointment Rescheduled!' : 'Appointment Confirmed!'}
-                </h3>
-                <p style={{ opacity: 0.9, marginBottom: '1rem' }}>
-                  {isRescheduling 
-                    ? 'Your appointment has been successfully updated.' 
-                    : 'Your appointment has been successfully scheduled.'}
-                </p>
-                {isNewPatient && !isRescheduling && (
-                  <div style={{ display: 'inline-block', background: 'rgba(20,184,166,0.1)', color: 'var(--teal)', padding: '0.4rem 1rem', borderRadius: '50px', fontSize: '0.75rem', marginBottom: '1rem', fontWeight: 600 }}>
-                    <i className="fas fa-info-circle" style={{ marginRight: '0.35rem' }}></i> New patient registered automatically
-                  </div>
-                )}
-                {!isRescheduling && <div className="ref-number">{refNumber}</div>}
-                
-                <div style={{ background: 'rgba(0,0,0,0.03)', borderRadius: '12px', padding: '1.25rem', margin: '1rem 0', textAlign: 'left' }}>
-                  <div style={{ display: 'grid', gap: '0.5rem', fontSize: '0.9rem' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                      <span style={{ color: 'var(--text-muted)' }}>Patient Name:</span>
-                      <span style={{ fontWeight: 600 }}>{name}</span>
-                    </div>
-                    {confirmedPatientId && (
-                      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                        <span style={{ color: 'var(--text-muted)' }}>Patient ID:</span>
-                        <span style={{ fontWeight: 600, color: 'var(--teal)' }}>{confirmedPatientId}</span>
-                      </div>
-                    )}
-                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                      <span style={{ color: 'var(--text-muted)' }}>Doctor:</span>
-                      <span style={{ fontWeight: 600 }}>{selectedDoctor?.name}</span>
-                    </div>
-                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                      <span style={{ color: 'var(--text-muted)' }}>Date:</span>
-                      <span style={{ fontWeight: 600 }}>{selectedDate}</span>
-                    </div>
-                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                      <span style={{ color: 'var(--text-muted)' }}>Time:</span>
-                      <span style={{ fontWeight: 600 }}>{selectedSlot}</span>
-                    </div>
-                  </div>
-                </div>
-
-                <p style={{ fontSize: '0.85rem', opacity: 0.8, marginBottom: '1.5rem' }}>
-                  A confirmation {email ? 'email and ' : ''}SMS will be sent to {phone}.
-                </p>
-                
-                <button className="btn-primary" onClick={resetForm} style={{ width: '100%', justifyContent: 'center' }}>
-                  {isRescheduling ? 'Back to Dashboard' : 'Book Another Appointment'}
-                </button>
               </div>
             )}
           </div>
